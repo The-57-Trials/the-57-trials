@@ -1,0 +1,52 @@
+# The 57 Trials — the plan
+
+The single source of truth for strategy. Versioned here so every change is dated and
+traceable; the **live numbers** live separately, in The Pulse at `/admin`.
+
+Written 22 August 2026. Everything is a draft for Rob's review.
+
+| § | Document | What's in it |
+|---|---|---|
+| 1 | [Vision & Strategy](01-vision-and-strategy.md) | Mission, 12-month and 3-year targets, values, the Primes lore, the one metric that matters |
+| 2–3 | [Market & Customer](02-03-market-and-customer.md) | Competitors, retention benchmarks, TAM/SAM/SOM, trends, ICP, objections, anti-personas |
+| 4 | [Product](04-product.md) | What a trial is, two publication-ready examples, the full 57 roadmap, pacing, merch, tech rationale |
+| 5–6 | [Pricing & Financials](05-06-pricing-and-financials.md) | Pricing validation, three scenarios, unit economics, Stripe fees, merch costs, burn, break-even, cash flow |
+| 7–8 | [Growth & Operations](07-08-growth-and-operations.md) | Channels, content formats, launch plan, funnel, referral, support, content pipeline, fulfilment, the solo-operator problem |
+| 9 | [Legal, IP & Compliance](09-legal-ip-and-compliance.md) | Consumer law, Stripe activation, liability, GDPR, trade marks, copyright, the 57 question |
+| 10 | [Risks & Assumptions](10-risks-and-assumptions.md) | Unproven assumptions, failure modes, single points of failure, kill criterion |
+| 11 | [Metrics & the brain](11-metrics-and-the-brain.md) | What The Pulse tracks, what it deliberately doesn't, how to read it weekly |
+
+---
+
+## The findings that three independent researchers reached separately
+
+These converged from market, pricing and operations angles without knowing each other's work.
+That agreement is why they're at the top.
+
+**1. At current pricing, the business only makes money on people who quit.** A completer
+consumes £32–44 of merch against ~£47 of net revenue. A fast completer loses up to £25.60.
+Aggregate contribution stays positive only because ~75% of members quit before the expensive
+milestone. **The economics currently depend on the product failing.**
+
+**2. £4.99 is too cheap, not too expensive.** The closest real comparator charges £25–35 for a
+single medal; you ship four items.
+
+**3. Paid acquisition is not available.** Maximum sustainable CAC is £4.44 per paying customer.
+Organic, content and community — or it is not a business.
+
+**4. There is no annual plan.** Annual retains at 44.1% at twelve months against 17.0% for
+monthly, in a category that sells 68% annual. One Stripe price object.
+
+**5. The site has no SEO surface.** A crawler sees an empty page. Every acquisition plan
+assumes traffic that currently has no way to arrive.
+
+---
+
+## The three changes that cost nothing
+
+1. **Gate merch on tenure as well as progress** — "trial 45 *and* 6 paid months". Eliminates the fast-completer loss entirely.
+2. **Circuit Pass at £7.99** — turns a −£2.24 completer into +£18.26.
+3. **Replace or drop the cap** — it is 51% of the merch stack on its own.
+
+**Do not create the Stripe products until you've decided on these.** Nothing is locked in yet,
+which makes right now the cheapest moment this decision will ever be.
