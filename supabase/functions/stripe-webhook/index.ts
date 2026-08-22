@@ -2,7 +2,7 @@
 // Deployed with verify_jwt = false; authenticity comes from the Stripe
 // signature, verified below. Handlers are idempotent (flag sets), so
 // Stripe retries and duplicate deliveries are safe.
-import Stripe from 'npm:stripe@17.7.0'
+import Stripe from 'npm:stripe@22.4.0'
 import { createClient } from 'npm:@supabase/supabase-js@2'
 
 const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY') ?? '', {
@@ -36,8 +36,18 @@ Deno.serve(async (req: Request) => {
 
   try {
     switch (event.type) {
-      case 'checkout.session.completed': {
+      // Delayed-notification methods (bank debits and similar) complete the
+      // session while still unpaid and settle later, so both events run through
+      // the same guard: access is granted on payment_status, never on the event
+      // name alone.
+      case 'checkout.session.completed':
+      case 'checkout.session.async_payment_succeeded': {
         const session = event.data.object as Stripe.Checkout.Session
+        if (session.payment_status === 'unpaid') {
+          console.log(`Session ${session.id} still unpaid — awaiting settlement`)
+          break
+        }
+
         const userId = session.client_reference_id
         const customerId = typeof session.customer === 'string' ? session.customer : null
         if (!userId) break
@@ -56,6 +66,13 @@ Deno.serve(async (req: Request) => {
         break
       }
 
+      case 'checkout.session.async_payment_failed': {
+        // Nothing to revoke: the guard above means access was never granted.
+        const session = event.data.object as Stripe.Checkout.Session
+        console.log(`Async payment failed for session ${session.id}`)
+        break
+      }
+
       case 'customer.subscription.updated': {
         const sub = event.data.object as Stripe.Subscription
         const active = sub.status === 'active' || sub.status === 'trialing'
@@ -66,6 +83,20 @@ Deno.serve(async (req: Request) => {
       case 'customer.subscription.deleted': {
         const sub = event.data.object as Stripe.Subscription
         await setCircuitByCustomer(sub.customer as string, false)
+        break
+      }
+
+      case 'invoice.paid': {
+        // Confirms each renewal. Read defensively: the subscription reference
+        // moved location across API versions.
+        const invoice = event.data.object as Stripe.Invoice
+        const raw = invoice as unknown as Record<string, any>
+        const isSubscription = Boolean(
+          raw.subscription ?? raw.parent?.subscription_details?.subscription,
+        )
+        if (isSubscription && invoice.customer) {
+          await setCircuitByCustomer(invoice.customer as string, true)
+        }
         break
       }
 

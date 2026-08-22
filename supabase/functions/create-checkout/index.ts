@@ -1,6 +1,6 @@
 // Creates a Stripe Checkout session for the Entry Pass (one-time) or
 // Circuit Pass (subscription). Called from the app with the user's JWT.
-import Stripe from 'npm:stripe@17.7.0'
+import Stripe from 'npm:stripe@22.4.0'
 import { createClient } from 'npm:@supabase/supabase-js@2'
 
 const corsHeaders = {
@@ -8,9 +8,21 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 }
 
+// No apiVersion override: the SDK pins the API version it shipped with, which
+// is what enables integration_identifier below.
 const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY') ?? '', {
   httpClient: Stripe.createFetchHttpClient(),
 })
+
+// Stripe Tax stays off until a tax registration is actually active — with no
+// registration it silently calculates zero and gives no error, which reads as
+// "tax is handled" when nothing is being collected. Flip STRIPE_AUTOMATIC_TAX
+// to "true" once Dashboard → Tax shows the registration as Collecting.
+const TAX_ENABLED = Deno.env.get('STRIPE_AUTOMATIC_TAX') === 'true'
+
+// Dashboard label for comparing checkout flows; the suffix is the fixed random
+// tag for this integration and should not change between deploys.
+const INTEGRATION_TAG = 'hjqvnrtd'
 
 Deno.serve(async (req: Request) => {
   if (req.method === 'OPTIONS') return new Response('ok', { headers: corsHeaders })
@@ -73,7 +85,8 @@ Deno.serve(async (req: Request) => {
         ? Deno.env.get('STRIPE_PRICE_ENTRY')!
         : Deno.env.get('STRIPE_PRICE_CIRCUIT')!
 
-    const session = await stripe.checkout.sessions.create({
+    // Built loosely so newer parameters don't fight the SDK's shipped types.
+    const params: Record<string, unknown> = {
       mode: product === 'entry' ? 'payment' : 'subscription',
       customer: customerId,
       client_reference_id: user.id,
@@ -81,7 +94,23 @@ Deno.serve(async (req: Request) => {
       success_url: `${siteUrl}/run?checkout=success`,
       cancel_url: `${siteUrl}/run?checkout=cancelled`,
       metadata: { supabase_user_id: user.id, product },
-    })
+      integration_identifier: `t57-${product}-${INTEGRATION_TAG}`,
+      // payment_method_types is deliberately omitted so Stripe picks the
+      // highest-converting eligible methods per customer.
+    }
+
+    if (TAX_ENABLED) {
+      // We attach an existing Customer, so Checkout would reuse a saved address
+      // and ignore whatever is typed at checkout. Collecting a billing address
+      // and writing it back is what gives Stripe Tax a location to work from.
+      params.automatic_tax = { enabled: true }
+      params.customer_update = { address: 'auto' }
+      params.billing_address_collection = 'required'
+    }
+
+    const session = await stripe.checkout.sessions.create(
+      params as Stripe.Checkout.SessionCreateParams,
+    )
 
     return json({ url: session.url })
   } catch (err) {

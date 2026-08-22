@@ -1,5 +1,5 @@
 // Opens a Stripe customer portal session for the signed-in member.
-import Stripe from 'npm:stripe@17.7.0'
+import Stripe from 'npm:stripe@22.4.0'
 import { createClient } from 'npm:@supabase/supabase-js@2'
 
 const corsHeaders = {

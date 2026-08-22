@@ -2,7 +2,7 @@
 // subscription, then deletes the auth user — which cascades and removes the
 // profile, completions, and milestone rows (full erasure). Bib numbers come
 // from a sequence and are never reissued.
-import Stripe from 'npm:stripe@17.7.0'
+import Stripe from 'npm:stripe@22.4.0'
 import { createClient } from 'npm:@supabase/supabase-js@2'
 
 const corsHeaders = {
