@@ -4,6 +4,9 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 import ErrorBoundary from './components/ErrorBoundary'
 import { AuthProvider } from './lib/auth'
+// Self-hosted: loading these from Google sent every visitor's IP to a third
+// party before any consent, and blocked first paint on an external stylesheet.
+import './styles/fonts.css'
 import './styles/global.css'
 
 // One canonical address. Render serves every attached domain directly and has
