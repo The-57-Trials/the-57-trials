@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '../lib/supabase'
 import { fetchTrialBody } from '../lib/api'
+import Pulse from '../components/Pulse'
 import { pad, type MilestoneEvent, type Profile } from '../lib/types'
 
 interface AdminTrial {
@@ -15,10 +16,10 @@ interface MemberRow extends Profile {
   cleared: number
 }
 
-type Tab = 'trials' | 'members' | 'merch'
+type Tab = 'pulse' | 'trials' | 'members' | 'merch'
 
 export default function Admin() {
-  const [tab, setTab] = useState<Tab>('trials')
+  const [tab, setTab] = useState<Tab>('pulse')
   const [error, setError] = useState<string | null>(null)
 
   return (
@@ -27,19 +28,20 @@ export default function Admin() {
       <h1 style={{ fontSize: 44 }} className="mb-3">ADMIN</h1>
 
       <div className="row mb-3">
-        {(['trials', 'members', 'merch'] as Tab[]).map((t) => (
+        {(['pulse', 'trials', 'members', 'merch'] as Tab[]).map((t) => (
           <button
             key={t}
             className={`btn ${tab === t ? 'btn-primary' : 'btn-outline'}`}
             onClick={() => setTab(t)}
           >
-            {t === 'merch' ? 'MERCH QUEUE' : t.toUpperCase()}
+            {t === 'merch' ? 'MERCH QUEUE' : t === 'pulse' ? 'THE PULSE' : t.toUpperCase()}
           </button>
         ))}
       </div>
 
       {error && <div className="notice mb-2">{error}</div>}
 
+      {tab === 'pulse' && <Pulse />}
       {tab === 'trials' && <TrialsTab onError={setError} />}
       {tab === 'members' && <MembersTab onError={setError} />}
       {tab === 'merch' && <MerchTab onError={setError} />}

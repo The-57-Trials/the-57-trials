@@ -40,6 +40,41 @@ export async function clearTrial(num: number): Promise<ClearResult> {
   return data as ClearResult
 }
 
+export interface Pulse {
+  as_of: string
+  funnel: { signups: number; entry_paid: number; circuit_active: number; deleted: number }
+  revenue: { mrr_pence: number; entry_gross_pence: number }
+  progress: {
+    total_completions: number
+    started: number
+    finishers: number
+    avg_cleared: number
+    stuck_at_six: number
+  }
+  merch: { total: number; unshipped: number }
+  recent: {
+    signups_7d: number
+    signups_30d: number
+    clears_7d: number
+    last_signup: string | null
+    last_clear: string | null
+  }
+  history: {
+    captured_on: string
+    signups: number
+    entry_paid: number
+    circuit_active: number
+    mrr_pence: number
+    total_completions: number
+  }[]
+}
+
+export async function fetchPulse(): Promise<Pulse> {
+  const { data, error } = await supabase.rpc('admin_pulse')
+  if (error) throw error
+  return data as Pulse
+}
+
 export async function fetchLeaderboard(): Promise<LeaderboardRow[]> {
   const { data, error } = await supabase.from('leaderboard').select('*')
   if (error) throw error
