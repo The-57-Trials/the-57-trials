@@ -4,6 +4,8 @@ import Footer from './components/Footer'
 import { RequireAuth, RequireAdmin } from './components/Protected'
 import Landing from './pages/Landing'
 import Login from './pages/Login'
+import ForgotPassword from './pages/ForgotPassword'
+import ResetPassword from './pages/ResetPassword'
 import Run from './pages/Run'
 import TrialDetail from './pages/TrialDetail'
 import Board from './pages/Board'
@@ -18,6 +20,8 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/forgot" element={<ForgotPassword />} />
+          <Route path="/reset" element={<ResetPassword />} />
           <Route element={<RequireAuth />}>
             <Route path="/run" element={<Run />} />
             <Route path="/run/trial/:num" element={<TrialDetail />} />

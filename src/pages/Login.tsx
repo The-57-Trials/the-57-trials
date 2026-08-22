@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 
 export default function Login() {
@@ -97,6 +97,12 @@ export default function Login() {
           {busy ? 'WORKING…' : mode === 'signup' ? 'CREATE ACCOUNT' : 'SIGN IN'}
         </button>
       </form>
+
+      {mode === 'signin' && (
+        <p className="muted mt-2" style={{ fontSize: 13 }}>
+          <Link to="/forgot">Lost your password?</Link>
+        </p>
+      )}
 
       <p className="muted mt-3" style={{ fontSize: 13 }}>
         {mode === 'signup' ? 'Already have a bib?' : 'No bib yet?'}{' '}
