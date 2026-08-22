@@ -23,11 +23,12 @@ export interface Completion {
   cleared_at: string
 }
 
+/** No user id: the view deliberately exposes only a self-marker, never a UUID. */
 export interface LeaderboardRow {
-  id: string
   display_name: string
   bib_number: number
   circuit_active: boolean
+  is_me: boolean
   cleared: number
   last_cleared: string | null
 }

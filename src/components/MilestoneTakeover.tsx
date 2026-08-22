@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import { pad } from '../lib/types'
 
 interface MilestoneTakeoverProps {
@@ -10,6 +10,8 @@ const PALETTE = ['#E8B923', '#C2431C', '#F1ECDD']
 
 /** Full-screen checkpoint moment for milestones 15/30/45/57. Confetti stays on-palette. */
 export default function MilestoneTakeover({ trialNum, onDismiss }: MilestoneTakeoverProps) {
+  const dismissRef = useRef<HTMLButtonElement>(null)
+
   const confetti = useMemo(
     () =>
       Array.from({ length: 40 }, (_, i) => ({
@@ -21,21 +23,47 @@ export default function MilestoneTakeover({ trialNum, onDismiss }: MilestoneTake
     [],
   )
 
+  // The button that opened this unmounts behind it, so focus would otherwise
+  // fall to the body and tab into header links hidden under the overlay.
+  useEffect(() => {
+    dismissRef.current?.focus()
+    function onKey(e: KeyboardEvent) {
+      if (e.key === 'Escape') onDismiss()
+    }
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [onDismiss])
+
   const finish = trialNum === 57
 
   return (
-    <div className="takeover" onClick={onDismiss}>
+    <div
+      className="takeover"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="takeover-title"
+      onClick={onDismiss}
+    >
       {confetti.map((style, i) => (
-        <span key={i} className="confetti-piece" style={style} />
+        <span key={i} className="confetti-piece" style={style} aria-hidden="true" />
       ))}
-      <div className="flag-big" />
-      <h2>{finish ? 'RUN COMPLETE' : `CHECKPOINT ${pad(trialNum)} REACHED`}</h2>
+      <div className="flag-big" aria-hidden="true" />
+      <h2 id="takeover-title">
+        {finish ? 'RUN COMPLETE' : `CHECKPOINT ${pad(trialNum)} REACHED`}
+      </h2>
       <p className="muted" style={{ maxWidth: 420 }}>
         {finish
           ? 'Fifty-seven lines. Cleared. The final drop is on its way!'
           : 'Milestone logged. Merch is on its way.'}
       </p>
-      <button className="btn btn-outline" onClick={onDismiss}>
+      <button
+        ref={dismissRef}
+        className="btn btn-outline"
+        onClick={(e) => {
+          e.stopPropagation()
+          onDismiss()
+        }}
+      >
         {finish ? 'STAND DOWN' : 'BACK TO THE ROUTE'}
       </button>
     </div>

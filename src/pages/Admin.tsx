@@ -176,17 +176,23 @@ function MembersTab({ onError }: { onError: (m: string | null) => void }) {
   const [members, setMembers] = useState<MemberRow[]>([])
 
   useEffect(() => {
+    // Joined on bib_number: the leaderboard view no longer exposes user ids.
     Promise.all([
       supabase.from('profiles').select('*').is('deleted_at', null).order('bib_number'),
-      supabase.from('leaderboard').select('id, cleared'),
+      supabase.from('leaderboard').select('bib_number, cleared'),
     ]).then(([p, l]) => {
       if (p.error || l.error) {
         onError((p.error ?? l.error)!.message)
         return
       }
-      const clearedById = new Map((l.data as { id: string; cleared: number }[]).map((r) => [r.id, r.cleared]))
+      const clearedByBib = new Map(
+        (l.data as { bib_number: number; cleared: number }[]).map((r) => [r.bib_number, r.cleared]),
+      )
       setMembers(
-        (p.data as Profile[]).map((row) => ({ ...row, cleared: clearedById.get(row.id) ?? 0 })),
+        (p.data as Profile[]).map((row) => ({
+          ...row,
+          cleared: clearedByBib.get(row.bib_number) ?? 0,
+        })),
       )
     })
   }, [onError])

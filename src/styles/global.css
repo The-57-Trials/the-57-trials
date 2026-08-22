@@ -279,8 +279,12 @@ a:hover { text-decoration: underline; }
   50% { box-shadow: 0 0 0 6px rgba(232, 185, 35, 0); }
 }
 
+/* Locked state is carried structurally (sunken ground, dashed edge, padlock)
+   rather than by opacity — compositing 0.45 dropped these to 2.02:1, and on
+   day one this is 52 of the 57 tiles. Full-strength steel is 4.7:1. */
 .trial-tile.locked {
-  opacity: 0.45;
+  background: var(--ink-sunken);
+  border-style: dashed;
   color: var(--steel);
   cursor: not-allowed;
 }
@@ -391,12 +395,15 @@ a.trial-tile-link:hover { text-decoration: none; }
 .brand:hover { text-decoration: none; color: var(--yellow); }
 .brand .brand-57 { color: var(--yellow); }
 
-.nav-links { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
-.nav-links a {
+.nav-links { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+/* padding, not font-size, lifts the hit box past the 24px WCAG 2.5.8 floor */
+.nav-links a, .nav-links .btn-link {
   color: var(--steel);
   font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  padding: 8px 2px;
+  display: inline-block;
 }
 .nav-links a:hover, .nav-links a.active { color: var(--paper); text-decoration: none; }
 
@@ -408,7 +415,17 @@ a.trial-tile-link:hover { text-decoration: none; }
   font-size: 11px;
   letter-spacing: 0.1em;
 }
-.site-footer .serial { margin-top: 10px; opacity: 0.55; letter-spacing: 0.24em; }
+.site-footer .serial { margin-top: 10px; opacity: 0.8; letter-spacing: 0.24em; }
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+.footer-links a { color: var(--steel); padding: 4px 0; }
+.footer-links a:hover { color: var(--paper); }
 
 /* ---------- banners, cards, misc ---------- */
 
@@ -453,10 +470,16 @@ input, textarea, select {
   padding: 12px 14px;
   width: 100%;
 }
-input:focus, textarea:focus, select:focus {
-  outline: none;
+/* The resting border was 1.41:1 — effectively invisible — and focus only
+   changed its colour. Yellow on ink is 9.81:1, so the accent doubles as the
+   focus ring. */
+input, textarea, select { border-color: rgba(125, 138, 154, 0.55); }
+input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 2px solid var(--yellow);
+  outline-offset: 2px;
   border-color: var(--yellow);
 }
+input:focus, textarea:focus, select:focus { border-color: var(--yellow); }
 label { display: block; margin-bottom: 6px; }
 
 /* ---------- tables (timing board) ---------- */
@@ -533,7 +556,40 @@ label { display: block; margin-bottom: 6px; }
 .row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
 .spread { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
 .muted { color: var(--steel); }
+/* Rust is 3.5:1 on ink — fine as a rule, flag or border, too low for body copy.
+   Reserve it for marks; labels beside it use --paper. */
 .rust { color: var(--rust); }
+
+/* Page titles scale with the viewport. Inline font-size beat the mobile
+   breakpoints, which made the responsive pass inert for every heading. */
+.page-title { font-family: var(--font-display); font-size: clamp(30px, 6.5vw, 44px); }
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* A control that performs an action is a button, even when it looks like a link. */
+.btn-link {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: var(--yellow);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.btn-link:hover { color: #f0c53a; }
+.btn-link:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-link:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; }
+
+.wrap-anywhere { overflow-wrap: anywhere; }
 .yellow { color: var(--yellow); }
 .center { text-align: center; }
 .mt-1 { margin-top: 8px; } .mt-2 { margin-top: 16px; } .mt-3 { margin-top: 28px; } .mt-4 { margin-top: 44px; }
@@ -545,8 +601,88 @@ label { display: block; margin-bottom: 6px; }
   gap: 14px;
   margin: 34px 0 14px;
 }
-.chapter-heading h3 { font-size: 26px; color: var(--paper); }
+.chapter-heading h2 { font-size: 26px; color: var(--paper); }
 .chapter-heading .rule { flex: 1; height: 1px; background: var(--line); }
+
+/* ---------- consent gates ---------- */
+
+.consents {
+  border: 1px solid var(--line);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.consents legend { padding: 0 8px; }
+
+.consent {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: start;
+  margin: 0;
+  cursor: pointer;
+  font-size: 12.5px;
+  line-height: 1.55;
+}
+.consent input[type="checkbox"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  flex: none;
+  margin-top: 1px;
+  border: 2px solid var(--steel);
+  background: var(--ink-sunken);
+  cursor: pointer;
+  position: relative;
+}
+.consent input[type="checkbox"]:hover { border-color: var(--paper); }
+.consent input[type="checkbox"]:checked { background: var(--yellow); border-color: var(--yellow); }
+.consent input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  left: 5px; top: 1px;
+  width: 5px; height: 10px;
+  border: solid var(--ink);
+  border-width: 0 2.5px 2.5px 0;
+  transform: rotate(45deg);
+}
+.consent input[type="checkbox"]:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; }
+.consent em {
+  display: block;
+  margin-top: 5px;
+  font-style: normal;
+  font-size: 11px;
+  color: var(--steel);
+}
+.consent.optional { border-top: 1px dashed var(--line); padding-top: 13px; }
+
+/* ---------- legal / policy pages ---------- */
+
+.legal-body { max-width: 68ch; }
+.legal-body h2 {
+  font-size: 22px;
+  margin: 32px 0 10px;
+  color: var(--paper);
+}
+.legal-body h3 {
+  font-size: 17px;
+  margin: 22px 0 8px;
+  color: var(--yellow);
+}
+.legal-body p { margin: 12px 0; font-size: 14px; }
+.legal-body ul, .legal-body ol { margin: 12px 0 12px 22px; font-size: 14px; }
+.legal-body li { margin: 5px 0; }
+.legal-body blockquote {
+  border-left: 3px solid var(--yellow);
+  padding: 10px 0 10px 16px;
+  margin: 16px 0;
+  font-size: 14px;
+  color: var(--paper);
+}
+.legal-body strong { color: var(--paper); }
+.legal-body table { margin: 14px 0; }
+.legal-body td { font-size: 12.5px; }
 
 /* trial detail */
 .trial-detail-num {
@@ -597,6 +733,19 @@ label { display: block; margin-bottom: 6px; }
   .chapter-heading h3 { font-size: 21px; }
   /* the bib chip in the header is decoration — reclaim the space */
   .nav-links .bib-chip { display: none; }
+}
+
+/* The pulsing banner, tile and checkpoint all loop indefinitely with no pause
+   control (WCAG 2.2.2). Each state is still carried by a yellow border without
+   the motion, so stopping it loses nothing. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  html { scroll-behavior: auto; }
 }
 
 /* Mobile browser chrome eats vh; svh is the honest unit where supported. */

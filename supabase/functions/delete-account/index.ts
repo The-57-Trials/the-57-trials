@@ -40,11 +40,16 @@ Deno.serve(async (req: Request) => {
       .single()
     if (profile?.stripe_customer_id) {
       try {
-        const subs = await stripe.subscriptions.list({
+        // 'active' alone leaves trialing/past_due/unpaid/paused subscriptions
+        // billing a member whose account no longer exists — and once the
+        // profile is gone there is no row left for a webhook to correct.
+        const dead = new Set(['canceled', 'incomplete_expired'])
+        for await (const sub of stripe.subscriptions.list({
           customer: profile.stripe_customer_id,
-          status: 'active',
-        })
-        for (const sub of subs.data) {
+          status: 'all',
+          limit: 100,
+        })) {
+          if (dead.has(sub.status)) continue
           await stripe.subscriptions.cancel(sub.id)
         }
       } catch (err) {

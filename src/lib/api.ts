@@ -45,11 +45,15 @@ export async function fetchLeaderboard(): Promise<LeaderboardRow[]> {
   if (error) throw error
   const rows = data as LeaderboardRow[]
   // Most cleared first; tiebreak: whoever reached that count first ranks higher.
+  // Bib number settles the rest, so the order is total and the board doesn't
+  // reshuffle between loads when several members have cleared nothing yet.
   rows.sort((a, b) => {
     if (b.cleared !== a.cleared) return b.cleared - a.cleared
+    if (!a.last_cleared && !b.last_cleared) return a.bib_number - b.bib_number
     if (!a.last_cleared) return 1
     if (!b.last_cleared) return -1
-    return new Date(a.last_cleared).getTime() - new Date(b.last_cleared).getTime()
+    const diff = new Date(a.last_cleared).getTime() - new Date(b.last_cleared).getTime()
+    return diff !== 0 ? diff : a.bib_number - b.bib_number
   })
   return rows
 }

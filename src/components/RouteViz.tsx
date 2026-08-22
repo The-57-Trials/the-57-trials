@@ -16,7 +16,9 @@ export default function RouteViz({ cleared, showCurrent = true }: RouteVizProps)
         const state =
           num <= cleared ? 'done' : showCurrent && num === cleared + 1 ? 'current' : ''
         const milestone = MILESTONES.includes(num) ? ' milestone' : ''
-        return <span key={num} className={`checkpoint ${state}${milestone}`} title={`Checkpoint ${num}`} />
+        // The parent carries the summary label; 57 individual titles would be
+        // noise to a screen reader and are unreachable by touch anyway.
+        return <span key={num} className={`checkpoint ${state}${milestone}`} aria-hidden="true" />
       })}
     </div>
   )

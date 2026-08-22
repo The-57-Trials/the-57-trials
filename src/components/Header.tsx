@@ -21,15 +21,9 @@ export default function Header() {
               {profile && (
                 <span className="label mono-num bib-chip">No. {pad(profile.bib_number)}</span>
               )}
-              <a
-                href="#signout"
-                onClick={(e) => {
-                  e.preventDefault()
-                  signOut()
-                }}
-              >
+              <button type="button" className="btn-link" onClick={signOut}>
                 Sign out
-              </a>
+              </button>
             </>
           ) : (
             <>

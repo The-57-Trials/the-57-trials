@@ -18,6 +18,11 @@ const Admin = lazy(() => import('./pages/Admin'))
 const ForgotPassword = lazy(() => import('./pages/ForgotPassword'))
 const ResetPassword = lazy(() => import('./pages/ResetPassword'))
 const NotFound = lazy(() => import('./pages/NotFound'))
+const Terms = lazy(() => import('./pages/legal/Terms'))
+const Privacy = lazy(() => import('./pages/legal/Privacy'))
+const Refunds = lazy(() => import('./pages/legal/Refunds'))
+const Disclaimer = lazy(() => import('./pages/legal/Disclaimer'))
+const Contact = lazy(() => import('./pages/legal/Contact'))
 
 function RouteFallback() {
   return (
@@ -38,6 +43,14 @@ export default function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/forgot" element={<ForgotPassword />} />
             <Route path="/reset" element={<ResetPassword />} />
+
+            {/* Public and reachable logged out: Stripe's activation review reads
+                these, and pre-contract information must precede payment. */}
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/refunds" element={<Refunds />} />
+            <Route path="/disclaimer" element={<Disclaimer />} />
+            <Route path="/contact" element={<Contact />} />
             <Route element={<RequireAuth />}>
               <Route path="/run" element={<Run />} />
               <Route path="/run/trial/:num" element={<TrialDetail />} />

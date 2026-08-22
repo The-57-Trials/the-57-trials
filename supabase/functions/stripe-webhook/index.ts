@@ -110,6 +110,36 @@ Deno.serve(async (req: Request) => {
         break
       }
 
+      // Money taken back must take access back with it. Without these, a member
+      // could pay, clear trials, charge back, and keep access permanently.
+      case 'charge.refunded':
+      case 'charge.dispute.created': {
+        const object = event.data.object as Stripe.Charge | Stripe.Dispute
+        const charge =
+          event.type === 'charge.dispute.created'
+            ? await stripe.charges.retrieve((object as Stripe.Dispute).charge as string)
+            : (object as Stripe.Charge)
+
+        if (!charge.customer) break
+
+        // A charge carrying an invoice came from the subscription; one without
+        // is the one-off Entry Pass.
+        const isSubscriptionCharge = Boolean((charge as unknown as Record<string, unknown>).invoice)
+        const customerId = charge.customer as string
+
+        if (isSubscriptionCharge) {
+          await setCircuitByCustomer(customerId, false)
+        } else {
+          const { error } = await admin
+            .from('profiles')
+            .update({ entry_paid: false, circuit_active: false })
+            .eq('stripe_customer_id', customerId)
+          if (error) throw error
+        }
+        console.log(`Access revoked for ${customerId} after ${event.type}`)
+        break
+      }
+
       default:
         break
     }

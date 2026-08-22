@@ -72,8 +72,13 @@ export default function Account() {
       const a = document.createElement('a')
       a.href = url
       a.download = `the-57-trials-data-${pad(profile!.bib_number)}.json`
+      // Anchor must be in the document, and the URL must outlive the click, or
+      // Safari drops the download silently — a statutory request that no-ops.
+      document.body.appendChild(a)
       a.click()
-      URL.revokeObjectURL(url)
+      a.remove()
+      setTimeout(() => URL.revokeObjectURL(url), 1000)
+      setMsg('Export downloaded.')
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Export failed.')
     } finally {
@@ -97,10 +102,10 @@ export default function Account() {
   return (
     <div className="page" style={{ maxWidth: 620 }}>
       <div className="label">RUNNER FILE</div>
-      <h1 style={{ fontSize: 44 }} className="mb-3">ACCOUNT</h1>
+      <h1 className="page-title mb-3">ACCOUNT</h1>
 
-      {msg && <div className="notice notice-yellow mb-2">{msg}</div>}
-      {error && <div className="notice mb-2">{error}</div>}
+      {msg && <div className="notice notice-yellow mb-2" role="status">{msg}</div>}
+      {error && <div className="notice mb-2" role="alert">{error}</div>}
 
       <div className="stack">
         <div className="panel">
@@ -144,7 +149,7 @@ export default function Account() {
           <div className="label mb-2">PASSES</div>
           <div className="spread" style={{ fontSize: 13 }}>
             <span className="muted">Entry Pass</span>
-            <span className={profile.entry_paid ? 'yellow' : 'rust'}>
+            <span className={profile.entry_paid ? 'yellow' : ''}>
               {profile.entry_paid ? 'PAID ✓' : 'NOT PAID'}
             </span>
           </div>
