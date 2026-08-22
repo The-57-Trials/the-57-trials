@@ -266,6 +266,12 @@ grant execute on function public.clear_trial(int) to authenticated;
 revoke all on function public.get_trial_body(int) from public, anon;
 grant execute on function public.get_trial_body(int) to authenticated;
 
+-- handle_new_user is a trigger function only — nobody calls it over the API.
+revoke execute on function public.handle_new_user() from public, anon, authenticated;
+-- is_admin is used inside RLS policies (authenticated keeps EXECUTE for
+-- policy evaluation) but anon has no business calling it.
+revoke execute on function public.is_admin() from public, anon;
+
 -- ---------- seed: 57 placeholder trials, real chapter mapping ----------
 -- Chapter names live in data, not code — editable via admin later.
 
