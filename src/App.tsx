@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import { RequireAuth, RequireAdmin } from './components/Protected'
@@ -6,6 +6,7 @@ import Landing from './pages/Landing'
 import Login from './pages/Login'
 import ForgotPassword from './pages/ForgotPassword'
 import ResetPassword from './pages/ResetPassword'
+import NotFound from './pages/NotFound'
 import Run from './pages/Run'
 import TrialDetail from './pages/TrialDetail'
 import Board from './pages/Board'
@@ -31,7 +32,7 @@ export default function App() {
           <Route element={<RequireAdmin />}>
             <Route path="/admin" element={<Admin />} />
           </Route>
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />
