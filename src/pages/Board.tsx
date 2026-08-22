@@ -45,6 +45,7 @@ export default function Board() {
         </div>
       )}
 
+      <div className="table-scroll">
       <table className="board-table mono-num">
         <thead>
           <tr>
@@ -94,6 +95,7 @@ export default function Board() {
           )}
         </tbody>
       </table>
+      </div>
 
       {!profile?.circuit_active && (
         <p className="muted mt-3" style={{ fontSize: 12 }}>

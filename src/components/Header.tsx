@@ -19,7 +19,7 @@ export default function Header() {
               <NavLink to="/account">Account</NavLink>
               {profile?.role === 'admin' && <NavLink to="/admin">Admin</NavLink>}
               {profile && (
-                <span className="label mono-num">No. {pad(profile.bib_number)}</span>
+                <span className="label mono-num bib-chip">No. {pad(profile.bib_number)}</span>
               )}
               <a
                 href="#signout"

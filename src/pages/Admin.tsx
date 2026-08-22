@@ -144,6 +144,7 @@ function TrialsTab({ onError }: { onError: (m: string | null) => void }) {
   }
 
   return (
+    <div className="table-scroll">
     <table className="board-table">
       <thead>
         <tr><th>NO.</th><th>TITLE</th><th>CHAPTER</th><th>FLAGS</th><th></th></tr>
@@ -167,6 +168,7 @@ function TrialsTab({ onError }: { onError: (m: string | null) => void }) {
         ))}
       </tbody>
     </table>
+    </div>
   )
 }
 
@@ -190,6 +192,7 @@ function MembersTab({ onError }: { onError: (m: string | null) => void }) {
   }, [onError])
 
   return (
+    <div className="table-scroll">
     <table className="board-table">
       <thead>
         <tr><th>BIB</th><th>NAME</th><th>ENTRY</th><th>CIRCUIT</th><th>CLEARED</th><th>ROLE</th></tr>
@@ -207,6 +210,7 @@ function MembersTab({ onError }: { onError: (m: string | null) => void }) {
         ))}
       </tbody>
     </table>
+    </div>
   )
 }
 
@@ -240,6 +244,7 @@ function MerchTab({ onError }: { onError: (m: string | null) => void }) {
       <p className="muted mb-2" style={{ fontSize: 13 }}>
         Manual fulfilment: post the merch, tick the box. Unshipped rows are the to-do list.
       </p>
+      <div className="table-scroll">
       <table className="board-table">
         <thead>
           <tr><th>DATE</th><th>RUNNER</th><th>BIB</th><th>MILESTONE</th><th>SHIPPED</th></tr>
@@ -266,6 +271,7 @@ function MerchTab({ onError }: { onError: (m: string | null) => void }) {
           )}
         </tbody>
       </table>
+      </div>
     </>
   )
 }
