@@ -9,11 +9,3 @@ export function RequireAuth() {
   return <Outlet />
 }
 
-/** Requires the admin role. */
-export function RequireAdmin() {
-  const { session, profile, loading } = useAuth()
-  if (loading) return <div className="page center muted">LOADING…</div>
-  if (!session) return <Navigate to="/login" replace />
-  if (profile?.role !== 'admin') return <Navigate to="/run" replace />
-  return <Outlet />
-}

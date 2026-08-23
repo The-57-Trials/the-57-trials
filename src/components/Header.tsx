@@ -17,7 +17,6 @@ export default function Header() {
               <NavLink to="/run">Your Run</NavLink>
               <NavLink to="/board">Board</NavLink>
               <NavLink to="/account">Account</NavLink>
-              {profile?.role === 'admin' && <NavLink to="/admin">Admin</NavLink>}
               {profile && (
                 <span className="label mono-num bib-chip">No. {pad(profile.bib_number)}</span>
               )}

@@ -2,7 +2,7 @@ import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
-import { RequireAuth, RequireAdmin } from './components/Protected'
+import { RequireAuth } from './components/Protected'
 import Landing from './pages/Landing'
 import Login from './pages/Login'
 
@@ -14,7 +14,8 @@ const Run = lazy(() => import('./pages/Run'))
 const TrialDetail = lazy(() => import('./pages/TrialDetail'))
 const Board = lazy(() => import('./pages/Board'))
 const Account = lazy(() => import('./pages/Account'))
-const Admin = lazy(() => import('./pages/Admin'))
+// Race Control is a separate application with its own build and its own
+// deployment. Nothing about it ships to a member's browser.
 const ForgotPassword = lazy(() => import('./pages/ForgotPassword'))
 const ResetPassword = lazy(() => import('./pages/ResetPassword'))
 const NotFound = lazy(() => import('./pages/NotFound'))
@@ -56,9 +57,6 @@ export default function App() {
               <Route path="/run/trial/:num" element={<TrialDetail />} />
               <Route path="/board" element={<Board />} />
               <Route path="/account" element={<Account />} />
-            </Route>
-            <Route element={<RequireAdmin />}>
-              <Route path="/admin" element={<Admin />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>

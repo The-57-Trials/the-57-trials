@@ -9,3 +9,5 @@ dist
 .agents/
 .claude/skills/
 skills-lock.json
+admin/node_modules
+admin/dist
