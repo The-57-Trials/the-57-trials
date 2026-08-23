@@ -2,6 +2,7 @@ import { useState, type FormEvent } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import { SCREENING_VERSION } from './legal/Disclaimer'
+import { PRICE_ENTRY } from '../lib/types'
 
 const WAIVER_VERSION = '1.0'
 const TERMS_VERSION = '1.0'
@@ -206,8 +207,8 @@ export default function Login() {
 
         {mode === 'signup' && (
           <p className="muted" style={{ fontSize: 11 }}>
-            Creating an account is free. The £10 entry is charged on the next step — total
-            price, no VAT, no extra charges.
+            Creating an account is free. The {PRICE_ENTRY} entry is charged on the next step
+            — total price, no VAT, no extra charges.
           </p>
         )}
       </form>

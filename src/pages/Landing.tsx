@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import BibCard from '../components/BibCard'
 import RouteViz from '../components/RouteViz'
 import { useAuth } from '../lib/auth'
+import { PRICE_ENTRY, PRICE_CIRCUIT } from '../lib/types'
 
 const MILESTONE_COPY = [
   { num: '15', name: 'FIRST CHECKPOINT', desc: 'The 15 patch. Stitched, numbered, posted.' },
@@ -23,7 +24,7 @@ export default function Landing() {
         </h1>
         <p className="tagline">Fifty-seven stages. One line at a time. No skipping ahead.</p>
         <Link to={session ? '/run' : '/login?mode=signup'} className="btn btn-primary">
-          {session ? 'BACK TO YOUR RUN' : 'CLAIM YOUR BIB — £10'}
+          {session ? 'BACK TO YOUR RUN' : `CLAIM YOUR BIB — ${PRICE_ENTRY}`}
         </Link>
       </section>
 
@@ -58,7 +59,7 @@ export default function Landing() {
             <div className="step">
               <div className="step-num mono-num">01</div>
               <h3>Pay the entry.</h3>
-              <p>£10. One time. Your bib number is assigned on signup and never reissued.</p>
+              <p>{PRICE_ENTRY}. One time. Your bib number is assigned on signup and never reissued.</p>
             </div>
             <div className="step">
               <div className="step-num mono-num">02</div>
@@ -83,7 +84,7 @@ export default function Landing() {
               <div className="label yellow">START HERE</div>
               <h3 style={{ fontSize: 30 }}>ENTRY PASS</h3>
               <div className="price mono-num">
-                £10 <small>one-time</small>
+                {PRICE_ENTRY} <small>one-time</small>
               </div>
               <ul>
                 <li>Your bib number. Permanent.</li>
@@ -98,7 +99,7 @@ export default function Landing() {
               <div className="label">THE ENGINE</div>
               <h3 style={{ fontSize: 30 }}>CIRCUIT PASS</h3>
               <div className="price mono-num">
-                £4.99 <small>/ month</small>
+                {PRICE_CIRCUIT} <small>/ month</small>
               </div>
               <ul>
                 <li>Trials 06–57. The full route.</li>

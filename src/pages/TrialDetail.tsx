@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown'
 import MilestoneTakeover from '../components/MilestoneTakeover'
 import { useAuth } from '../lib/auth'
 import { fetchTrials, fetchMyCompletions, fetchTrialBody, clearTrial } from '../lib/api'
-import { pad, FREE_WINDOW_END, type Trial } from '../lib/types'
+import { pad, FREE_WINDOW_END, PRICE_CIRCUIT, type Trial } from '../lib/types'
 
 type Status = 'loading' | 'ok' | 'locked'
 
@@ -103,6 +103,8 @@ export default function TrialDetail() {
         setError('Trials 06+ require an active Circuit Pass.')
       } else if (msg.includes('OUT_OF_ORDER')) {
         setError('One line at a time. No skipping ahead.')
+      } else if (msg.includes('COOLDOWN')) {
+        setError('Not yet. The hold between lines has not run out.')
       } else if (msg.includes('ENTRY_REQUIRED')) {
         setError('Pay the entry first.')
       } else {
@@ -143,7 +145,7 @@ export default function TrialDetail() {
           </div>
           <p style={{ fontSize: 13 }} className="mb-2 muted">
             Your entry covered lines 01–05. Everything from 06 needs an active Circuit Pass —
-            £4.99/month, cancel any time. Cleared lines stay cleared.
+            {PRICE_CIRCUIT}/month, cancel any time. Cleared lines stay cleared.
           </p>
           <Link to="/run" className="btn btn-rust">JOIN THE CIRCUIT</Link>
         </div>

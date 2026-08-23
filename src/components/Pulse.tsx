@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { fetchPulse, type Pulse as PulseData } from '../lib/api'
+import { PRICE_CIRCUIT } from '../lib/types'
 
 const gbp = (pence: number) =>
   '£' + (pence / 100).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
@@ -73,7 +74,7 @@ export default function Pulse() {
         <div className="label">MONTHLY RECURRING REVENUE</div>
         <div className="hero-n mono-num">{gbp(data.revenue.mrr_pence)}</div>
         <div className="muted" style={{ fontSize: 12 }}>
-          {f.circuit_active} active Circuit {f.circuit_active === 1 ? 'Pass' : 'Passes'} × £4.99
+          {f.circuit_active} active Circuit {f.circuit_active === 1 ? 'Pass' : 'Passes'} × {PRICE_CIRCUIT}
           &nbsp;·&nbsp; {gbp(data.revenue.entry_gross_pence)} entry fees banked (one-off, not recurring)
         </div>
       </div>

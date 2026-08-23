@@ -3,7 +3,10 @@ import { Link, useLocation, useNavigate, useSearchParams } from 'react-router-do
 import RouteViz from '../components/RouteViz'
 import { useAuth } from '../lib/auth'
 import { fetchTrials, fetchMyCompletions, createCheckout } from '../lib/api'
-import { pad, FREE_WINDOW_END, type Trial, type Completion } from '../lib/types'
+import {
+  pad, FREE_WINDOW_END, PRICE_ENTRY, PRICE_CIRCUIT, readyAt, untilLabel,
+  type Trial, type Completion,
+} from '../lib/types'
 
 type Load = 'loading' | 'ok' | 'error'
 
@@ -107,6 +110,13 @@ export default function Run() {
   )
   const current = cleared + 1
 
+  const lastClearedAt = useMemo(
+    () => completions.reduce<string | null>(
+      (m, c) => (!m || c.cleared_at > m ? c.cleared_at : m), null,
+    ),
+    [completions],
+  )
+
   const byChapter = useMemo(() => {
     const groups: { chapter: string; trials: Trial[] }[] = []
     for (const t of trials) {
@@ -175,11 +185,12 @@ export default function Run() {
             ? 'CONFIRMING PAYMENT…'
             : busy
               ? 'OPENING CHECKOUT…'
-              : 'PAY THE ENTRY — £10'}
+              : `PAY THE ENTRY — ${PRICE_ENTRY}`}
         </button>
         <p className="muted mt-2" style={{ fontSize: 12 }}>
-          £10 one-time. Total price — no VAT, no extra charges. Unlocks your bib number and
-          trials 01–05. Trials 06–57 need a Circuit Pass at £4.99/month, cancel any time.
+          {PRICE_ENTRY} one-time. Total price — no VAT, no extra charges. Unlocks your bib
+          number and trials 01–05. Trials 06–57 need a Circuit Pass at {PRICE_CIRCUIT}/month,
+          cancel any time.
         </p>
       </div>
     )
@@ -187,6 +198,9 @@ export default function Run() {
 
   const currentTrial = trials.find((t) => t.num === current)
   const needsCircuit = current > FREE_WINDOW_END && !profile.circuit_active
+  const cooldownUntil = currentTrial
+    ? readyAt(lastClearedAt, currentTrial.min_gap_minutes)
+    : null
 
   return (
     <div className="page">
@@ -241,7 +255,7 @@ export default function Run() {
           </div>
           <p className="muted mb-2" style={{ fontSize: 13 }}>
             Your entry covered lines 01–05. The remaining {57 - cleared} need an active Circuit
-            Pass — £4.99/month, cancel any time. Cleared lines stay cleared.
+            Pass — {PRICE_CIRCUIT}/month, cancel any time. Cleared lines stay cleared.
           </p>
           {error && <div className="notice mb-2" role="alert">{error}</div>}
           <button
@@ -253,8 +267,22 @@ export default function Run() {
               ? 'CONFIRMING PAYMENT…'
               : busy
                 ? 'OPENING CHECKOUT…'
-                : 'JOIN THE CIRCUIT — £4.99/MO'}
+                : `JOIN THE CIRCUIT — ${PRICE_CIRCUIT}/MO`}
           </button>
+        </div>
+      ) : cooldownUntil && currentTrial ? (
+        /* The wait is part of the trial, so it is stated plainly rather than
+           hidden — and it can never be bought out of. */
+        <div className="panel cooldown-panel">
+          <div className="label">HOLDING AT CHECKPOINT</div>
+          <div className="display" style={{ fontSize: 30, margin: '8px 0' }}>
+            {pad(current)} OPENS {untilLabel(cooldownUntil).toUpperCase()}
+          </div>
+          <p className="muted" style={{ fontSize: 13 }}>
+            {currentTrial.min_gap_minutes >= 10080
+              ? 'A week between the final lines. That is the taper, and it is the trial too.'
+              : `${Math.round(currentTrial.min_gap_minutes / 60)} hours between lines. Recovery is the work nobody sees.`}
+          </p>
         </div>
       ) : (
         currentTrial && (

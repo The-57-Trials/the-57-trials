@@ -604,6 +604,10 @@ label { display: block; margin-bottom: 6px; }
 .chapter-heading h2 { font-size: 26px; color: var(--paper); }
 .chapter-heading .rule { flex: 1; height: 1px; background: var(--line); }
 
+/* A hold is a state of the run, not an error — steel, not rust. */
+.cooldown-panel { border: 2px solid var(--line-firm); }
+.cooldown-panel .display { color: var(--yellow); }
+
 /* ---------- the pulse (admin dashboard) ---------- */
 
 .hero-stat {
