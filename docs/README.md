@@ -7,6 +7,7 @@ Written 22 August 2026. Everything is a draft for Rob's review.
 
 | § | Document | What's in it |
 |---|---|---|
+| **0** | **[Decisions log](00-decisions.md)** | **Dated decisions. Supersedes anything below that contradicts it — read this first.** |
 | 1 | [Vision & Strategy](01-vision-and-strategy.md) | Mission, 12-month and 3-year targets, values, the Primes lore, the one metric that matters |
 | 2–3 | [Market & Customer](02-03-market-and-customer.md) | Competitors, retention benchmarks, TAM/SAM/SOM, trends, ICP, objections, anti-personas |
 | 4 | [Product](04-product.md) | What a trial is, two publication-ready examples, the full 57 roadmap, pacing, merch, tech rationale |
@@ -42,11 +43,16 @@ assumes traffic that currently has no way to arrive.
 
 ---
 
-## The three changes that cost nothing
+## Resolved, 23 August 2026
 
-1. **Gate merch on tenure as well as progress** — "trial 45 *and* 6 paid months". Eliminates the fast-completer loss entirely.
-2. **Circuit Pass at £7.99** — turns a −£2.24 completer into +£18.26.
-3. **Replace or drop the cap** — it is 51% of the merch stack on its own.
+All three were taken, and further than recommended. See the [decisions log](00-decisions.md).
 
-**Do not create the Stripe products until you've decided on these.** Nothing is locked in yet,
-which makes right now the cheapest moment this decision will ever be.
+- **£19.57 entry, £9.57/month** (recommendation was £7.99)
+- **Enforced cooldowns** giving a 147-day minimum completion — this replaced "gate merch on tenure" and does the job better
+- **The cap is gone**, replaced by the Trial Blazer card and a bonus trial that earns a hoodie
+
+**Result: every completion scenario is now profitable**, including the fastest possible member
+who also earns the hoodie (+£12.63). Previously −£2.24 to −£25.60.
+
+Still outstanding from findings 3–5: no annual plan, no SEO surface, and paid acquisition
+remains unavailable.

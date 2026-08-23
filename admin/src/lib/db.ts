@@ -71,5 +71,13 @@ export interface MilestoneRow {
   trial_num: number
   created_at: string
   shipped: boolean
+  kind: 'merch' | 'blazer_card' | 'blazer_reward'
   profiles?: { display_name: string; bib_number: number }
+}
+
+/** What actually goes in the envelope. */
+export function itemFor(r: MilestoneRow): string {
+  if (r.kind === 'blazer_card') return 'TRIAL BLAZER CARD'
+  if (r.kind === 'blazer_reward') return 'TRIAL BLAZER HOODIE'
+  return { 15: 'THE BIB', 30: 'THE TEE', 57: 'FINISHER MARK' }[r.trial_num] ?? 'MILESTONE ITEM'
 }

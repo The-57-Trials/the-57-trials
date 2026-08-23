@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { db, pad, type MilestoneRow } from '../lib/db'
+import { db, pad, itemFor, type MilestoneRow } from '../lib/db'
 
 export default function MerchTab({ onError }: { onError: (m: string | null) => void }) {
   const [rows, setRows] = useState<MilestoneRow[]>([])
@@ -7,7 +7,7 @@ export default function MerchTab({ onError }: { onError: (m: string | null) => v
   async function load() {
     const { data, error } = await db
       .from('milestone_events')
-      .select('id, user_id, trial_num, created_at, shipped, profiles(display_name, bib_number)')
+      .select('id, user_id, trial_num, created_at, shipped, kind, profiles(display_name, bib_number)')
       .order('created_at', { ascending: false })
     if (error) onError(error.message)
     else setRows(data as unknown as MilestoneRow[])
@@ -41,7 +41,7 @@ export default function MerchTab({ onError }: { onError: (m: string | null) => v
       <div className="scroll">
         <table>
           <thead>
-            <tr><th>DATE</th><th>RUNNER</th><th>BIB</th><th>MILESTONE</th><th>SHIPPED</th></tr>
+            <tr><th>DATE</th><th>RUNNER</th><th>BIB</th><th>MILESTONE</th><th>SEND</th><th>SHIPPED</th></tr>
           </thead>
           <tbody>
             {rows.map((r) => (
@@ -50,6 +50,7 @@ export default function MerchTab({ onError }: { onError: (m: string | null) => v
                 <td>{r.profiles?.display_name ?? r.user_id.slice(0, 8)}</td>
                 <td>{r.profiles ? pad(r.profiles.bib_number) : '—'}</td>
                 <td>CHECKPOINT {pad(r.trial_num)}</td>
+                <td><span className="chip">{itemFor(r)}</span></td>
                 <td>
                   <input type="checkbox" checked={r.shipped} style={{ width: 'auto' }}
                          aria-label={`Mark checkpoint ${r.trial_num} shipped`}
@@ -58,7 +59,7 @@ export default function MerchTab({ onError }: { onError: (m: string | null) => v
               </tr>
             ))}
             {rows.length === 0 && (
-              <tr><td colSpan={5} className="muted center">Nothing earned yet.</td></tr>
+              <tr><td colSpan={6} className="muted center">Nothing earned yet.</td></tr>
             )}
           </tbody>
         </table>
