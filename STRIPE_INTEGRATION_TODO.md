@@ -47,6 +47,30 @@ Applied exactly as set in Checkout Studio.
 
 ---
 
+## Both products run through one Checkout Session call
+
+Checkout Studio was run twice — once for the Entry Pass and once for the Circuit Pass — and
+produced **identical** configuration both times. That is expected: these nine parameters are
+session-level, not product-level.
+
+So there is a single `create-checkout` function serving both, branching on `product`:
+
+| | Entry Pass | Circuit Pass |
+|---|---|---|
+| `mode` | `payment` | `subscription` |
+| Price secret | `STRIPE_PRICE_ENTRY` | `STRIPE_PRICE_CIRCUIT` |
+| `payment_method_collection` | *(omitted)* | `always` |
+| All nine Studio parameters | Applied | Applied |
+
+`payment_method_collection` is set only on the subscription, which is what the Studio
+instructions require — it has no meaning on a one-off payment.
+
+**Do not add a second checkout function for the subscription.** It would duplicate the auth
+check, the customer reuse, the already-paid guards and the error handling, and give two places
+to keep in sync.
+
+---
+
 ## Parameters deliberately kept
 
 The generated instructions said to remove any parameter not listed in the Studio
