@@ -28,10 +28,6 @@ function getStripe(): Stripe {
 // to "true" once Dashboard → Tax shows the registration as Collecting.
 const TAX_ENABLED = Deno.env.get('STRIPE_AUTOMATIC_TAX') === 'true'
 
-// Dashboard label for comparing checkout flows; the suffix is the fixed random
-// tag for this integration and should not change between deploys.
-const INTEGRATION_TAG = 'hjqvnrtd'
-
 Deno.serve(async (req: Request) => {
   if (req.method === 'OPTIONS') return new Response('ok', { headers: corsHeaders })
 
@@ -89,29 +85,58 @@ Deno.serve(async (req: Request) => {
       await admin.from('profiles').update({ stripe_customer_id: customerId }).eq('id', user.id)
     }
 
-    const price =
+    const priceId =
       product === 'entry'
-        ? Deno.env.get('STRIPE_PRICE_ENTRY')!
-        : Deno.env.get('STRIPE_PRICE_CIRCUIT')!
+        ? Deno.env.get('STRIPE_PRICE_ENTRY')
+        : Deno.env.get('STRIPE_PRICE_CIRCUIT')
+    if (!priceId) {
+      console.error(`Missing price id for product: ${product}`)
+      return json({ error: 'Payments are not set up yet. Nothing has been charged.' }, 503)
+    }
 
     // Built loosely so newer parameters don't fight the SDK's shipped types.
     const params: Record<string, unknown> = {
+      // ---- Configured in Checkout Studio. Do not change without changing it there. ----
+      // 'hosted_page' is correct for stripe-node >= 21.0.0; below that it is 'hosted'.
+      ui_mode: 'hosted_page',
+      billing_address_collection: 'auto',
+      phone_number_collection: { enabled: false },
+      automatic_tax: { enabled: false },
+      allow_promotion_codes: false,
+      submit_type: 'auto',
+      integration_identifier: 'hosted_web_0001',
+      origin_context: 'web',
+
+      // ---- This integration's own parameters. ----
       mode: product === 'entry' ? 'payment' : 'subscription',
-      customer: customerId,
-      client_reference_id: user.id,
-      line_items: [{ price, quantity: 1 }],
+      line_items: [{ price: priceId, quantity: 1 }],
       success_url: `${siteUrl}/run?checkout=success`,
       cancel_url: `${siteUrl}/run?checkout=cancelled`,
+
+      // KEEP THESE. Checkout Studio does not know about them, and a generated
+      // instruction to drop unlisted parameters would break payment entirely:
+      //   client_reference_id — the ONLY link from a payment back to a member.
+      //     The webhook reads it to decide whose bib gets access. Without it,
+      //     payments succeed and nobody is let in.
+      //   customer — reuses one Stripe customer across the entry and the
+      //     subscription, and is what the billing portal is opened against.
+      customer: customerId,
+      client_reference_id: user.id,
       metadata: { supabase_user_id: user.id, product },
-      integration_identifier: `t57-${product}-${INTEGRATION_TAG}`,
+
       // payment_method_types is deliberately omitted so Stripe picks the
       // highest-converting eligible methods per customer.
     }
 
+    // Only meaningful on subscriptions.
+    if (product === 'circuit') {
+      params.payment_method_collection = 'always'
+    }
+
     if (TAX_ENABLED) {
-      // We attach an existing Customer, so Checkout would reuse a saved address
-      // and ignore whatever is typed at checkout. Collecting a billing address
-      // and writing it back is what gives Stripe Tax a location to work from.
+      // Overrides the Checkout Studio defaults above. Stripe Tax needs a
+      // resolvable address, and because we attach an existing Customer,
+      // Checkout would otherwise reuse a saved one and ignore what is typed.
       params.automatic_tax = { enabled: true }
       params.customer_update = { address: 'auto' }
       params.billing_address_collection = 'required'
