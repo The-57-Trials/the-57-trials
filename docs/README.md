@@ -18,6 +18,7 @@ Written 22 August 2026. Everything is a draft for Rob's review.
 | 11 | [Metrics & the brain](11-metrics-and-the-brain.md) | What The Pulse tracks, what it deliberately doesn't, how to read it weekly |
 | 12 | [Brand Positioning](12-brand-positioning.md) | The honour frame, the register metaphor, positioning against parkrun and DofE |
 | 13 | [Community Strategy](13-community-strategy.md) | The seven-idea deliberation: grading, charity, swaps, forum, hall of fame, the Reckoning, reveals |
+| **14** | **[Launch Pipeline](14-launch-pipeline.md)** | **Everything between here and trading: gates, blockers, design, security, GDPR, ops. Start here for what to do next.** |
 
 ---
 
