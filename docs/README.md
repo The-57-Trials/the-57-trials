@@ -20,6 +20,7 @@ Written 22 August 2026. Everything is a draft for Rob's review.
 | 13 | [Community Strategy](13-community-strategy.md) | The seven-idea deliberation: grading, charity, swaps, forum, hall of fame, the Reckoning, reveals |
 | **14** | **[Launch Pipeline](14-launch-pipeline.md)** | **Everything between here and trading: gates, blockers, design, security, GDPR, ops. Start here for what to do next.** |
 | 15 | [What the business does](15-business-description.md) | Canonical descriptions for Stripe, insurers, the public and an accountant |
+| 16 | [The Registers](16-the-registers.md) | Bib numbers vs finisher numbers, the Register page, and what being first gets you |
 
 ---
 

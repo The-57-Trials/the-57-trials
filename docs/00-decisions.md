@@ -166,3 +166,35 @@ position both for the brand and for the liability framing.
 **If dishonesty is ever observed**, the response is moderation of *conduct* — never
 adjudication of a *completion*. The business must never rule on whether someone genuinely did
 a physical task it did not witness.
+
+### D11 — Two registers: bib numbers and finisher numbers
+**Decided by Rob, 31 Aug 2026.**
+
+**Bib numbers** mark *entry*, assigned at signup, permanent, never reissued.
+**Finisher numbers** mark *arrival*, assigned on clearing trial 57, permanent, never reissued.
+
+They are independent. A member can be Bib 0412 and Finisher 003.
+
+This resolves a collision: both the pre-launch grading cohort and "the first fifty-seven
+finishers" had been proposed for bibs 001–057. The grading cohort takes 001–057 plus a
+permanent FOUNDING mark, since they earned it before there was anything to join. Finisher
+numbers start at 001 separately and never run out.
+
+**The first person to clear trial 57 becomes Finisher No. 001**, permanently, and their
+finisher's plate is hand-numbered 001. No additional prize.
+
+#### The framing rule — this is the important part
+
+> **Record who was first. Never offer it as a prize.**
+
+Announcing a reward for finishing first would create a race with a prize on a product where
+nothing is verified — every problem the speed leaderboard had (D8), concentrated into one
+person's decision-making. Simply keeping the Register in completion order means the first
+person is first forever and nobody rushed for it.
+
+Note the cooldowns already make this safe by construction: nobody can finish in under 147 days
+regardless of effort, so "first" is decided by when someone joined and by not stopping — never
+by pushing harder on any given day.
+
+**No material prize attaches to being first.** The moment there is something to win, there is
+a reason to lie.
