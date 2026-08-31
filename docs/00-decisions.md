@@ -198,3 +198,28 @@ by pushing harder on any given day.
 
 **No material prize attaches to being first.** The moment there is something to win, there is
 a reason to lie.
+
+### D12 — Witnessed trials on 48-57, not live-streamed trials
+**Decided by Rob, 31 Aug 2026.** Full spec in section 17.
+
+The proposal to require trials 20/30/40/50 be performed live on social media is **not taken**.
+The instinct - make some trials weightier - is kept; the mechanism changes.
+
+Broadcast was rejected because it would exclude a large share of paying customers (no social
+media, privacy or safety reasons, self-consciousness - and this audience is drawn to austerity,
+not performance), because performing for a camera pushes people harder on an unsupervised
+physical task, because a stream can be staged or faked so it verifies nothing anyway, and
+because "nobody checks" and "we check four times" cannot both be true.
+
+Instead: **trials 48-57 record a named witness.** Those trials already require a named
+check-in person before the member starts, for safety - so they are already the assessor, and
+asking their first name afterwards costs nobody anything. It also puts the mechanism on the
+ten trials where the risk actually is.
+
+**First name and relationship only. Never contact details, never contact them.** Emailing a
+witness would mean processing the personal data of a non-customer, with its own lawful basis,
+privacy notice and deletion path. The deterrent was never that anyone would ring Sarah - it is
+that the member had to write "Sarah" down.
+
+Optional on every other trial. Never mandatory outside 48-57: a member with nobody to name
+must not be locked out, because isolation is not something to paywall.
