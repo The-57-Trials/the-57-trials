@@ -106,3 +106,37 @@ If the offer changes, all four descriptions change together. The most common way
 wrong is the public copy drifting into outcome claims while the Stripe and insurance
 descriptions stay accurate — which is the worst combination, because the marketing is what a
 regulator or claimant reads first.
+
+---
+
+## When the Reckoning ships (Phase 2)
+
+At launch, completion is **purely self-attested** and every description above is accurate as
+written.
+
+When member witnessing goes live, three of them need revisiting — but **less than you might
+expect**, because witness is not verification:
+
+> A witness **attests they saw it**. A reviewer **judges whether it was good enough**.
+
+The business still verifies nothing and assesses nothing. Members attest to each other; there
+is no approval and no rejection. So the insurer wording — *no supervision, no assessment and
+no verification* — **remains true**, which is the one that matters most.
+
+What does change:
+
+| Description | Change needed |
+|---|---|
+| Public | May describe witnessing. Must not imply completions are *checked*. |
+| Stripe | Note that the service includes member-submitted content. |
+| Insurer | **Notify them.** The risk barely moves, but non-disclosure is how policies get voided. |
+| "What it is not" | "Not a community platform" stops being true. |
+
+### The line not to cross
+
+**Never let the Reckoning drift from attestation into approval.** The moment members can
+*reject* a completion, or the moment the business arbitrates a disputed one, it has taken on a
+checking role — and the brand promise and the liability posture both change with it.
+
+*"I have read this and I take it as given"* is load-bearing wording. It is not
+*"I approve this."*
