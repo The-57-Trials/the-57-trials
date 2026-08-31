@@ -94,7 +94,7 @@ Useful for keeping every description honest, and for knowing when a description 
 
 - **Not coaching or personal training.** No individual guidance, no plans adjusted to a person, no supervision. The moment you advise an individual on their own circumstances, the scope framing collapses and the duty of care widens.
 - **Not a fitness product.** Roughly half the trials are not physical at all — reflection, consistency, skill and social. Overselling the fitness angle attracts the wrong buyer and raises the refund rate.
-- **Not verified.** Completion is self-reported and always will be. This is the product, not a gap in it.
+- **Not verified.** Completion is self-reported and always will be. There is no checking, no appeal and no arbitration — not as an oversight, but as the design. This is the product, not a gap in it.
 - **Not a community platform.** No member-to-member content at launch, deliberately — that would bring Online Safety Act duties.
 - **Not a charity or fundraiser** in its own right. If Charity Trials go ahead, 100% reaches the charity through a regulated platform the business never touches money in.
 
@@ -120,7 +120,7 @@ expect**, because witness is not verification:
 > A witness **attests they saw it**. A reviewer **judges whether it was good enough**.
 
 The business still verifies nothing and assesses nothing. Members attest to each other; there
-is no approval and no rejection. So the insurer wording — *no supervision, no assessment and
+is no approval, no rejection, and (per D10) no flag or reporting mechanism at all. So the insurer wording — *no supervision, no assessment and
 no verification* — **remains true**, which is the one that matters most.
 
 What does change:

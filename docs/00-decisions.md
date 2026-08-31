@@ -147,3 +147,22 @@ lineage, and per-trial accounts.
 ### D9 — The pre-launch grading cohort is happening
 **Decided by Rob.** 20-40 pilot members grade the trials on two axes before launch, and the
 57 are reordered on the results. Bibs 001-057 are conferred on this cohort.
+
+### D10 — No flag. Trust until proven otherwise.
+**Decided by Rob, 31 Aug 2026.**
+
+The Reckoning ships as **witnessing only**. No flag, no report button, no dishonesty
+mechanism of any kind.
+
+Reasoning: with the ranked leaderboard already dropped (D8) there is nothing to win, so
+malicious flagging has no instrumental payoff — and a flag with no automatic consequence
+mostly generates noise for Race Control to triage. Building an abuse surface before observing
+any abuse is premature.
+
+**Consequence for the business description:** "the business verifies nothing" becomes
+unqualified. There is no exception, no appeal, no arbitration. That is a stronger and simpler
+position both for the brand and for the liability framing.
+
+**If dishonesty is ever observed**, the response is moderation of *conduct* — never
+adjudication of a *completion*. The business must never rule on whether someone genuinely did
+a physical task it did not witness.
