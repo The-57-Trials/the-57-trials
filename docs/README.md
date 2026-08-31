@@ -16,6 +16,8 @@ Written 22 August 2026. Everything is a draft for Rob's review.
 | 9 | [Legal, IP & Compliance](09-legal-ip-and-compliance.md) | Consumer law, Stripe activation, liability, GDPR, trade marks, copyright, the 57 question |
 | 10 | [Risks & Assumptions](10-risks-and-assumptions.md) | Unproven assumptions, failure modes, single points of failure, kill criterion |
 | 11 | [Metrics & the brain](11-metrics-and-the-brain.md) | What The Pulse tracks, what it deliberately doesn't, how to read it weekly |
+| 12 | [Brand Positioning](12-brand-positioning.md) | The honour frame, the register metaphor, positioning against parkrun and DofE |
+| 13 | [Community Strategy](13-community-strategy.md) | The seven-idea deliberation: grading, charity, swaps, forum, hall of fame, the Reckoning, reveals |
 
 ---
 
