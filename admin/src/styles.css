@@ -94,3 +94,6 @@ td:last-child, th:last-child { padding-right: 0; }
 .notice.ok { border-color: var(--yellow); background: rgba(232,185,35,.09); }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+
+/* Disagreement and large moves are worth a second look, not an alarm. */
+.board-table td.flag { color: var(--yellow); font-weight: 700; }

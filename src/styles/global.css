@@ -811,3 +811,37 @@ label { display: block; margin-bottom: 6px; }
     .hero { min-height: 62svh; }
   }
 }
+
+/* ---------- consensus grading ---------- */
+
+.grade-panel { display: flex; flex-direction: column; }
+.grade-scale { border: none; padding: 0; margin: 14px 0 0; }
+.grade-scale legend { padding: 0; }
+
+.grade-row { display: flex; gap: 6px; flex-wrap: wrap; }
+.grade-btn {
+  flex: 1 1 auto;
+  min-width: 34px;
+  min-height: 40px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+  color: var(--paper);
+  background: var(--ink-sunken);
+  border: 1px solid rgba(125, 138, 154, 0.55);
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+}
+.grade-btn:hover { border-color: var(--paper); }
+.grade-btn.on { background: var(--yellow); color: var(--ink); border-color: var(--yellow); font-weight: 700; }
+.grade-btn:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; }
+
+.grade-anchors {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 5px;
+  font-size: 10.5px;
+  color: var(--steel);
+}
+.grade-done { border-left: 3px solid var(--yellow); }

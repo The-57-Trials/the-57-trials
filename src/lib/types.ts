@@ -16,6 +16,16 @@ export interface Trial {
   is_milestone: boolean
   active: boolean
   min_gap_minutes: number
+  /** Null until Race Control publishes a grade from the cohort's results. */
+  published_demand: number | null
+  published_friction: number | null
+}
+
+export interface TrialGrade {
+  trial_num: number
+  demand: number
+  friction: number
+  note: string | null
 }
 
 export interface Completion {

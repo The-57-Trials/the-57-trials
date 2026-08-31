@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import MilestoneTakeover from '../components/MilestoneTakeover'
+import GradeTrial from '../components/GradeTrial'
 import { useAuth } from '../lib/auth'
 import { fetchTrials, fetchMyCompletions, fetchTrialBody, clearTrial } from '../lib/api'
 import { pad, FREE_WINDOW_END, PRICE_CIRCUIT, type Trial } from '../lib/types'
@@ -165,6 +166,8 @@ export default function TrialDetail() {
                 <div>
                   <span className="stamp">CLEARED</span>
                 </div>
+
+                <GradeTrial trialNum={num} />
                 {num < 57 && (
                   <Link
                     to={`/run/trial/${num + 1}`}

@@ -5,8 +5,9 @@ import PulseTab from './tabs/Pulse'
 import TrialsTab from './tabs/Trials'
 import MembersTab from './tabs/Members'
 import MerchTab from './tabs/Merch'
+import GradingTab from './tabs/Grading'
 
-type Tab = 'pulse' | 'trials' | 'members' | 'merch'
+type Tab = 'pulse' | 'grading' | 'trials' | 'members' | 'merch'
 type Gate = 'checking' | 'signed-out' | 'not-admin' | 'ok'
 
 export default function App() {
@@ -72,7 +73,7 @@ export default function App() {
       </header>
 
       <nav className="tabs">
-        {(['pulse', 'trials', 'members', 'merch'] as Tab[]).map((t) => (
+        {(['pulse', 'grading', 'trials', 'members', 'merch'] as Tab[]).map((t) => (
           <button
             key={t}
             className={`btn ${tab === t ? 'btn-primary' : 'btn-outline'}`}
@@ -87,6 +88,7 @@ export default function App() {
 
       <main>
         {tab === 'pulse' && <PulseTab onError={setError} />}
+        {tab === 'grading' && <GradingTab onError={setError} />}
         {tab === 'trials' && <TrialsTab onError={setError} />}
         {tab === 'members' && <MembersTab onError={setError} />}
         {tab === 'merch' && <MerchTab onError={setError} />}

@@ -1,0 +1,30 @@
+-- ============================================================
+-- Phase 0: The Grading. Applied 23 Aug 2026.
+--
+-- Consensus grading, as climbing has done for a century. Members grade each
+-- trial after clearing it on two axes that come apart badly if merged:
+--   demand   - how hard it is physically
+--   friction - time, equipment, whether it needs other people
+--
+-- Notes are private to Race Control, deliberately. Member-to-member text is
+-- user-to-user content and brings Online Safety Act duties; user-to-operator
+-- feedback does not. Public beta notes are Phase 2, with a risk assessment.
+--
+-- Objects created (full bodies applied via apply_migration):
+--   table    trial_grades          - one grade per member per trial, unique
+--   columns  trials.published_demand / published_friction, null until set
+--   function grade_trial(int,int,int,text)
+--              * requires auth
+--              * requires a completions row for that member and trial
+--              * validates both axes are 1-10
+--              * upsert, so re-grading overwrites (consensus shifts)
+--            Only write path: authenticated has SELECT on trial_grades and
+--            no INSERT, so the "must have cleared it" rule cannot be bypassed.
+--   function admin_grading() - is_admin() gated; returns per-trial averages,
+--            standard deviation of demand (disagreement signal), a combined
+--            weight of demand*0.65 + friction*0.35, and completion counts.
+--
+-- Verified after apply: direct INSERT denied to authenticated; grading an
+-- uncleared trial, an out-of-range trial and an out-of-range score all raise
+-- and persist nothing.
+-- ============================================================

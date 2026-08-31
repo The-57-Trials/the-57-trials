@@ -1,10 +1,10 @@
 import { supabase } from './supabase'
-import type { Completion, LeaderboardRow, Trial } from './types'
+import type { Completion, LeaderboardRow, Trial, TrialGrade } from './types'
 
 export async function fetchTrials(): Promise<Trial[]> {
   const { data, error } = await supabase
     .from('trials')
-    .select('num, title, chapter, is_milestone, active, min_gap_minutes')
+    .select('num, title, chapter, is_milestone, active, min_gap_minutes, published_demand, published_friction')
     .eq('active', true)
     .order('num')
   if (error) throw error
@@ -83,4 +83,24 @@ export async function openBillingPortal(): Promise<string> {
 export async function deleteMyAccount(): Promise<void> {
   const { error } = await supabase.functions.invoke('delete-account', { body: {} })
   if (error) throw error
+}
+
+/** Consensus grading. Writes go through the RPC so only cleared trials can be graded. */
+export async function gradeTrial(
+  trialNum: number, demand: number, friction: number, note: string,
+): Promise<void> {
+  const { error } = await supabase.rpc('grade_trial', {
+    p_trial_num: trialNum, p_demand: demand, p_friction: friction, p_note: note,
+  })
+  if (error) throw error
+}
+
+export async function fetchMyGrade(trialNum: number): Promise<TrialGrade | null> {
+  const { data, error } = await supabase
+    .from('trial_grades')
+    .select('trial_num, demand, friction, note')
+    .eq('trial_num', trialNum)
+    .maybeSingle()
+  if (error) throw error
+  return (data as TrialGrade) ?? null
 }
