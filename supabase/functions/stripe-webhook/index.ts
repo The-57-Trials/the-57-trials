@@ -5,9 +5,17 @@
 import Stripe from 'npm:stripe@22.4.0'
 import { createClient } from 'npm:@supabase/supabase-js@2'
 
-const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY') ?? '', {
-  httpClient: Stripe.createFetchHttpClient(),
-})
+/**
+ * Constructed lazily, never at module scope. The Stripe SDK throws on an empty
+ * key from v22 onward, so building it at import time takes the whole function
+ * down at boot — including the CORS preflight, which surfaces to the browser as
+ * an unreachable-function network error rather than anything diagnosable.
+ */
+function getStripe(): Stripe {
+  const key = Deno.env.get('STRIPE_SECRET_KEY')
+  if (!key) throw new Error('STRIPE_NOT_CONFIGURED')
+  return new Stripe(key, { httpClient: Stripe.createFetchHttpClient() })
+}
 const cryptoProvider = Stripe.createSubtleCryptoProvider()
 
 const admin = createClient(
@@ -19,13 +27,28 @@ Deno.serve(async (req: Request) => {
   const signature = req.headers.get('stripe-signature')
   if (!signature) return new Response('Missing signature', { status: 400 })
 
+  const secret = Deno.env.get('STRIPE_WEBHOOK_SECRET')
+  if (!secret) {
+    // 503 so Stripe retries once configured, rather than dropping the event.
+    console.error('STRIPE_WEBHOOK_SECRET is not set')
+    return new Response('Not configured', { status: 503 })
+  }
+
+  let stripe: Stripe
+  try {
+    stripe = getStripe()
+  } catch {
+    console.error('STRIPE_SECRET_KEY is not set')
+    return new Response('Not configured', { status: 503 })
+  }
+
   const body = await req.text()
   let event: Stripe.Event
   try {
     event = await stripe.webhooks.constructEventAsync(
       body,
       signature,
-      Deno.env.get('STRIPE_WEBHOOK_SECRET')!,
+      secret,
       undefined,
       cryptoProvider,
     )

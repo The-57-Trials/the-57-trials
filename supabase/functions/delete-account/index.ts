@@ -10,9 +10,17 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 }
 
-const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY') ?? '', {
-  httpClient: Stripe.createFetchHttpClient(),
-})
+/**
+ * Constructed lazily, never at module scope. The Stripe SDK throws on an empty
+ * key from v22 onward, so building it at import time takes the whole function
+ * down at boot — including the CORS preflight, which surfaces to the browser as
+ * an unreachable-function network error rather than anything diagnosable.
+ */
+function getStripe(): Stripe {
+  const key = Deno.env.get('STRIPE_SECRET_KEY')
+  if (!key) throw new Error('STRIPE_NOT_CONFIGURED')
+  return new Stripe(key, { httpClient: Stripe.createFetchHttpClient() })
+}
 
 Deno.serve(async (req: Request) => {
   if (req.method === 'OPTIONS') return new Response('ok', { headers: corsHeaders })
@@ -40,6 +48,7 @@ Deno.serve(async (req: Request) => {
       .single()
     if (profile?.stripe_customer_id) {
       try {
+        const stripe = getStripe()
         // 'active' alone leaves trialing/past_due/unpaid/paused subscriptions
         // billing a member whose account no longer exists — and once the
         // profile is gone there is no row left for a webhook to correct.

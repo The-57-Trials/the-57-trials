@@ -7,14 +7,23 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 }
 
-const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY') ?? '', {
-  httpClient: Stripe.createFetchHttpClient(),
-})
+/**
+ * Constructed lazily, never at module scope. The Stripe SDK throws on an empty
+ * key from v22 onward, so building it at import time takes the whole function
+ * down at boot — including the CORS preflight, which surfaces to the browser as
+ * an unreachable-function network error rather than anything diagnosable.
+ */
+function getStripe(): Stripe {
+  const key = Deno.env.get('STRIPE_SECRET_KEY')
+  if (!key) throw new Error('STRIPE_NOT_CONFIGURED')
+  return new Stripe(key, { httpClient: Stripe.createFetchHttpClient() })
+}
 
 Deno.serve(async (req: Request) => {
   if (req.method === 'OPTIONS') return new Response('ok', { headers: corsHeaders })
 
   try {
+    const stripe = getStripe()
     const supabase = createClient(
       Deno.env.get('SUPABASE_URL')!,
       Deno.env.get('SUPABASE_ANON_KEY')!,
@@ -48,6 +57,9 @@ Deno.serve(async (req: Request) => {
     return json({ url: session.url })
   } catch (err) {
     console.error('billing-portal error', err)
+    if (err instanceof Error && err.message === 'STRIPE_NOT_CONFIGURED') {
+      return json({ error: 'Payments are not set up yet. Nothing has been charged.' }, 503)
+    }
     return json({ error: 'Could not open billing portal' }, 500)
   }
 })

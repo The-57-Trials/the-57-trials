@@ -10,9 +10,17 @@ const corsHeaders = {
 
 // No apiVersion override: the SDK pins the API version it shipped with, which
 // is what enables integration_identifier below.
-const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY') ?? '', {
-  httpClient: Stripe.createFetchHttpClient(),
-})
+/**
+ * Constructed lazily, never at module scope. The Stripe SDK throws on an empty
+ * key from v22 onward, so building it at import time takes the whole function
+ * down at boot — including the CORS preflight, which surfaces to the browser as
+ * an unreachable-function network error rather than anything diagnosable.
+ */
+function getStripe(): Stripe {
+  const key = Deno.env.get('STRIPE_SECRET_KEY')
+  if (!key) throw new Error('STRIPE_NOT_CONFIGURED')
+  return new Stripe(key, { httpClient: Stripe.createFetchHttpClient() })
+}
 
 // Stripe Tax stays off until a tax registration is actually active — with no
 // registration it silently calculates zero and gives no error, which reads as
@@ -28,6 +36,7 @@ Deno.serve(async (req: Request) => {
   if (req.method === 'OPTIONS') return new Response('ok', { headers: corsHeaders })
 
   try {
+    const stripe = getStripe()
     const authHeader = req.headers.get('Authorization') ?? ''
     const supabase = createClient(
       Deno.env.get('SUPABASE_URL')!,
@@ -115,6 +124,9 @@ Deno.serve(async (req: Request) => {
     return json({ url: session.url })
   } catch (err) {
     console.error('create-checkout error', err)
+    if (err instanceof Error && err.message === 'STRIPE_NOT_CONFIGURED') {
+      return json({ error: 'Payments are not set up yet. Nothing has been charged.' }, 503)
+    }
     return json({ error: 'Checkout failed' }, 500)
   }
 })
