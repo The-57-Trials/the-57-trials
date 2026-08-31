@@ -122,3 +122,28 @@ Still true and unchanged by these decisions:
 - **Paid acquisition remains unavailable** — max sustainable CAC rises with the price but stays well below UK paid-social rates for a cold purchase from an unknown brand.
 - **There is still no annual plan.** 44.1% vs 17.0% twelve-month retention. One Stripe price object. At £9.57/month an annual at ~£99 is the obvious shape.
 - **The site still has no SEO surface.** A crawler sees an empty page.
+
+---
+
+## 23 August 2026 (evening)
+
+### D7 — Charity Trials take 100% to the charity
+**Decided by Rob.** The 90/5.7/4.3 split is dropped.
+
+Members raise through an existing regulated platform; the business never touches the money
+and therefore is not a commercial participator under Part II of the Charities Act 1992 and
+owes no statutory disclosure duties. "We take nothing" becomes a brand asset.
+
+### D8 — No speed ranking, ever
+**Decided by Rob.** The top-ten-fastest Hall of Fame is dropped.
+
+Reasons on the record: it incentivises pushing through warning signs on an unsupervised
+physical product; it weakens the negligence position; it is a lying contest on unverified
+self-report; and with cooldowns it would measure who was awake when their hold expired.
+
+Recognition is served instead by the Register, the first-fifty-seven finishers, witness
+lineage, and per-trial accounts.
+
+### D9 — The pre-launch grading cohort is happening
+**Decided by Rob.** 20-40 pilot members grade the trials on two axes before launch, and the
+57 are reordered on the results. Bibs 001-057 are conferred on this cohort.

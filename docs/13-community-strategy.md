@@ -355,3 +355,140 @@ it), it costs nothing, it carries no legal exposure, and it produces the data th
 other six ideas depend on.
 
 If you do one thing from this document, do that.
+
+---
+
+## 13.6 The verification problem
+
+Rob: *"the hardest part... actually confirming the trial was complete unless we make the
+trials uniform in the fact that they can be easily cross checked like winning a game of chess
+online or completing a sudoku problem."*
+
+That instinct is right about the mechanism and wrong about the target. It is worth separating
+those, because the mechanism is usable and the target is not.
+
+### Why "make it checkable like chess" cannot work here
+
+Chess and sudoku are verifiable because **the activity happens inside the system**. The move
+is the record. There is no gap between doing and reporting.
+
+Physical activity in the world has an irreducible gap: something happens, then someone tells
+the system about it. Every verification method is an attempt to narrow that gap, and none
+closes it. The companies that tried hardest are the evidence:
+
+| Who | Method | What happened |
+|---|---|---|
+| **Strava** | GPS and sensor data | Segment leaderboards are routinely gamed by driving routes and spoofing GPS. Strava largely stopped fighting it and made the product social instead. |
+| **Zwift** | Power meters indoors | For competitive racing they had to add **dual recording**, filmed weigh-ins and height verification — and still had cheating scandals. An enormous apparatus for a tiny elite. |
+| **The Conqueror** | Step and distance tracking | Reports a 91.4% completion rate, which tells you they are not really policing it. |
+| **75 Hard** | Nothing at all | A million claimed completions. |
+| **parkrun** | Barcode scanned at a physical finish line | **Actually works** — but requires you to be at a place, at a time, with staff. |
+| **Duke of Edinburgh** | A named **Assessor** signs off each section | Works, scales to 572,802 UK participants, and is a human, not a sensor. |
+
+**The pattern: sensor verification fails against motivated cheats, and presence or human
+attestation works.** You cannot build parkrun's finish line. You can build DofE's assessor.
+
+### The reframe that makes this tractable
+
+> **Stop trying to verify that the trial was done. Verify the shape of the engagement instead.**
+
+That *is* machine-checkable, and it is what your product already half does. Consider a HOLD
+trial — seven consecutive days of one action, logged each morning:
+
+- You cannot fake seven consecutive daily check-ins retroactively. The timestamps either exist across seven distinct days or they do not.
+- The system cannot know whether the member drank the glass of water. It knows, to the second, that they showed up seven mornings running.
+- **That is a real, uncheatable fact, and it is arguably the more meaningful one.**
+
+This is exactly Duolingo's mechanic. Duolingo does not verify that you learned Spanish. It
+verifies that you turned up, and the product works because turning up is the thing that
+matters. Your cooldowns already put you in this territory: a 147-day minimum is a fact about
+elapsed time that no member can compress.
+
+### The four tiers, and which trials get which
+
+Your trials are not uniform — and that is an asset here, not a problem. Different types admit
+different verification, so assign deliberately and **publish the tier on each trial**:
+
+| Tier | Method | Fits | Strength |
+|---|---|---|---|
+| **Logged** | Timestamped check-ins across required days | HOLD trials | Machine-verifiable and genuinely hard to fake |
+| **Witnessed** | A named person confirms, DofE assessor style | SIGNAL trials, and every RED trial 48–57 | Strong, social, scales, costs nothing |
+| **Produced** | An artifact exists — a written account, a finished thing, a photograph | MARK, CRAFT | Weak as proof, strong as commitment |
+| **Attested** | The member's word, nothing more | Everything else | Zero cost, and the brand's whole premise |
+
+Publishing the tier is the honest move and it makes the register mean more, not less: *"this
+one is witnessed"* is information, and a trial that says *"attested"* is telling the truth
+about itself.
+
+**Note what falls out of this.** The RED chapter already requires a named check-in person
+before the member starts — that person exists for safety reasons. **They are already the
+assessor.** Asking them to confirm afterwards costs nothing and adds a verification tier to
+exactly the trials where it matters most.
+
+### The anti-cheat insight
+
+The instinct is to build detection. The better move is to remove the reward.
+
+> **Ask who a cheat is hurting.** In a product with no prize, cheating hurts only the cheat.
+> That is why 75 Hard does not care, and why it does not need to.
+
+Cheating becomes rational the moment there is something to win. The two things that would
+have created that incentive were the speed leaderboard and fast merch — and both are now
+gone: the board is dropped, and cooldowns mean the first milestone is 25 days away minimum
+for a low-value patch.
+
+**So the fair-play strategy is: keep the prize small and the record honest, and do not build a
+detection apparatus you would then have to staff.** Zwift's experience is instructive — the
+verification burden scales with the value of winning, and yours should stay near zero because
+there is nothing to win but the record itself.
+
+The one backstop worth having is the private flag in the Reckoning. Not a rejection
+mechanism, not a court — a quiet signal to Race Control that something does not read as
+honest.
+
+---
+
+## 13.7 Making the trials interactive — five mechanisms
+
+Ordered by value against cost.
+
+### 1. Beta — advice from those who have cleared it
+Climbing's word for how to do a route, passed between climbers. Members who have cleared a
+trial can leave a short note for those who have not yet reached it.
+
+**Why this is the best one:** it costs nothing, it makes every trial page a living document
+that improves over time, it gives cleared members a reason to return to a trial they have
+finished, and it is *the* proven mechanic in the one community whose grading system you are
+already borrowing. It also softens difficulty without changing the trial, which is the thing
+swaps were trying to do.
+
+Gate it the obvious way: you can only read beta for a trial you have reached, and only write
+it for one you have cleared.
+
+### 2. Synchronised cohorts
+Everyone who starts in a given month moves through roughly together.
+
+**This solves three problems at once:** the empty-community problem (there is always someone
+at your trial), the Reckoning deadlock (there is always something in the queue to witness),
+and the reveal (a whole cohort unlocks a trial in the same week, so it is an event rather than
+a solitary moment).
+
+parkrun's entire social mechanism is that everyone runs at 9am on Saturday. Simultaneity is
+what turns individual activity into a community.
+
+### 3. Grading never closes
+The pre-launch cohort sets the grade; every member who clears a trial thereafter adjusts it.
+Grades stay live and shift as the population changes — exactly how climbing consensus works.
+
+Every member gets a voice on every trial, forever, for one tap. And it gives you a genuine
+early-warning signal: a trial whose grade climbs sharply is one to review.
+
+### 4. Pairs
+Two members pair up and must clear the same trial within the same window or the pair breaks.
+Proven accountability mechanic, inherently viral (you cannot pair without recruiting), and it
+fits the brand — a race has pacers.
+
+### 5. Witness lineage
+*"Bib 0142, witnessed by Bib 0061."* Standing as a witness is a right earned by completing,
+which gives finishers a role after they finish — your retention problem — and builds a visible
+lineage graph that no competitor has and that becomes more valuable as the register lengthens.
