@@ -24,6 +24,8 @@ Written 22 August 2026. Everything is a draft for Rob's review.
 | 17 | [Witnessed Trials](17-witnessed-trials.md) | Named witnesses on trials 48-57, why not live-streaming, and the no-contact-details rule |
 | 18 | [The Library](18-the-library.md) | The sealed letter, the Library, the earned share link, and the book |
 
+*Trial content: `content/trials/` — 02-05 written, see 4.8.*
+
 ---
 
 ## The findings that three independent researchers reached separately

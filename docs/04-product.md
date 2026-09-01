@@ -448,3 +448,45 @@ gate is decoration; and the read path must be as strict as the write path.
 4. **Member-defined trials at 50, 54, 57** — safest possible design, makes the finish personal, but the climax of your product is something you didn't write.
 5. **Merch as marketing spend** for fast finishers rather than gating late items on paid months.
 6. **Trial 55 stops short of being a referral mechanic.** You could make it one. Recommended not to — the moment a trial asks a member to sell, the unsentimental tone collapses.
+
+---
+
+## 4.8 Written content — status and what writing it revealed
+
+**Written: 02, 03, 04, 05.** Source of truth is `content/trials/*.md`; migration
+`0008_trials_02_05.sql` is generated from those files and is applied live. Trial 06 exists
+publication-ready in 4.2 above but has **not** been loaded. Trial 01 is specced in doc 18
+(the sealed letter) and needs the letter UI, not a briefing.
+
+### Five things writing them turned up
+
+**1. The Trial 01 letter is sealed, so Trial 03 cannot ask you to re-read it.** THE PLEDGE
+works from memory instead — and at 53 you find out whether what you remembered was what you
+actually wrote. Better than the original, and it came out of the constraint.
+
+**2. The four STOP constants are wrong on MARK trials.** Boilerplate about chest pain on a
+writing exercise is exactly the copy-paste that 4.1 says trains members to skip the rubric.
+MARK trials get a STOP written to the real risk — that reflecting honestly surfaces more
+than expected — with permission to leave the trial open indefinitely.
+
+> **Open decision:** MARK trials should probably carry an app-rendered signpost footer
+> (Samaritans 116 123) rather than repeating it in each body, where it would become
+> wallpaper. Trials 01 and 53 are the ones that need it most.
+
+**3. HOLD trials need a daily check-in, and 05 is the first.** Seven separate morning logs
+is the mechanic - and it is the one the verification research (13.6) already identified as
+unfakeable, because timestamps spread across seven days cannot be produced retroactively.
+**This is launch-relevant**: trial 05 sits inside the Entry-only band, before the Circuit
+paywall at 06.
+
+**4. The pledge should be surfaced, not filed.** The sentence written at 03 belongs on The
+Interval — the cooldown screen — where it is read on the day it is needed. One line of
+build; it makes trial 03 pay off fifty-four more times.
+
+**5. The 200-350 word band does not survive a freshly-written rubric.** The publication-ready
+example in 4.2 is itself ~430. Realistic bands: MARK 280-330 · MOVE/HOLD 350-450.
+
+### Where trial 05 sits
+It is the **last trial before the Circuit Pass paywall** and it takes seven days. That is
+good, not bad: the member has a week of daily contact behind them before being asked to
+subscribe, rather than hitting the ask on day five with nothing invested.
