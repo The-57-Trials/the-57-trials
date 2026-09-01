@@ -65,3 +65,4 @@ who also earns the hoodie (+£12.63). Previously −£2.24 to −£25.60.
 
 Still outstanding from findings 3–5: no annual plan, no SEO surface, and paid acquisition
 remains unavailable.
+| 19 | [The Trials Bank](19-the-trials-bank.md) | The 240-item bank filtered to ~95 keepers; what the exclusions and the brand remove, and why |
