@@ -22,6 +22,7 @@ Written 22 August 2026. Everything is a draft for Rob's review.
 | 15 | [What the business does](15-business-description.md) | Canonical descriptions for Stripe, insurers, the public and an accountant |
 | 16 | [The Registers](16-the-registers.md) | Bib numbers vs finisher numbers, the Register page, and what being first gets you |
 | 17 | [Witnessed Trials](17-witnessed-trials.md) | Named witnesses on trials 48-57, why not live-streaming, and the no-contact-details rule |
+| 18 | [The Library](18-the-library.md) | The sealed letter, the Library, the earned share link, and the book |
 
 ---
 

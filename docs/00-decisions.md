@@ -223,3 +223,34 @@ that the member had to write "Sarah" down.
 
 Optional on every other trial. Never mandatory outside 48-57: a member with nobody to name
 must not be locked out, because isolation is not something to paywall.
+
+### D13 — The Library, the Sealed Letter, and the Book
+**Decided by Rob, 31 Aug 2026.** Full spec in section 18.
+
+**The through-line: you open it with a pen and you close it with a book.**
+
+**Trial 01 is a written letter** - why you are here, and what will make you quit - typed on a
+page in a typewriter or plain handwriting face, then SEALED with a wax seal and **lodged** in
+the member's Library. Sealed and filed the way a will is, not cast adrift in a bottle: the
+point is that it comes back deliberately at Trial 53, alongside the Trial 09 letter.
+
+**The Library is the one warm room.** Everything else in the product is cold on purpose, and
+the contrast is the design rather than a departure from it. It holds the letters, the bib,
+milestones, the Trial Blazer card, witnesses, grades and the finisher number - and answers a
+question nothing else could: what do I actually own after five months?
+
+**A finished Library can be shared** by public link. Only a finished one, which makes it a
+five-month receipt rather than a marketing asset. **The letters are never shared by default** -
+each is opted in individually or not at all, revocable, noindex. People will write things in
+Trial 01 they have never said aloud, and getting this wrong once would end the trust the
+product runs on.
+
+**At 57 the member unlocks the right to buy a printed book** of their own run - the briefings,
+the dates, the witnesses, the grades, and both letters. Print-on-demand, never sold to anyone
+who has not finished. This inverts the worst finding in the financial model: finishers were the
+thinnest margin in the business, and the book makes them the most profitable member instead.
+It also answers what comes after 57.
+
+**An auto-generated video was considered and rejected.** There is no footage, so it would be
+text and dates over music - Spotify Wrapped, the opposite of everything else here. A register
+produces documents, not montages.
