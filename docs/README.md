@@ -67,3 +67,5 @@ Still outstanding from findings 3–5: no annual plan, no SEO surface, and paid 
 remains unavailable.
 | 19 | [The Trials Bank](19-the-trials-bank.md) | The 240-item bank filtered to ~95 keepers; what the exclusions and the brand remove, and why |
 | 20 | [Physical Trials](20-physical-trials.md) | Twelve demanding MOVE trials that break no exclusion, the supervision unlock, and what relaxing an exclusion would cost |
+| 21 | [The Account](21-the-account.md) | The compulsory write-up on every trial, and how it becomes the book |
+| 22 | [The Storyboard](22-the-storyboard.md) | Research, the six-act arc, the full revised 57, and the UI and database work it creates |
