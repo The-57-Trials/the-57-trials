@@ -274,3 +274,23 @@ itself a record.
 The design principle worth keeping: **the member wrote this trial themselves on day one
 without knowing it.** Its difficulty comes from their own words, not ours - which makes it
 unfakeable, unrepeatable and different for every member.
+
+### D15 — HOLD trials take as long as they say (supersedes the 147-day figure in D2)
+**1 Sep 2026.** Raised by Rob: *"having to complete trial five is a trial that has to take
+1 week."* It didn't - nothing stopped a member clearing SEVEN GLASSES the day it opened.
+Seven other HOLD trials had the same hole.
+
+`min_gap_minutes` already did the job and nobody had noticed: it gates *clearing* trial N
+against when N-1 was cleared, and N opens the moment N-1 clears. So the gap on a HOLD trial
+**is** the trial. Set to max(cooldown, duration) on all eight. No schema change; the app
+tells the two apart from `trial_type`.
+
+**Minimum completion is now 195 days, not 147.** That figure appears in the financials and
+in customer-facing copy and needs updating in both.
+
+**It improves the economics.** The Circuit-paying window goes from ~4.7 months to ~6.1
+months, so the fastest possible completer - the worst case the modelling worries about -
+pays roughly £13 more. That scenario stood at +£12.63; it is now roughly double that.
+The tightest margin in the business got looser because the trials were made honest.
+
+**Open:** §4.1 says nine HOLD trials, the roadmap lists eight. One of the two is wrong.

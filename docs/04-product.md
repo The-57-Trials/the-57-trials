@@ -490,3 +490,24 @@ example in 4.2 is itself ~430. Realistic bands: MARK 280-330 · MOVE/HOLD 350-45
 It is the **last trial before the Circuit Pass paywall** and it takes seven days. That is
 good, not bad: the member has a week of daily contact behind them before being asked to
 subscribe, rather than hitting the ask on day five with nothing invested.
+
+### 4.8.1 HOLD durations are enforced (D15)
+`min_gap_minutes` on a HOLD trial is the trial's **duration**, not a cooldown, because the
+briefing opens the moment the previous trial clears. The member reads it on day one - they
+have to, they start tomorrow morning - and CLEARED unlocks when the days are up.
+
+| # | Trial | Days | min_gap_minutes |
+|---|---|---|---|
+| 05 | SEVEN GLASSES | 7 | 10080 |
+| 10 | THE SAME HOUR | 10 | 14400 |
+| 11 | SILENT HOUR | 5 | 7200 |
+| 16 | THE EARLY BIB | 5 | 7200 |
+| 21 | TWENTY-ONE DAYS | 21 | 30240 |
+| 27 | SEVEN AND SEVEN | 7 | 10080 |
+| 43 | THE REST DAY | 1 | 4320 *(cooldown wins)* |
+| 51 | THE QUIET WEEK | 7 | 10080 *(cooldown equals)* |
+
+**The Interval must read the two differently.** A cooldown is *"Trial 07 opens in 14
+hours."* A HOLD is *"Trial 05 clears in 6 days. The waiting is the trial."* Same field,
+opposite message - get this wrong and a duration looks like a punishment. `trial_type`
+tells them apart.

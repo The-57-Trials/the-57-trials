@@ -401,7 +401,7 @@ trial — seven consecutive days of one action, logged each morning:
 
 This is exactly Duolingo's mechanic. Duolingo does not verify that you learned Spanish. It
 verifies that you turned up, and the product works because turning up is the thing that
-matters. Your cooldowns already put you in this territory: a 147-day minimum is a fact about
+matters. Your cooldowns already put you in this territory: a 195-day minimum is a fact about
 elapsed time that no member can compress.
 
 ### The four tiers, and which trials get which

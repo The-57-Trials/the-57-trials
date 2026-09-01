@@ -57,7 +57,7 @@ assumes traffic that currently has no way to arrive.
 All three were taken, and further than recommended. See the [decisions log](00-decisions.md).
 
 - **£19.57 entry, £9.57/month** (recommendation was £7.99)
-- **Enforced cooldowns** giving a 147-day minimum completion — this replaced "gate merch on tenure" and does the job better
+- **Enforced cooldowns** giving a 195-day minimum completion — this replaced "gate merch on tenure" and does the job better
 - **The cap is gone**, replaced by the Trial Blazer card and a bonus trial that earns a hoodie
 
 **Result: every completion scenario is now profitable**, including the fastest possible member
