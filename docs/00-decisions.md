@@ -254,3 +254,23 @@ It also answers what comes after 57.
 **An auto-generated video was considered and rejected.** There is no footage, so it would be
 text and dates over music - Spotify Wrapped, the opposite of everything else here. A register
 produces documents, not montages.
+
+### D14 — Trial 53, THE RECKONING
+**Decided by Rob, 31 Aug 2026.** Spec in section 18.7.
+
+Both seals break. A **two-minute pause** with nothing to do but read your own words. Then the
+button - **ARE YOU READY TO FACE YOURSELF?** - and one required question: *were you right about
+yourself?* It ends with an irreversible choice: lodge the letters permanently, or release and
+destroy them.
+
+Two equal routes to answer, write it or say it aloud to your witness - not ranked, because
+speaking is harder for most people and easier for some. Scaling within either: one sentence
+answering the required question fully clears the trial, so nobody is kept from finishing for
+not being a writer.
+
+The Library records **that** a letter was released and when, never its content. The absence is
+itself a record.
+
+The design principle worth keeping: **the member wrote this trial themselves on day one
+without knowing it.** Its difficulty comes from their own words, not ours - which makes it
+unfakeable, unrepeatable and different for every member.

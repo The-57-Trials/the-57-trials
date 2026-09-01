@@ -157,3 +157,72 @@ Rough order:
 Data:
 - Letters: member-written text, one row per member per trial, private by default, deleted on erasure.
 - The Library is mostly a **view** over data that already exists — completions, milestones, witnesses, grades, bib, finisher number. Little new storage beyond the letters themselves.
+
+---
+
+## 18.7 Trial 53 — THE RECKONING
+
+> The emotional centre of the product. **The member wrote this trial themselves, on day one,
+> without knowing it.**
+
+On Trial 01 they wrote why they were here and what would make them quit. On Trial 09 they
+wrote what finishing would actually look like. Five months later both seals break, and one of
+two things is true: they were wrong about themselves, or they were right and did it anyway.
+
+Both are worth facing. Neither is authored by us.
+
+### The shape
+
+**1 — The seals break.** Both letters open. Trial 01's *why*, and Trial 09's *prediction of the
+end* — which is now testable, because they are four trials from it.
+
+**2 — The pause.** The writing space does **not** appear yet. For two minutes there is nothing
+to do but read your own words.
+
+Stated plainly, not punitively: *"Read it again. This opens in 2:00."* The product already
+treats compulsory waiting as a feature; here the interval is two minutes of silence with your
+own handwriting, and it is the most distinctive screen in the product.
+
+**3 — The button.**
+
+> **ARE YOU READY TO FACE YOURSELF?**
+
+**4 — The answer.** Two equal routes, neither the lesser:
+
+- **Write it.** Answer the person who wrote the letters.
+- **Say it.** Read your letters aloud to the person who has stood witness on 48–52, then record that you did.
+
+Speaking is harder than writing for most people and easier for some — which is exactly why
+both count. An oath can be written or sworn.
+
+Whichever route, one question must be answered directly and is not optional:
+
+> **Were you right about yourself?**
+
+**5 — The ending. Keep it, or let it go.**
+
+One irreversible choice:
+
+- **LODGE IT** — the letters return to the Library, sealed, permanently.
+- **RELEASE IT** — the letters are destroyed. Actually destroyed, not hidden.
+
+The Library records **that a letter was released, and when** — never the content. The absence
+is itself a record, and a member who let their letter go should see that they did.
+
+A decision that cannot be undone is a real trial. Warn clearly, confirm once, then honour it.
+
+### Scaling
+Within either route: fewer words, or answer only the one required question. **Answering *"were
+you right about yourself?"* in a single sentence fully clears the trial.** Nobody is kept from
+finishing because they are not a writer.
+
+### What it leaves behind
+The Library ends with three letters: the one written on day one, the one written at 09, and the
+answer written at 53 — unless the member released the first two, in which case it holds the
+answer and the record of a choice.
+
+All of them go in the book.
+
+### Note on the Trial 01 prompt
+*"What will make you quit"* is carrying most of the weight here. It is worth being pointed on
+day one, because everything at 53 is built from it — a vague letter makes a weak reckoning.
