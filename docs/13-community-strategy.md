@@ -194,7 +194,7 @@ This is the one idea in the seven I think is actively dangerous, for four indepe
 1. **Safety.** Unsupervised physical activity by unscreened strangers. A visible reward for finishing fastest is a direct incentive to push through warning signs, in bad weather, ill or short of sleep. Every safety mechanism in the product spec exists to prevent exactly that, and a leaderboard undoes it in one line of UI.
 2. **Liability.** You cannot disclaim liability for negligence. Publishing a board that rewards haste, on a product you accept is physical, is the kind of decision that gets read out in a claim.
 3. **Integrity.** Nothing is verified. A speed board on self-reported data is a lying contest, and the fastest times get posted by whoever is least honest.
-4. **It would not measure anything.** Cooldowns cap the honest maximum — 147 days minimum, a full week between the last ten. "Fastest" therefore measures **who happened to be awake when their cooldown expired.** It is a punctuality contest.
+4. **It would not measure anything.** Cooldowns cap the honest maximum — 195 days minimum, a full week between the last ten. "Fastest" therefore measures **who happened to be awake when their cooldown expired.** It is a punctuality contest.
 
 There is also a plain data-protection problem: **published names and photographs** is personal
 data in a context revealing health-adjacent information, needing explicit consent, a lawful

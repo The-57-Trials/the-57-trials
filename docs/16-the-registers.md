@@ -94,7 +94,7 @@ can never be issued again, which is more than money could buy.
 Do not announce a reward for finishing first. Simply keep the Register in completion order, and
 the first person is first forever without anyone having raced for it.
 
-Safe by construction anyway: the cooldowns cap the maximum honest pace at **147 days**, so
+Safe by construction anyway: the cooldowns and HOLD durations cap the maximum honest pace at **195 days**, so
 "first" is decided by when someone joined and by not stopping — never by pushing harder on any
 given day.
 
@@ -111,7 +111,7 @@ otherwise be over for them.
 
 ## 16.5 Build notes
 
-**Not urgent.** Nobody can finish for at least 147 days, and finisher numbers are
+**Not urgent.** Nobody can finish for at least 195 days, and finisher numbers are
 reconstructable from `completions` where `trial_num = 57` ordered by `cleared_at` if they are
 added later. Nothing is lost by waiting.
 

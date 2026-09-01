@@ -32,6 +32,7 @@ these prices.*
 | 48–57 | 1 week |
 
 **Minimum completion is now 147 days (~4.8 months):** 25 + 22 + 30 + 70.
+*(Superseded by D15 — enforcing HOLD durations takes this to **195 days**.)*
 
 This is the single change that fixes the fast-completer problem identified in §5 — there is
 no longer any path to collecting the merch in six weeks. It also front-runs the content
@@ -107,6 +108,9 @@ Net revenue against merch, at the new prices with the new cooldowns:
 | Journey | Net revenue | Margin, no hoodie | Margin, with hoodie |
 |---|---|---|---|
 | Fastest possible (147 days) | £64.75 | **+£41.63** | **+£12.63** |
+
+*Modelled before D15. At the real 195-day minimum the fastest completer pays ~1.4 more
+Circuit months, taking that worst case to roughly **+£25**.*
 | Realistic (7 months) | £83.03 | **+£59.91** | **+£30.91** |
 | Slow (9 months) | £101.32 | **+£78.20** | **+£49.20** |
 
@@ -192,7 +196,7 @@ nothing is verified — every problem the speed leaderboard had (D8), concentrat
 person's decision-making. Simply keeping the Register in completion order means the first
 person is first forever and nobody rushed for it.
 
-Note the cooldowns already make this safe by construction: nobody can finish in under 147 days
+Note the cooldowns already make this safe by construction: nobody can finish in under 195 days (D15)
 regardless of effort, so "first" is decided by when someone joined and by not stopping — never
 by pushing harder on any given day.
 
