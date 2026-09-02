@@ -385,28 +385,58 @@ gap be bought, or the whole thing becomes a slot machine.
 
 ---
 
-## 4.6 Milestone merch
+## 4.6 Milestone merch — the Trial Shop (D17, superseding the section below)
 
-The constraint: **included, not sold.** Anything that looks boxed-and-bought defeats the
-purpose. The through-line is **personalisation and evidence** — every item carries the bib
-number; every item after the first carries something that can only exist because of what
-came before. They arrive on the four clock trials, which members will notice around 30.
+**As of 2 Sep 2026, "included, not sold" applies to exactly two items: the finisher's plate
+(57) and the Trial Blazer hoodie (45, via the bonus trial).** Everything else clearing 15, 30
+and 45 unlocks is the **right to buy** it in the Trial Shop, a Circuit Pass benefit — gated by
+trial reached (never sellable ahead) and by an **active** Circuit Pass at time of purchase.
+See D17 for the full reasoning. This was the single biggest lever on the "completers are the
+least profitable members" problem — bigger than the price rise or the cooldowns, because it
+removes the cost from the model entirely rather than shrinking it.
+
+The through-line is unchanged: **personalisation and evidence** — every item carries the bib
+number; every item after the first carries something that can only exist because of what came
+before.
+
+| Milestone | Item | Free or shop? |
+|---|---|---|
+| **15** | **The bib.** A real race bib, correct material, permanent number, `5757` in the corner. Posted flat. | Shop — unlocked at 15, active Circuit Pass required to buy. |
+| **30** | **Patch + stamped card** recording bib and date cleared. | Shop — unlocked at 30. |
+| **45** | **The Trial Blazer card**, a bonus trial that earns a hoodie on completion (D3). | **Free** — the one earned-free item mid-run. |
+| **57** | **Finisher's plate** — metal, bib number, `5757`, date, numbered in order of all-time finishers. Boxed, hand-addressed, **with their Trial 01 words returned to them.** | **Free** — unlocked automatically on finishing. |
+
+Escalation: symbolic → collectible → useful → permanent. Unchanged.
+
+**Rules that keep it earned even though money now changes hands:** never sellable ahead of the
+trial that unlocks it · shop access requires an active Circuit Pass, not just having reached
+the milestone once · nothing ships early, ever · dispatch email is one line, no marketing ·
+address collected at trial 14, not signup · replacements are a paid reprint through the shop,
+not a support request.
+
+**Status, 2 Sep 2026: the model is designed (schema in migration `0023_shop.sql`), the
+checkout is not built.** Real merch quotes (gate 1.4 below) are still outstanding, and prices
+in the shop schema are placeholders until they land. Build the member-facing Shop page once
+prices are real, not before — a shop selling placeholder prices is worse than no shop.
+
+---
+
+### Superseded, kept for the paper trail
+
+The original spec priced everything as included. Struck through where D17 changed it.
 
 | Milestone | Item | Why |
 |---|---|---|
-| **15** | **The bib.** A real race bib, correct material, permanent number, `5757` in the corner. Posted flat. | The number has existed in the app since day one; this makes it physical. Cheapest item, most photographed. |
-| **30** | **Patch + stamped card** recording bib and date cleared. | Patches only mean anything as a set — this creates a collection and makes 45 feel owed. |
-| **45** | ~~Wearable kit — beanie or technical cap, number stitched inside.~~ **Superseded by D3: the Trial Blazer card**, a bonus trial that earns a hoodie on completion. See `docs/00-decisions.md`. | Opt-in and earned twice, rather than an automatic cost against everyone who reaches 45. |
-| **57** | **Finisher's plate** — metal, bib number, `5757`, date, numbered in order of all-time finishers. Boxed, hand-addressed, **with their Trial 01 words returned to them.** | A finisher's medal that isn't a medal. Returning their own words is free and is the strongest thing in the box. |
+| ~~15~~ | ~~The bib, included free on reaching the trial.~~ | ~~The number has existed in the app since day one; this makes it physical.~~ |
+| ~~30~~ | ~~Patch + stamped card, included free.~~ | ~~Patches only mean anything as a set.~~ |
+| **45** | ~~Wearable kit — beanie or technical cap, number stitched inside.~~ **Superseded first by D3** (the Trial Blazer card, still current), then unaffected by D17 since it was already free. | Opt-in and earned twice, rather than an automatic cost against everyone who reaches 45. |
+| ~~57~~ | Finisher's plate — **unaffected by D17**, still free. | A finisher's medal that isn't a medal. |
 
-Escalation: symbolic → collectible → useful → permanent.
-
-**Rules that keep it earned:** nothing is ever purchasable, not even replacements (one free
-reprint, that's it) · nothing ships early, ever · dispatch email is one line, no marketing ·
-address collected at trial 14, not signup.
-
-**⚠️ See §7 for the cost problem** — the growth analysis found these items may cost more than
-a completer pays. Get quotes before locking the spec.
+**⚠️ Historical note, resolved by D17 rather than by getting quotes:** §7's growth analysis
+found these items might cost more than a completer pays. D17 resolves this by making 15/30
+purchase-funded rather than included, so the quote-versus-price risk no longer applies to
+them. Quotes are still needed for the Blazer hoodie and the finisher's plate, the two items
+that remain genuinely free.
 
 ---
 

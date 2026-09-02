@@ -36,7 +36,7 @@ export default function Privacy() {
             <tr><td>Trial progress, clears, timestamps</td><td>Delivering the sequence; your place on the Register</td><td>Contract</td><td>Life of account + 30 days</td></tr>
             <tr><td>Stripe customer and subscription IDs</td><td>Taking payment</td><td>Contract</td><td>6 years (tax)</td></tr>
             <tr><td>Transaction records</td><td>Accounting and tax</td><td>Legal obligation</td><td><strong>6 years</strong></td></tr>
-            <tr><td>Postal address (milestone only)</td><td>Posting your milestone item</td><td>Contract</td><td>12 months after final dispatch</td></tr>
+            <tr><td>Postal address (milestone or Trial Shop only)</td><td>Posting an earned milestone item or a Trial Shop order</td><td>Contract</td><td>12 months after final dispatch</td></tr>
             <tr><td>Health screening confirmation — a yes/no, the version shown, a timestamp</td><td>Evidence you confirmed you were fit</td><td>Legitimate interests + <strong>explicit consent</strong></td><td>Life of account, then 6 years</td></tr>
             <tr><td>IP address, security logs</td><td>Security, fraud prevention, debugging</td><td>Legitimate interests</td><td>90 days</td></tr>
           </tbody>

@@ -328,3 +328,39 @@ argument — the order is the moat — but on one argument now, not two.
 effect is real and has been avoided so far by accident rather than intent. The standing
 conflict is that THE ACCOUNT is compulsory (23.6); mitigated, not resolved, and worth
 revisiting if the grading cohort objects.
+
+### D17 — The Trial Shop: milestone merch becomes earned-right-to-buy, not included
+**Decided by Rob, 2 Sep 2026.** Supersedes doc 4.6's "nothing is ever purchasable" for the
+15/30/45 milestone items specifically.
+
+**The change.** Clearing trials 15, 30 and 45 no longer ships merch automatically. It unlocks
+the **right to buy** that item in the **Trial Shop** — a new Circuit Pass benefit. Purchase
+eligibility is gated two ways: the trial must be reached (never sellable ahead, so it's still
+earned, not just bought), and the Circuit Pass must be **active at the time of purchase** —
+not merely "reached it once while subscribed." A lapsed subscriber can resubscribe to unlock
+shopping again; the milestone itself is never lost, only the ability to buy against it.
+
+**What stays free.** Two things, and only two:
+- **The finisher's plate at 57** — unlocked automatically on finishing, same as today. The
+  single free item in the entire product is the one that marks completion.
+- **The Trial Blazer hoodie (D3)** — earned by clearing the bonus trial unlocked at 45. One
+  earned-free moment mid-run, on top of the free finish. Everything else in the Blazer card
+  mechanic (D3) is unchanged.
+
+**Why.** The financial modelling behind D1–D3 found completers were the **least profitable**
+members because merch was an included cost scaling with every member who reached a
+checkpoint. D1–D3 fixed the worst of it with price rises, cooldowns and removing the cap. This
+removes the problem at the root: merch stops being a liability against revenue and becomes
+discretionary purchase revenue with real margin, for members who reached the checkpoint and
+want the physical object. The unit-economics model in §5–6 should be rerun once shop prices
+exist — it should improve, not need re-solving.
+
+**Why gating stays.** "Included, not sold" (4.6) was never really about money changing hands —
+it was about never letting the product feel boxed-and-bought. Gating purchase eligibility to
+"reached the trial, subscribed now" keeps that: nobody can buy a patch for a trial they
+haven't done. Money changes hands; the earning doesn't stop mattering.
+
+**Status: the model only, not the checkout.** Schema in migration `0023_shop.sql`
+(`shop_products`, `shop_orders`). **No real Stripe checkout wired yet** — merch still needs
+real quotes (doc 14, gate 1.4) before prices are anything but placeholders. Doc 4.6 rewritten
+to match. The member-facing Shop UI is not built; build it once prices are real.

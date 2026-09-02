@@ -91,18 +91,30 @@ export default function Refunds() {
 
       <h2>7. Milestone items</h2>
       <p>
-        Milestone items at trials 15, 30, 45 and 57 are{' '}
-        <strong>rewards included in your pass</strong>, not separately purchased goods.
+        Trials 45 and 57 are <strong>rewards included in your pass</strong>, not separately
+        purchased goods. Trials 15 and 30 instead unlock the right to buy the matching item in
+        the <strong>Trial Shop</strong> — those are separate purchases (see 7a).
       </p>
       <p>
-        If an item arrives <strong>damaged, faulty, or not as described</strong>, tell us and we
-        will replace it free of charge.{' '}
+        If an included item (45 or 57) arrives <strong>damaged, faulty, or not as
+        described</strong>, tell us and we will replace it free of charge.{' '}
         <strong>Your rights under the Consumer Rights Act 2015 apply in full.</strong>
       </p>
       <p>
         Because these items are personal awards bearing your bib number, we do not operate a
         general change-of-mind returns process for them. If you don’t want an item, tell us
         before we dispatch and we won’t send it.
+      </p>
+
+      <h2>7a. Trial Shop purchases (15 and 30)</h2>
+      <p>
+        A Trial Shop item is a normal goods purchase, priced at the time of sale, and is not
+        included in the Entry Pass or Circuit Pass price. Your right to cancel before dispatch,
+        and your rights if an item is faulty or not as described, apply in full under the
+        Consumer Rights Act 2015. Because each item carries your bib number, it is made to order
+        once purchased — as with the included items above, we do not operate a general
+        change-of-mind return once dispatch has started, but tell us before then and we won't
+        send it.
       </p>
 
       <h2>8. How to cancel — the formal route</h2>

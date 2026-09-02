@@ -80,18 +80,21 @@ export default function Terms() {
       <p>An Entry Pass is required before a Circuit Pass. A Circuit Pass alone gives you nothing.</p>
 
       <h2>5. Milestone items</h2>
-      <p>At trials <strong>15, 30, 45 and 57</strong> we send you a physical item.</p>
+      <p>Trials 15, 30, 45 and 57 mark a milestone. What happens next differs by trial.</p>
+
+      <h3>45 and 57 — included</h3>
       <p>
         <strong>
-          These are rewards included within your pass. They are not separately purchased, and no
-          part of the price is separately attributable to them.
+          Clearing Trial 45's bonus trial earns the Trial Blazer hoodie. Finishing Trial 57
+          earns the finisher's plate. Neither is separately purchased, and no part of the price
+          is separately attributable to them.
         </strong>
       </p>
       <ul>
-        <li>We ask for a delivery address when you reach a milestone. Not before.</li>
+        <li>We ask for a delivery address when the item is earned. Not before.</li>
         <li>
-          We dispatch within <strong>30 days</strong> of the milestone unlocking, provided you
-          have given us a valid address.
+          We dispatch within <strong>30 days</strong> of earning it, provided you have given us
+          a valid address.
         </li>
         <li>We currently ship to <strong>[SHIPPING TERRITORIES]</strong>.</li>
         <li>
@@ -99,10 +102,25 @@ export default function Terms() {
           it. <strong>This does not affect your rights under the Consumer Rights Act 2015,
           which we cannot exclude.</strong>
         </li>
+        <li>You must hold an active Circuit Pass when Trial 45 is reached to earn the Trial Blazer card.</li>
+      </ul>
+
+      <h3>15 and 30 — the Trial Shop</h3>
+      <p>
+        <strong>
+          Reaching trials 15 and 30 unlocks the right to buy the matching item in the Trial
+          Shop. These are separate purchases, at the price shown at the time, and are not
+          included in the Entry Pass or Circuit Pass price.
+        </strong>
+      </p>
+      <ul>
         <li>
-          You must hold an active Circuit Pass when a milestone is reached to qualify for items
-          at trials 30, 45 and 57.
+          You must hold an <strong>active Circuit Pass</strong> both when the trial is reached
+          and at the time you buy, to purchase a Trial Shop item. Reaching the trial does not
+          by itself entitle you to buy later without an active pass.
         </li>
+        <li>A Trial Shop purchase is a goods contract in its own right, covered by the Consumer Rights Act 2015 and any distance-selling cancellation rights that apply to physical goods.</li>
+        <li>We currently ship to <strong>[SHIPPING TERRITORIES]</strong>.</li>
       </ul>
 
       <h2>6. Your account</h2>

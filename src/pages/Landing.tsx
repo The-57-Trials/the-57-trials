@@ -5,10 +5,10 @@ import { useAuth } from '../lib/auth'
 import { PRICE_ENTRY, PRICE_CIRCUIT } from '../lib/types'
 
 const MILESTONE_COPY = [
-  { num: '15', name: 'FIRST CHECKPOINT', desc: 'The 15 patch. Stitched, numbered, posted.' },
-  { num: '30', name: 'HALFWAY LINE', desc: 'The halfway tee. Earned, not bought.' },
-  { num: '45', name: 'FINAL STRETCH', desc: 'The 45 cap. Most never see it.' },
-  { num: '57', name: 'THE FINISH', desc: 'The finisher bib. Your number, framed.' },
+  { num: '15', name: 'FIRST CHECKPOINT', desc: 'The bib. Unlocked at 15 — yours to buy in the Trial Shop.' },
+  { num: '30', name: 'HALFWAY LINE', desc: 'The patch. Unlocked at 30 — yours to buy in the Trial Shop.' },
+  { num: '45', name: 'FINAL STRETCH', desc: 'The Trial Blazer. A bonus trial, earned free.' },
+  { num: '57', name: 'THE FINISH', desc: "The finisher's plate. Free. There's only one per number." },
 ]
 
 export default function Landing() {
@@ -35,8 +35,9 @@ export default function Landing() {
             THE <span className="accent">ROUTE</span>
           </h2>
           <p className="muted mb-3">
-            57 checkpoints. Four merch drops. Every line clears in sequence — the next one
-            unlocks only when the one before it is stamped.
+            57 checkpoints. Two milestones unlock the right to buy; two you earn outright.
+            Every line clears in sequence — the next one unlocks only when the one before it
+            is stamped.
           </p>
           <RouteViz cleared={0} showCurrent={false} />
           <div className="milestone-row">
@@ -105,6 +106,7 @@ export default function Landing() {
               <ul>
                 <li>Trials 06–57. The full route.</li>
                 <li>Your place on the Register.</li>
+                <li>Trial Shop access — buy the milestones you've reached.</li>
                 <li>New trial drops as they land.</li>
                 <li>Live events access.</li>
               </ul>
