@@ -753,6 +753,14 @@ label { display: block; margin-bottom: 6px; }
   box-shadow: 0 12px 34px rgba(0,0,0,0.5);
 }
 .trial-body { max-width: 68ch; }
+
+/* Doc 4.1's Primes rule — a mark the app never explains. */
+.prime-mark {
+  color: var(--rust);
+  font-size: 0.5em;
+  vertical-align: super;
+  margin-left: 2px;
+}
 .trial-body h1, .trial-body h2, .trial-body h3 { margin: 26px 0 10px; }
 .trial-body p { margin: 12px 0; }
 .trial-body ul, .trial-body ol { margin: 12px 0 12px 22px; }

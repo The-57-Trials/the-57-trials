@@ -12,8 +12,8 @@ import WitnessRecord from '../components/WitnessRecord'
 import { useAuth } from '../lib/auth'
 import { fetchTrials, fetchMyCompletions, fetchTrialBody, type ClearResult } from '../lib/api'
 import {
-  pad, FREE_WINDOW_END, PRICE_CIRCUIT, LETTER_TRIALS, RECKONING_TRIAL, WITNESSED_TRIALS,
-  type Trial,
+  pad, isPrimeTrial, FREE_WINDOW_END, PRICE_CIRCUIT, LETTER_TRIALS, RECKONING_TRIAL,
+  WITNESSED_TRIALS, type Trial,
 } from '../lib/types'
 
 type Status = 'loading' | 'ok' | 'locked'
@@ -123,7 +123,10 @@ export default function TrialDetail() {
       </Link>
 
       <div className="row mt-3 mb-3" style={{ alignItems: 'flex-start', gap: 26 }}>
-        <div className="trial-detail-num mono-num">{pad(num)}</div>
+        <div className="trial-detail-num mono-num">
+          {pad(num)}
+          {isPrimeTrial(num) && <span className="prime-mark" aria-hidden="true">·</span>}
+        </div>
         <div style={{ paddingTop: 8 }}>
           <div className="label">{trial.chapter}</div>
           <h1 className="page-title">{trial.title}</h1>

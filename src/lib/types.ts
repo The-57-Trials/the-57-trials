@@ -139,3 +139,10 @@ export const FREE_WINDOW_END = 5
 export function pad(num: number): string {
   return String(num).padStart(2, '0')
 }
+
+/** The Primes rule (doc 4.1) — every prime-numbered trial is non-physical
+ * and carries a small stamp the app never explains. 57 itself is not prime. */
+const PRIMES = new Set([2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53])
+export function isPrimeTrial(num: number): boolean {
+  return PRIMES.has(num)
+}
