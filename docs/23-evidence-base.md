@@ -21,6 +21,7 @@
 | 10 | Sturm et al. (2020), *Emotion* — [Big smile, small self: awe walks](https://memory.ucsf.edu/publications/big-smile-small-self-awe-walks-promote-prosocial-positive-emotions-older-adults) | The walking trials |
 | 11 | Kahneman & Fredrickson et al. (1993), cold-pressor studies — [The peak-end rule](https://www.nngroup.com/articles/peak-end-rule/) | Redesigning Trial 57 |
 | 12 | APA — [What is exposure therapy?](https://www.apa.org/ptsd-guideline/patients-and-families/exposure-therapy); public-speaking prevalence — [Fear of public speaking statistics](https://crowncounseling.com/statistics/fear-of-public-speaking-statistics/) | Redesigning Trial 57 |
+| 13 | Loewenstein (1994) — [Information-gap theory of curiosity](https://www.cmu.edu/dietrich/sds/docs/golman/Information-Gap%20Theory%202016.pdf); Hershfield et al. — [Future self-continuity](https://journals.sagepub.com/doi/10.1177/27000710251391610) | Explains why the sealed letter retains attention for five months |
 
 ---
 
@@ -145,3 +146,28 @@ product to exclude by circumstance rather than scale to it, and the first to be 
 checkable — breaking D8 and D10 in one move. Self-declared keeps every rule intact and makes
 the ending a genuine peak instead of a longer average. **Flagged for Rob's review, not yet a
 locked decision** — see the note against Trial 57 in `docs/22-the-storyboard.md`.
+
+## 13. The sealed letter is a curiosity gap, and that's why it works for five months
+
+Doc 18 justified the sealed letter via McAdams (narrative identity) and Nunes & Drèze
+(endowed progress). Research turned up on this pass adds a third, independent mechanism, and
+it's arguably the strongest one for explaining *retention specifically*.
+
+**Loewenstein's information-gap theory:** curiosity is sharpest when knowledge is *partial*,
+not absent — you have to know enough to feel the gap. Complete ignorance produces no
+curiosity; a gap that's "specific, salient, emotionally meaningful, and close enough that the
+answer feels reachable" produces the most. **A member who sealed their own letter has exactly
+this**: they know roughly what they wrote, they wrote it in their own hand, and they cannot
+look. That is a stronger, more specific information gap than any plot device could manufacture
+— nobody has to invent a mystery, the member already wrote one about themselves.
+
+**Future self-continuity** (Hershfield and others) adds the second half: feeling *connected*
+to one's future self — vivid, not abstract — increases motivation, agency and follow-through,
+and reduces hopelessness after a setback. Trial 01 addressing a letter to "whoever reads this
+at Trial 53" is a concrete, low-cost future-self-continuity manipulation, and Trial 53 is
+where that connection is cashed in: the two people (the one who wrote it and the one reading
+it) are asked to recognise each other.
+
+**Consequence: no content change, this formalises an already-correct design.** It's the
+clearest answer yet to "why would someone stay for five months" — not habit alone, but an
+open question about themselves that only time can close.
