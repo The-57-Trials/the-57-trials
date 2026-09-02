@@ -367,6 +367,11 @@ export default function Run() {
                   )}
                   <div className="t-num mono-num">{pad(t.num)}</div>
                   <div className="t-title">{t.title}</div>
+                  {state === 'locked' && t.published_demand != null && (
+                    <div className="t-grade mono-num" aria-hidden="true">
+                      D{t.published_demand} · F{t.published_friction}
+                    </div>
+                  )}
                   {t.is_milestone && <span className="t-flag" aria-hidden="true" />}
                 </div>
               )
