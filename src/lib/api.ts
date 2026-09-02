@@ -1,7 +1,7 @@
 import { supabase } from './supabase'
 import type {
-  Completion, LeaderboardRow, Letter, ReckoningDecision, ReckoningRoute, Trial, Typeface,
-  TrialGrade,
+  Completion, LeaderboardRow, Letter, ReckoningDecision, ReckoningRoute, Trial, TrialAccount,
+  TrialWitness, Typeface, TrialGrade,
 } from './types'
 
 export async function fetchTrials(): Promise<Trial[]> {
@@ -143,4 +143,46 @@ export async function submitReckoning(input: {
   })
   if (error) throw error
   return data as ReckoningResult
+}
+
+/** THE ACCOUNT (doc 21) — compulsory on every trial except 1, 9, 53. Readable
+ * directly: unlike the letters, there's no "sealed until later" drama here,
+ * only "editable until cleared." */
+export async function fetchMyAccount(trialNum: number): Promise<TrialAccount | null> {
+  const { data, error } = await supabase
+    .from('trial_accounts')
+    .select('done, hard, learned, updated_at')
+    .eq('trial_num', trialNum)
+    .maybeSingle()
+  if (error) throw error
+  return (data as TrialAccount) ?? null
+}
+
+export async function saveAccount(
+  trialNum: number, done: string, hard: string, learned: string,
+): Promise<void> {
+  const { error } = await supabase.rpc('save_account', {
+    p_trial_num: trialNum, p_done: done, p_hard: hard, p_learned: learned,
+  })
+  if (error) throw error
+}
+
+/** Trials 48-52, 54-57 only. Shown after a RED trial clears (doc 17.5). */
+export async function fetchMyWitness(trialNum: number): Promise<TrialWitness | null> {
+  const { data, error } = await supabase
+    .from('trial_witnesses')
+    .select('witness_name, relationship, recorded_at')
+    .eq('trial_num', trialNum)
+    .maybeSingle()
+  if (error) throw error
+  return (data as TrialWitness) ?? null
+}
+
+export async function recordWitness(
+  trialNum: number, witnessName: string, relationship: string,
+): Promise<void> {
+  const { error } = await supabase.rpc('record_witness', {
+    p_trial_num: trialNum, p_witness_name: witnessName, p_relationship: relationship,
+  })
+  if (error) throw error
 }

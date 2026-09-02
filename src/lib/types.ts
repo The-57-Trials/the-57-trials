@@ -43,6 +43,26 @@ export interface Letter {
 export type ReckoningRoute = 'written' | 'spoken'
 export type ReckoningDecision = 'lodge' | 'release'
 
+/** THE ACCOUNT (doc 21) — compulsory on every trial except 1, 9 and 53. */
+export interface TrialAccount {
+  done: string
+  hard: string
+  learned: string
+  updated_at: string
+}
+
+export const ACCOUNT_MIN_CHARS = 40
+export const ACCOUNT_EXEMPT_TRIALS = [1, 9, 53] as const
+
+/** Trials 48-52 and 54-57 (RED, chapter VI, excluding 53's own reckoning witness). */
+export const WITNESSED_TRIALS = [48, 49, 50, 51, 52, 54, 55, 56, 57] as const
+
+export interface TrialWitness {
+  witness_name: string
+  relationship: string | null
+  recorded_at: string
+}
+
 export interface Completion {
   trial_num: number
   cleared_at: string

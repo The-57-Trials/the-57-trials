@@ -5,12 +5,14 @@ import MilestoneTakeover from '../components/MilestoneTakeover'
 import GradeTrial from '../components/GradeTrial'
 import SealedLetter from '../components/SealedLetter'
 import Reckoning from '../components/Reckoning'
+import AccountPanel from '../components/AccountPanel'
+import AccountRecord from '../components/AccountRecord'
+import WitnessRecord from '../components/WitnessRecord'
 import { useAuth } from '../lib/auth'
+import { fetchTrials, fetchMyCompletions, fetchTrialBody, type ClearResult } from '../lib/api'
 import {
-  fetchTrials, fetchMyCompletions, fetchTrialBody, clearTrial, type ClearResult,
-} from '../lib/api'
-import {
-  pad, FREE_WINDOW_END, PRICE_CIRCUIT, LETTER_TRIALS, RECKONING_TRIAL, type Trial,
+  pad, FREE_WINDOW_END, PRICE_CIRCUIT, LETTER_TRIALS, RECKONING_TRIAL, WITNESSED_TRIALS,
+  type Trial,
 } from '../lib/types'
 
 type Status = 'loading' | 'ok' | 'locked'
@@ -25,9 +27,7 @@ export default function TrialDetail() {
   const [body, setBody] = useState('')
   const [clearedCount, setClearedCount] = useState(0)
   const [isCleared, setIsCleared] = useState(false)
-  const [stamping, setStamping] = useState(false)
   const [showMilestone, setShowMilestone] = useState(false)
-  const [error, setError] = useState<string | null>(null)
 
   const circuitLocked = num > FREE_WINDOW_END && profile != null && !profile.circuit_active
 
@@ -35,7 +35,6 @@ export default function TrialDetail() {
     if (!session || !Number.isInteger(num)) return
     let cancelled = false
     setStatus('loading')
-    setError(null)
 
     Promise.all([fetchTrials(), fetchMyCompletions(session.user.id)])
       .then(async ([trials, completions]) => {
@@ -95,8 +94,8 @@ export default function TrialDetail() {
     )
   }
 
-  // Shared by the plain MARK CLEARED button and by SealedLetter/Reckoning,
-  // which call clear_trial themselves once their own RPC has succeeded.
+  // Shared by AccountPanel and by SealedLetter/Reckoning, which all call
+  // clear_trial themselves once their own precondition RPC has succeeded.
   function applyClearResult(result: ClearResult) {
     setIsCleared(true)
     setClearedCount((c) => Math.max(c, num))
@@ -104,32 +103,9 @@ export default function TrialDetail() {
     refreshProfile()
   }
 
-  async function markCleared() {
-    setStamping(true)
-    setError(null)
-    try {
-      const result = await clearTrial(num)
-      applyClearResult(result)
-    } catch (e) {
-      const msg = e instanceof Error ? e.message : 'Could not clear the trial.'
-      if (msg.includes('CIRCUIT_REQUIRED')) {
-        setError('Trials 06+ require an active Circuit Pass.')
-      } else if (msg.includes('OUT_OF_ORDER')) {
-        setError('One line at a time. No skipping ahead.')
-      } else if (msg.includes('COOLDOWN')) {
-        setError('Not yet. The hold between lines has not run out.')
-      } else if (msg.includes('ENTRY_REQUIRED')) {
-        setError('Pay the entry first.')
-      } else {
-        setError(msg)
-      }
-    } finally {
-      setStamping(false)
-    }
-  }
-
   const isLetterTrial = (LETTER_TRIALS as readonly number[]).includes(num)
   const isReckoning = num === RECKONING_TRIAL
+  const isWitnessed = (WITNESSED_TRIALS as readonly number[]).includes(num)
 
   return (
     <div className="page" style={{ maxWidth: 760 }}>
@@ -182,6 +158,8 @@ export default function TrialDetail() {
                   <span className="stamp">CLEARED</span>
                 </div>
 
+                {!isLetterTrial && !isReckoning && <AccountRecord trialNum={num} />}
+                {isWitnessed && <WitnessRecord trialNum={num} />}
                 <GradeTrial trialNum={num} />
                 {num < 57 && (
                   <Link
@@ -198,17 +176,7 @@ export default function TrialDetail() {
             ) : isReckoning ? (
               <Reckoning onCleared={applyClearResult} />
             ) : (
-              <div className="stack">
-                {error && <div className="notice" role="alert">{error}</div>}
-                <button
-                  className="btn btn-primary"
-                  style={{ alignSelf: 'flex-start', fontSize: 16, padding: '18px 42px' }}
-                  onClick={markCleared}
-                  disabled={stamping}
-                >
-                  {stamping ? 'STAMPING…' : 'MARK CLEARED'}
-                </button>
-              </div>
+              <AccountPanel trialNum={num} onCleared={applyClearResult} />
             )}
           </div>
         </>
