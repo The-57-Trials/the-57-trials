@@ -396,7 +396,7 @@ came before. They arrive on the four clock trials, which members will notice aro
 |---|---|---|
 | **15** | **The bib.** A real race bib, correct material, permanent number, `5757` in the corner. Posted flat. | The number has existed in the app since day one; this makes it physical. Cheapest item, most photographed. |
 | **30** | **Patch + stamped card** recording bib and date cleared. | Patches only mean anything as a set — this creates a collection and makes 45 feel owed. |
-| **45** | **Wearable kit** — beanie or technical cap, number stitched **inside**. | First useful rather than symbolic item. Hidden number is the idea: at 45 you don't need to prove it. |
+| **45** | ~~Wearable kit — beanie or technical cap, number stitched inside.~~ **Superseded by D3: the Trial Blazer card**, a bonus trial that earns a hoodie on completion. See `docs/00-decisions.md`. | Opt-in and earned twice, rather than an automatic cost against everyone who reaches 45. |
 | **57** | **Finisher's plate** — metal, bib number, `5757`, date, numbered in order of all-time finishers. Boxed, hand-addressed, **with their Trial 01 words returned to them.** | A finisher's medal that isn't a medal. Returning their own words is free and is the strongest thing in the box. |
 
 Escalation: symbolic → collectible → useful → permanent.
