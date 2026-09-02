@@ -28,6 +28,7 @@ export default function TrialDetail() {
   const [clearedCount, setClearedCount] = useState(0)
   const [isCleared, setIsCleared] = useState(false)
   const [showMilestone, setShowMilestone] = useState(false)
+  const [finisherNumber, setFinisherNumber] = useState<number | null>(null)
 
   const circuitLocked = num > FREE_WINDOW_END && profile != null && !profile.circuit_active
 
@@ -82,7 +83,11 @@ export default function TrialDetail() {
   // The milestone moment renders above the loading gate so it can never be
   // interrupted by a background refresh.
   const takeover = showMilestone ? (
-    <MilestoneTakeover trialNum={num} onDismiss={() => setShowMilestone(false)} />
+    <MilestoneTakeover
+      trialNum={num}
+      onDismiss={() => setShowMilestone(false)}
+      finisherNumber={finisherNumber}
+    />
   ) : null
 
   if (status === 'loading' || !trial || !profile) {
@@ -99,6 +104,7 @@ export default function TrialDetail() {
   function applyClearResult(result: ClearResult) {
     setIsCleared(true)
     setClearedCount((c) => Math.max(c, num))
+    if (result.finisher_number != null) setFinisherNumber(result.finisher_number)
     if (result.milestone) setShowMilestone(true)
     refreshProfile()
   }

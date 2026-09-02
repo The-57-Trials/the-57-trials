@@ -4,12 +4,13 @@ import { pad } from '../lib/types'
 interface MilestoneTakeoverProps {
   trialNum: number
   onDismiss: () => void
+  finisherNumber?: number | null
 }
 
 const PALETTE = ['#E8B923', '#C2431C', '#F1ECDD']
 
 /** Full-screen checkpoint moment for milestones 15/30/45/57. Confetti stays on-palette. */
-export default function MilestoneTakeover({ trialNum, onDismiss }: MilestoneTakeoverProps) {
+export default function MilestoneTakeover({ trialNum, onDismiss, finisherNumber }: MilestoneTakeoverProps) {
   const dismissRef = useRef<HTMLButtonElement>(null)
 
   const confetti = useMemo(
@@ -51,9 +52,14 @@ export default function MilestoneTakeover({ trialNum, onDismiss }: MilestoneTake
       <h2 id="takeover-title">
         {finish ? 'RUN COMPLETE' : `CHECKPOINT ${pad(trialNum)} REACHED`}
       </h2>
+      {finish && finisherNumber != null && (
+        <div className="finisher-number mono-num" aria-hidden="true">
+          FINISHER No. {String(finisherNumber).padStart(3, '0')}
+        </div>
+      )}
       <p className="muted" style={{ maxWidth: 420 }}>
         {finish
-          ? 'Fifty-seven lines. Cleared. The final drop is on its way!'
+          ? 'Fifty-seven lines. Cleared. Permanent, never reissued. The book unlocks, and the final drop is on its way.'
           : 'Milestone logged. Merch is on its way.'}
       </p>
       <button

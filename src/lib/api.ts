@@ -35,6 +35,7 @@ export interface ClearResult {
   cleared: number
   next: number | null
   milestone: boolean
+  finisher_number: number | null
 }
 
 export async function clearTrial(num: number): Promise<ClearResult> {

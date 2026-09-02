@@ -993,3 +993,13 @@ label { display: block; margin-bottom: 6px; }
 .hold-panel { border-left: 3px solid var(--yellow); }
 .hold-track { height: 6px; background: var(--ink-sunken); }
 .hold-track .progress-fill { background: var(--yellow); }
+
+/* ---------- finisher number reveal ---------- */
+
+.finisher-number {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 6vw, 44px);
+  color: var(--yellow);
+  letter-spacing: 0.04em;
+  margin: 4px 0;
+}
