@@ -460,10 +460,13 @@ gate is decoration; and the read path must be as strict as the write path.
 
 ## 4.8 Written content — status and what writing it revealed
 
-**Written: 02, 03, 04, 05.** Source of truth is `content/trials/*.md`; migration
-`0008_trials_02_05.sql` is generated from those files and is applied live. Trial 06 exists
-publication-ready in 4.2 above but has **not** been loaded. Trial 01 is specced in doc 18
-(the sealed letter) and needs the letter UI, not a briefing.
+**Written and loaded live: 02, 03, 04, 05, 06, 07, 10.** Source of truth is
+`content/trials/*.md`; migration `0008_trials_02_05.sql` covers 02–04, and
+`0012_trial_reorder_02_10.sql` covers the doc-22 reorder — 03 rewritten to if-then, 05
+now ONE THING FINISHED, 06 (THE STACK) finally loaded, 07 now THE UNSEEN EFFORT, and
+SEVEN GLASSES moved to 10. **Numbering in this section (4.4) predates that reorder and is
+superseded by doc 22.3 — read the storyboard's table, not this one, for current titles.**
+Trial 01 is specced in doc 18 (the sealed letter) and needs the letter UI, not a briefing.
 
 ### Five things writing them turned up
 

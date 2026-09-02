@@ -54,8 +54,17 @@ it**. `docs/README.md` indexes all 23 documents. Highlights:
 
 ## Current state
 
-Stripe is live and proven end-to-end in test mode. Trials **02–06 written and loaded**;
-**0 of the remaining 51 written**, which is the critical path. Outstanding on Rob's side:
-insurance, solicitor review of the draft legal pages, ICO registration, custom SMTP (a hard
-launch blocker — Supabase's built-in email only reaches pre-authorised addresses), Supabase
-Pro for backups, and deleting the decoy project.
+Stripe is live and proven end-to-end in test mode. Trials **02, 03, 05, 06, 07, 10 written
+and loaded**, in the order fixed by doc 22's storyboard reorder (SEVEN GLASSES moved from 05
+to 10; 05 is now ONE THING FINISHED; 07 is now THE UNSEEN EFFORT). **0 of the remaining 51
+written**, which is the critical path. Outstanding on Rob's side: insurance, solicitor review
+of the draft legal pages, ICO registration, custom SMTP (a hard launch blocker — Supabase's
+built-in email only reaches pre-authorised addresses), Supabase Pro for backups, and deleting
+the decoy project.
+
+**Migration history has drifted from the live database twice** — two migrations (`trial_accounts`,
+`account_mirror`) were applied live via the Supabase MCP on 1–2 Sep without ever being
+committed as numbered files. They've been reconstructed as `0010`/`0011` for the record, but
+were **not re-applied live** (they're already there) — only genuinely new migrations should be
+pushed. Always add the numbered file in the same turn you call `apply_migration`, so this
+doesn't happen a third time.

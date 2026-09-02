@@ -215,7 +215,11 @@ claim is something the trials literally required:
 
 ## 22.7 Changes to trials already written
 
+**Done, 2 Sep 2026 (migration `trial_reorder_02_10`):**
+
 1. **Trial 03 → if-then format.** Finding 3. Highest-value single edit in the product.
 2. **Trial 05 → ONE THING FINISHED.** SEVEN GLASSES moves to 10. Finding 5, and Rob's objection.
 3. **Trial 07 → THE UNSEEN EFFORT.** ONE THING FINISHED has moved down to 05.
-4. Titles and `min_gap_minutes` reload for the whole 57.
+4. **Trial 06, THE STACK** — written in this document's own commit but never loaded — loaded alongside the above.
+
+**Still open:** titles and `min_gap_minutes` for the rest of the 57 as each one is written.

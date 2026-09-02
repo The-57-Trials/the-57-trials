@@ -9,7 +9,7 @@ a week rather than a day, and the first one you can drop halfway through.
 2. *Before anything else* means before coffee, before tea, before food, before your phone, before the news, and before the first thing you were going to do instead.
 3. **One glass. Not a litre.** More is not better here and this is not a hydration challenge.
 4. Log it each morning, in the app, once it's done. Seven logs on seven separate mornings clears the trial.
-5. Miss a morning and that morning simply doesn't count. Keep going until you have seven. **Nothing restarts and nobody is told.** That changes at Trial 10, and you'll be ready for it by then.
+5. Miss a morning and that morning simply doesn't count. Keep going until you have seven. **Nothing restarts and nobody is told.**
 
 **THE RUBRIC**
 
