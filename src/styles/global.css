@@ -1003,3 +1003,24 @@ label { display: block; margin-bottom: 6px; }
   letter-spacing: 0.04em;
   margin: 4px 0;
 }
+
+/* ---------- the Library ---------- */
+
+.chapter-heading-sm {
+  font-family: var(--font-display);
+  font-size: 20px;
+  letter-spacing: 0.04em;
+  color: var(--steel);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 6px;
+  margin-bottom: 12px;
+}
+.letter-card-lib { min-height: 90px; }
+
+.milestone-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+.milestone-card.locked { opacity: 0.5; }
+.milestone-card.locked .m-num { color: var(--steel); }

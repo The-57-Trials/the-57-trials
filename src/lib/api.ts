@@ -187,3 +187,72 @@ export async function recordWitness(
   })
   if (error) throw error
 }
+
+// ---------- the Library (doc 18.2) ----------
+
+export interface MyReckoning {
+  route: ReckoningRoute
+  witness_name: string | null
+  witness_relationship: string | null
+  answer: string
+  decision: ReckoningDecision
+  decided_at: string
+}
+
+export async function fetchMyReckoning(): Promise<MyReckoning | null> {
+  const { data, error } = await supabase
+    .from('reckonings')
+    .select('route, witness_name, witness_relationship, answer, decision, decided_at')
+    .maybeSingle()
+  if (error) throw error
+  return (data as MyReckoning) ?? null
+}
+
+export async function fetchAllMyWitnesses(): Promise<(TrialWitness & { trial_num: number })[]> {
+  const { data, error } = await supabase
+    .from('trial_witnesses')
+    .select('trial_num, witness_name, relationship, recorded_at')
+    .order('trial_num')
+  if (error) throw error
+  return data as (TrialWitness & { trial_num: number })[]
+}
+
+export interface MyFinisher {
+  finisher_number: number
+  finished_at: string
+}
+
+export async function fetchMyFinisher(): Promise<MyFinisher | null> {
+  const { data, error } = await supabase
+    .from('finishers')
+    .select('finisher_number, finished_at')
+    .maybeSingle()
+  if (error) throw error
+  return (data as MyFinisher) ?? null
+}
+
+export interface BonusTrial {
+  id: number
+  code: string
+  title: string
+  reward: string
+  unlocked_at: number
+}
+
+export async function fetchBonusTrials(): Promise<BonusTrial[]> {
+  const { data, error } = await supabase
+    .from('bonus_trials')
+    .select('id, code, title, reward, unlocked_at')
+    .eq('active', true)
+    .order('unlocked_at')
+  if (error) throw error
+  return data as BonusTrial[]
+}
+
+export async function fetchMyBonusCompletions(): Promise<{ bonus_id: number; cleared_at: string }[]> {
+  const { data, error } = await supabase
+    .from('bonus_completions')
+    .select('bonus_id, cleared_at')
+  if (error) throw error
+  return data as { bonus_id: number; cleared_at: string }[]
+}

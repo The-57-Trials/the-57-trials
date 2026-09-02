@@ -15,6 +15,7 @@ export default function Header() {
           {session ? (
             <>
               <NavLink to="/run">Your Run</NavLink>
+              <NavLink to="/library">Library</NavLink>
               <NavLink to="/board">Board</NavLink>
               <NavLink to="/account">Account</NavLink>
               {profile && (

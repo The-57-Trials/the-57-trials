@@ -14,6 +14,7 @@ const Run = lazy(() => import('./pages/Run'))
 const TrialDetail = lazy(() => import('./pages/TrialDetail'))
 const Board = lazy(() => import('./pages/Board'))
 const Account = lazy(() => import('./pages/Account'))
+const Library = lazy(() => import('./pages/Library'))
 // Race Control is a separate application with its own build and its own
 // deployment. Nothing about it ships to a member's browser.
 const ForgotPassword = lazy(() => import('./pages/ForgotPassword'))
@@ -55,6 +56,7 @@ export default function App() {
             <Route element={<RequireAuth />}>
               <Route path="/run" element={<Run />} />
               <Route path="/run/trial/:num" element={<TrialDetail />} />
+              <Route path="/library" element={<Library />} />
               <Route path="/board" element={<Board />} />
               <Route path="/account" element={<Account />} />
             </Route>
