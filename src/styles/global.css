@@ -985,3 +985,11 @@ label { display: block; margin-bottom: 6px; }
 /* ---------- witness record ---------- */
 
 .witness-panel { border-left: 3px solid var(--yellow); }
+
+/* ---------- THE INTERVAL: HOLD day-ticker ---------- */
+/* A HOLD's gap is its own duration (D15), not a lockout — visually distinct
+   from an ordinary cooldown panel via the yellow edge and the progress bar. */
+
+.hold-panel { border-left: 3px solid var(--yellow); }
+.hold-track { height: 6px; background: var(--ink-sunken); }
+.hold-track .progress-fill { background: var(--yellow); }

@@ -9,6 +9,8 @@ export interface Profile {
   deleted_at: string | null
 }
 
+export type TrialType = 'MOVE' | 'HOLD' | 'MARK' | 'CRAFT' | 'SIGNAL'
+
 export interface Trial {
   num: number
   title: string
@@ -16,6 +18,7 @@ export interface Trial {
   is_milestone: boolean
   active: boolean
   min_gap_minutes: number
+  trial_type: TrialType | null
   /** Null until Race Control publishes a grade from the cohort's results. */
   published_demand: number | null
   published_friction: number | null
@@ -102,6 +105,22 @@ export function readyAt(lastClearedAt: string | null, gapMinutes: number): Date 
   if (!lastClearedAt || gapMinutes <= 0) return null
   const d = new Date(new Date(lastClearedAt).getTime() + gapMinutes * 60_000)
   return d.getTime() > Date.now() ? d : null
+}
+
+/**
+ * A HOLD trial's min_gap_minutes is its own duration, not a cooldown (D15) —
+ * it opens the moment the previous trial clears, and CLEARED unlocks once
+ * the days are up. "Day 3 of 7", counting the day it opened as day one, so
+ * the ticker never reads 0/7 on the first morning.
+ */
+export function holdProgress(
+  lastClearedAt: string | null, gapMinutes: number,
+): { day: number; of: number } | null {
+  if (!lastClearedAt || gapMinutes <= 0) return null
+  const of = Math.round(gapMinutes / 1440)
+  const elapsedMs = Date.now() - new Date(lastClearedAt).getTime()
+  const day = Math.min(of, Math.floor(elapsedMs / 86_400_000) + 1)
+  return { day, of }
 }
 
 /** "in 3h 20m" / "tomorrow at 06:40" — long waits deserve a wall-clock time. */

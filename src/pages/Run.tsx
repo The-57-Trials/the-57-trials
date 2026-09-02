@@ -4,7 +4,7 @@ import RouteViz from '../components/RouteViz'
 import { useAuth } from '../lib/auth'
 import { fetchTrials, fetchMyCompletions, createCheckout } from '../lib/api'
 import {
-  pad, FREE_WINDOW_END, PRICE_ENTRY, PRICE_CIRCUIT, readyAt, untilLabel,
+  pad, FREE_WINDOW_END, PRICE_ENTRY, PRICE_CIRCUIT, readyAt, untilLabel, holdProgress,
   type Trial, type Completion,
 } from '../lib/types'
 
@@ -270,6 +270,35 @@ export default function Run() {
                 : `JOIN THE CIRCUIT — ${PRICE_CIRCUIT}/MO`}
           </button>
         </div>
+      ) : cooldownUntil && currentTrial && currentTrial.trial_type === 'HOLD' ? (
+        /* D15: on a HOLD, min_gap_minutes IS the trial's own duration, not a
+           cooldown — it's already open, the member is inside it. Read as a
+           duration in progress, never as a lockout (doc 4.8.1). */
+        (() => {
+          const progress = holdProgress(lastClearedAt, currentTrial.min_gap_minutes)
+          return (
+            <div className="panel hold-panel">
+              <div className="label">THE INTERVAL — {pad(current)} IS OPEN</div>
+              <div className="display" style={{ fontSize: 30, margin: '8px 0' }}>
+                {progress ? `DAY ${progress.day} OF ${progress.of}` : currentTrial.title.toUpperCase()}
+              </div>
+              {progress && (
+                <div className="progress-track hold-track mb-2" role="progressbar"
+                  aria-valuenow={progress.day} aria-valuemin={0} aria-valuemax={progress.of}
+                  aria-label={`Day ${progress.day} of ${progress.of}`}
+                >
+                  <div className="progress-fill" style={{ width: `${(progress.day / progress.of) * 100}%` }} />
+                </div>
+              )}
+              <p className="muted" style={{ fontSize: 13 }}>
+                {currentTrial.title} clears once the days are up. The waiting is the trial.
+              </p>
+              <Link to={`/run/trial/${current}`} className="btn-link mt-1" style={{ display: 'inline-block' }}>
+                Read the brief again →
+              </Link>
+            </div>
+          )
+        })()
       ) : cooldownUntil && currentTrial ? (
         /* The wait is part of the trial, so it is stated plainly rather than
            hidden — and it can never be bought out of. */

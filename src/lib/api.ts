@@ -7,7 +7,7 @@ import type {
 export async function fetchTrials(): Promise<Trial[]> {
   const { data, error } = await supabase
     .from('trials')
-    .select('num, title, chapter, is_milestone, active, min_gap_minutes, published_demand, published_friction')
+    .select('num, title, chapter, is_milestone, active, min_gap_minutes, trial_type, published_demand, published_friction')
     .eq('active', true)
     .order('num')
   if (error) throw error
