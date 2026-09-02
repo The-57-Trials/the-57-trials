@@ -1,4 +1,10 @@
-**THE LINE**
+-- 0022: brand-check pass 1 found a real gap in Trial 57's redesign (0020) -
+-- opening the finale to "anything you've been avoiding" without restating
+-- the global exclusions meant a member could declare a physical fear that
+-- breaks one (climbing, open water, heights). Patched.
+
+update public.trials set
+  body_md = $md$**THE LINE**
 
 Trial 01 asked what would make you quit. This is the thing you've built a whole life around
 avoiding. Not a longer walk — the one thing, whatever it actually is.
@@ -51,4 +57,5 @@ physical, a date and outcome if it isn't.
 **NOTE**
 
 Your finisher number is issued the moment this clears. The book unlocks the same day. There
-isn't a 58.
+isn't a 58.$md$
+where num = 57;
