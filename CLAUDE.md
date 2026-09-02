@@ -54,13 +54,21 @@ it**. `docs/README.md` indexes all 23 documents. Highlights:
 
 ## Current state
 
-Stripe is live and proven end-to-end in test mode. Trials **02, 03, 05, 06, 07, 10 written
-and loaded**, in the order fixed by doc 22's storyboard reorder (SEVEN GLASSES moved from 05
-to 10; 05 is now ONE THING FINISHED; 07 is now THE UNSEEN EFFORT). **0 of the remaining 51
-written**, which is the critical path. Outstanding on Rob's side: insurance, solicitor review
-of the draft legal pages, ICO registration, custom SMTP (a hard launch blocker — Supabase's
-built-in email only reaches pre-authorised addresses), Supabase Pro for backups, and deleting
-the decoy project.
+Stripe is live and proven end-to-end in test mode. Trials **01, 02, 03, 05, 06, 07, 09, 10,
+53 written and loaded** — 9 of 57. 01, 09 and 53 are the flagship arc (doc 18): a sealed
+letter mechanic (`letters` table, `seal_letter`/`get_my_letter` RPCs, `SealedLetter.tsx`) at
+01 and 09, genuinely unreadable — including to its own author — until THE RECKONING at 53
+(`reckonings` table, `submit_reckoning`, `Reckoning.tsx`) breaks both seals. **48 of the
+remaining 57 unwritten**, which is the critical path. Outstanding on Rob's side: insurance,
+solicitor review of the draft legal pages, ICO registration, custom SMTP (a hard launch
+blocker — Supabase's built-in email only reaches pre-authorised addresses), Supabase Pro for
+backups, and deleting the decoy project.
+
+Two known simplifications in the letter/Reckoning build, both flagged in code comments: (1)
+Trial 01 sits after the Entry Pass paywall rather than inside signup as doc 22.1 finding 5
+recommends — moving it earlier means touching `clear_trial`'s and `get_trial_body`'s
+entry_paid gate, deliberately left alone here; (2) the typewriter/handwriting choice uses
+system font fallback stacks, not real webfonts — nothing is self-hosted for it yet.
 
 **Migration history has drifted from the live database twice** — two migrations (`trial_accounts`,
 `account_mirror`) were applied live via the Supabase MCP on 1–2 Sep without ever being

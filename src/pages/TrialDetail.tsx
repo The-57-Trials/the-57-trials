@@ -3,9 +3,15 @@ import { Link, Navigate, useParams } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import MilestoneTakeover from '../components/MilestoneTakeover'
 import GradeTrial from '../components/GradeTrial'
+import SealedLetter from '../components/SealedLetter'
+import Reckoning from '../components/Reckoning'
 import { useAuth } from '../lib/auth'
-import { fetchTrials, fetchMyCompletions, fetchTrialBody, clearTrial } from '../lib/api'
-import { pad, FREE_WINDOW_END, PRICE_CIRCUIT, type Trial } from '../lib/types'
+import {
+  fetchTrials, fetchMyCompletions, fetchTrialBody, clearTrial, type ClearResult,
+} from '../lib/api'
+import {
+  pad, FREE_WINDOW_END, PRICE_CIRCUIT, LETTER_TRIALS, RECKONING_TRIAL, type Trial,
+} from '../lib/types'
 
 type Status = 'loading' | 'ok' | 'locked'
 
@@ -89,15 +95,21 @@ export default function TrialDetail() {
     )
   }
 
+  // Shared by the plain MARK CLEARED button and by SealedLetter/Reckoning,
+  // which call clear_trial themselves once their own RPC has succeeded.
+  function applyClearResult(result: ClearResult) {
+    setIsCleared(true)
+    setClearedCount((c) => Math.max(c, num))
+    if (result.milestone) setShowMilestone(true)
+    refreshProfile()
+  }
+
   async function markCleared() {
     setStamping(true)
     setError(null)
     try {
       const result = await clearTrial(num)
-      setIsCleared(true)
-      setClearedCount((c) => Math.max(c, num))
-      if (result.milestone) setShowMilestone(true)
-      refreshProfile()
+      applyClearResult(result)
     } catch (e) {
       const msg = e instanceof Error ? e.message : 'Could not clear the trial.'
       if (msg.includes('CIRCUIT_REQUIRED')) {
@@ -115,6 +127,9 @@ export default function TrialDetail() {
       setStamping(false)
     }
   }
+
+  const isLetterTrial = (LETTER_TRIALS as readonly number[]).includes(num)
+  const isReckoning = num === RECKONING_TRIAL
 
   return (
     <div className="page" style={{ maxWidth: 760 }}>
@@ -178,6 +193,10 @@ export default function TrialDetail() {
                   </Link>
                 )}
               </div>
+            ) : isLetterTrial ? (
+              <SealedLetter trialNum={num} onCleared={applyClearResult} />
+            ) : isReckoning ? (
+              <Reckoning onCleared={applyClearResult} />
             ) : (
               <div className="stack">
                 {error && <div className="notice" role="alert">{error}</div>}

@@ -1,5 +1,8 @@
 import { supabase } from './supabase'
-import type { Completion, LeaderboardRow, Trial, TrialGrade } from './types'
+import type {
+  Completion, LeaderboardRow, Letter, ReckoningDecision, ReckoningRoute, Trial, Typeface,
+  TrialGrade,
+} from './types'
 
 export async function fetchTrials(): Promise<Trial[]> {
   const { data, error } = await supabase
@@ -103,4 +106,41 @@ export async function fetchMyGrade(trialNum: number): Promise<TrialGrade | null>
     .maybeSingle()
   if (error) throw error
   return (data as TrialGrade) ?? null
+}
+
+/** Trials 01 and 09 only. Immutable once sealed — there is no edit or unseal. */
+export async function sealLetter(trialNum: number, typeface: Typeface, body: string): Promise<void> {
+  const { error } = await supabase.rpc('seal_letter', {
+    p_trial_num: trialNum, p_typeface: typeface, p_body: body,
+  })
+  if (error) throw error
+}
+
+/** Throws SEALED until Trial 53 is reached — that is the mechanic, not a bug. */
+export async function fetchMyLetter(trialNum: number): Promise<Letter> {
+  const { data, error } = await supabase.rpc('get_my_letter', { p_trial_num: trialNum })
+  if (error) throw error
+  return data as Letter
+}
+
+export interface ReckoningResult {
+  decision: ReckoningDecision
+}
+
+export async function submitReckoning(input: {
+  route: ReckoningRoute
+  witnessName: string
+  witnessRelationship: string
+  answer: string
+  decision: ReckoningDecision
+}): Promise<ReckoningResult> {
+  const { data, error } = await supabase.rpc('submit_reckoning', {
+    p_route: input.route,
+    p_witness_name: input.witnessName,
+    p_witness_relationship: input.witnessRelationship,
+    p_answer: input.answer,
+    p_decision: input.decision,
+  })
+  if (error) throw error
+  return data as ReckoningResult
 }

@@ -845,3 +845,129 @@ label { display: block; margin-bottom: 6px; }
   color: var(--steel);
 }
 .grade-done { border-left: 3px solid var(--yellow); }
+
+/* ---------- the sealed letter (Trials 01, 09) and the Reckoning (53) ----------
+   The one warm surface in a cold-on-purpose product (doc 18.2) — real paper
+   colour, a serif-free but non-mono voice, deliberately out of step with the
+   rest of the "race bib" system. That contrast is the design.
+   No dedicated typewriter/handwriting webfonts are loaded yet — these lean on
+   safe system stacks so the two choices read differently without a new asset
+   dependency; swapping in real faces later is a drop-in change here only. */
+
+.letter-page {
+  background: var(--paper);
+  color: var(--ink);
+  padding: 34px 30px;
+  border: 1px solid var(--line);
+  position: relative;
+}
+.letter-page.typewriter { font-family: 'Courier New', Courier, monospace; }
+.letter-page.handwriting { font-family: 'Segoe Print', 'Bradley Hand', 'Segoe Script', cursive; font-size: 17px; }
+
+.letter-page textarea {
+  width: 100%;
+  min-height: 220px;
+  background: transparent;
+  color: var(--ink);
+  border: none;
+  border-top: 1px dashed rgba(20, 22, 28, 0.25);
+  resize: vertical;
+  font: inherit;
+  line-height: 1.7;
+  padding: 16px 0 0;
+}
+.letter-page textarea:focus { outline: none; }
+.letter-page textarea::placeholder { color: rgba(20, 22, 28, 0.4); }
+
+.typeface-choice { display: flex; gap: 10px; margin-bottom: 4px; }
+.typeface-btn {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid rgba(20, 22, 28, 0.35);
+  cursor: pointer;
+}
+.typeface-btn.on { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+.letter-count { font-size: 11px; color: rgba(20, 22, 28, 0.55); text-align: right; margin-top: 6px; }
+
+/* The wax seal: a stamped circle, same rust as CLEARED, deliberately crossing
+   onto the paper so it reads as pressed rather than printed. */
+@keyframes seal-press {
+  0%   { transform: scale(2.6) rotate(-8deg); opacity: 0; }
+  60%  { transform: scale(0.92) rotate(3deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+.wax-seal {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: var(--rust);
+  color: var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  margin: 0 auto 14px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+  animation: seal-press 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.letter-sealed {
+  text-align: center;
+  padding: 30px 20px;
+}
+
+/* ---------- THE RECKONING ---------- */
+
+.reckoning-letters { display: grid; gap: 16px; }
+@media (min-width: 640px) { .reckoning-letters { grid-template-columns: 1fr 1fr; } }
+
+.reckoning-letter-label { margin-bottom: 8px; }
+.reckoning-letter-body { white-space: pre-wrap; line-height: 1.7; }
+
+.reckoning-pause {
+  text-align: center;
+  padding: 48px 20px;
+}
+.reckoning-pause .countdown {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 12vw, 84px);
+  color: var(--paper);
+  font-variant-numeric: tabular-nums;
+}
+
+.route-choice { display: flex; gap: 12px; flex-wrap: wrap; }
+.route-btn {
+  flex: 1 1 200px;
+  text-align: left;
+  padding: 16px 18px;
+  background: var(--ink-sunken);
+  color: var(--paper);
+  border: 1.5px solid var(--line);
+  cursor: pointer;
+}
+.route-btn.on { border-color: var(--yellow); background: rgba(232, 185, 35, 0.08); }
+.route-btn .rb-title { font-family: var(--font-display); font-size: 20px; letter-spacing: 0.03em; }
+.route-btn .rb-sub { color: var(--steel); font-size: 12px; margin-top: 4px; }
+
+.decision-choice { display: flex; gap: 12px; flex-wrap: wrap; }
+.decision-btn {
+  flex: 1 1 200px;
+  padding: 18px;
+  background: var(--ink-sunken);
+  color: var(--paper);
+  border: 1.5px solid var(--line);
+  cursor: pointer;
+  text-align: left;
+}
+.decision-btn.on.lodge { border-color: var(--yellow); background: rgba(232, 185, 35, 0.08); }
+.decision-btn.on.release { border-color: var(--rust); background: rgba(194, 67, 28, 0.1); }
+.decision-btn .db-title { font-family: var(--font-display); font-size: 22px; }
+.decision-btn .db-sub { color: var(--steel); font-size: 12px; margin-top: 4px; }

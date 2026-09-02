@@ -210,7 +210,15 @@ claim is something the trials literally required:
 
 - `trial_accounts` + `save_account` + `clear_trial` precondition — **done** (0010).
 - `trial_type`, `flag` — **done** (0008). HOLD durations — **done** (0009).
-- **Still needed:** `letters` table (01, 09, 41, 53, sealed-until semantics); `hold_checkins` (user, trial, day, one row per calendar day, unique) — the seven-timestamps mechanic from 13.6; `finishers` (doc 16); `trial_witnesses` (doc 17); Library read view; book export.
+- `letters` + `reckonings`, `seal_letter`/`get_my_letter`/`submit_reckoning`, `clear_trial`
+  preconditions for 1/9/53 — **done** (0013, 2 Sep). Covers Trials 01, 09 and 53 only.
+  **Trial 41, THE FORGIVENESS LETTER, is not built** — it reuses the same letter UI (22.5)
+  but needs its own content, its own unlock semantics (it isn't sealed-until-53 like 1/9, it
+  reads back immediately), and a schema decision on whether it belongs in `letters` at all
+  given the different rules.
+- **Still needed:** `hold_checkins` (user, trial, day, one row per calendar day, unique) — the
+  seven-timestamps mechanic from 13.6; `finishers` (doc 16); `trial_witnesses` (doc 17);
+  Library read view; book export.
 - **Then:** re-verify `clear_trial` enforces order, both paywalls, cooldown and account after every change.
 
 ## 22.7 Changes to trials already written

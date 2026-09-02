@@ -1,9 +1,19 @@
 # 18. The Library, the Sealed Letter, and the Book
 
-> Rob's design, 31 Aug 2026. **Not built** — this is the spec to build from.
+> Rob's design, 31 Aug 2026.
 >
 > ### The through-line
 > > **You open it with a pen and you close it with a book.**
+>
+> **Built, 2 Sep 2026 (migration `letters_and_reckoning`):** the sealed letter (18.1) at
+> Trials 01 and 09, and THE RECKONING (18.7) at Trial 53 — the `letters` and `reckonings`
+> tables, `seal_letter`/`get_my_letter`/`submit_reckoning`, and the member-facing UI
+> (`SealedLetter.tsx`, `Reckoning.tsx`). Genuinely unreadable server-side until 53, exactly as
+> specced — the gate is `get_my_letter()`, not a UI convention. **Not yet built:** the Library
+> page itself (18.2), sharing (18.3), and the book (18.4) — those read the data this migration
+> now produces, but nothing renders it outside the Reckoning flow yet. Also not done: moving
+> Trial 01 before the Entry Pass paywall, per finding 5 in doc 22.1 — see the scoping note at
+> the top of the migration for why that was left for separate, security-sensitive follow-up.
 
 ---
 

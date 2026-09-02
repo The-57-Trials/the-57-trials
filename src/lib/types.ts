@@ -28,6 +28,21 @@ export interface TrialGrade {
   note: string | null
 }
 
+export type Typeface = 'typewriter' | 'handwriting'
+
+/** Trials 01 and 09. Content withheld server-side until Trial 53 — see get_my_letter. */
+export const LETTER_TRIALS = [1, 9] as const
+export const RECKONING_TRIAL = 53
+
+export interface Letter {
+  typeface: Typeface
+  body: string
+  sealed_at: string
+}
+
+export type ReckoningRoute = 'written' | 'spoken'
+export type ReckoningDecision = 'lodge' | 'release'
+
 export interface Completion {
   trial_num: number
   cleared_at: string
