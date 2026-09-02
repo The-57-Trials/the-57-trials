@@ -129,10 +129,10 @@ clear (D15: on a HOLD it is the trial's own duration).
 |---|---|---|---|---|
 | 20 | THE HOUR | MOVE | 24h | Double trial 04. Duration, talkable pace |
 | 21 | TWENTY-ONE DAYS | HOLD | 21d | The long hold. Sits inside Lally's 18–254 band |
-| 22 | THE RETURN | MOVE | 24h | Out 45 min, then back. Cannot quit at halfway |
+| 22 | THE FIVE | MOVE | 24h | **parkrun.** Relatedness delivered straight out of 21 days alone (D16) |
 | 23 P | THE MORTALITY SIT | MARK | 24h | Write your own eulogy. Needs the MARK signpost |
 | 24 | THE ASCENT | MOVE | 24h | 300m elevation. No time limit |
-| 25 | THE FIVE | MOVE | 24h | **parkrun.** Supervised, free, among strangers |
+| 25 | THE RETURN | MOVE | 24h | Out 45 min, then back. Cannot quit at halfway. Mirrored at 54 |
 | 26 | THE STACK, LOADED | MOVE | 24h | Progression by load, not effort |
 | 27 | SEVEN AND SEVEN | HOLD | 7d | Twice daily for a week. Bracketing the day |
 | 28 | THE LOADED HOUR | MOVE | 48h | Carry for an hour. Set down freely |

@@ -298,3 +298,33 @@ pays roughly £13 more. That scenario stood at +£12.63; it is now roughly doubl
 The tightest margin in the business got looser because the trials were made honest.
 
 **Open:** §4.1 says nine HOLD trials, the roadmap lists eight. One of the two is wrong.
+
+### D16 — Self-determination theory, applied
+**2 Sep 2026.** Rob asked how SDT could be integrated. The honest answer was that two of the
+three needs were already served better than most products, one is refused on purpose, and the
+useful work was four specific changes rather than a new feature.
+
+**Autonomy — already strong, one lever missing.** No deadlines, SCALE always clears, nobody
+checks, no leaderboard, no dangled rewards. But autonomy in SDT is *volition*, not choice of
+task, and its cheapest lever is a **meaningful rationale**. The briefings said what to do and
+rarely why. **THE LINE must now give a reason, not a description** (4.1). Applied to Trial 04.
+
+**Competence — the real hole, now filled at no cost.** SDT wants informational feedback, and a
+product that refuses evaluation had also never told anyone they were improving. `trials.mirror_of`
+makes a repeat trial show the member **their own account of the first attempt**: 18 mirrors 06,
+26 mirrors 18, 49 mirrors 24, 54 mirrors 25. Self-referenced, never comparative. The content
+already exists because the account is compulsory.
+
+**Relatedness — weakest, deliberately, and served without a forum.** The witness, the SIGNAL
+trials, and parkrun. **THE FIVE moves from 25 to 22**, so a member comes out of twenty-one days
+alone straight into a field of strangers doing the same thing — relatedness delivered at the
+riskiest point in the run, with no community software. THE RETURN takes 25.
+
+**And the correction.** Swaps were rejected partly because they combined badly with the
+fastest-finisher board, and D8 deleted that board. Swaps stay rejected on the surviving
+argument — the order is the moat — but on one argument now, not two.
+
+**What would break it:** points, badges, streak pressure or bonuses. The over-justification
+effect is real and has been avoided so far by accident rather than intent. The standing
+conflict is that THE ACCOUNT is compulsory (23.6); mitigated, not resolved, and worth
+revisiting if the grading cohort objects.

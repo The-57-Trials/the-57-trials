@@ -160,6 +160,14 @@ become community territory — *"which did you take at 33?"* is a conversation.
 **record them on the register entry** (an honour system that hides its exceptions is not one);
 and only ever swap into equal assessed difficulty.
 
+> **Correction, 2 Sep 2026.** One of the two arguments above has expired. Swaps were partly
+> rejected because they combined badly with the fastest-finisher board — **and D8 removed
+> that board.** The remaining objection stands on its own: "57, in order, no skipping" is the
+> product's only real moat, and a swap makes the order advisory. Swaps stay rejected, but on
+> one argument now rather than two. If they are ever revisited, the SDT reading (D16) is that
+> autonomy comes from volition rather than options — a *reason* in every briefing buys more
+> than a choice between trials would.
+
 ---
 
 ### ④ Built-in forum → **DEFER. Do not build this.**

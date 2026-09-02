@@ -3,6 +3,10 @@
 The first physical trial. Thirty minutes outdoors, on your feet, with nothing in your ears
 and nowhere to be.
 
+It is here because everything after it assumes you can be alone with yourself while your
+body works. For most people that is the harder half, and it is worth finding out now rather
+than at Trial 48.
+
 **THE WORK**
 
 1. **Outdoors.** Not a treadmill, not a corridor, not a shopping centre.
@@ -10,6 +14,7 @@ and nowhere to be.
 3. **No headphones.** No music, no podcast, no calls, no audiobook.
 4. **No destination.** Not to the shop, not to work, not to collect anyone. If the walk has an errand in it, do this one separately.
 5. **Any pace.** Pace is not the trial. Thirty minutes is the trial.
+6. **Look up and out.** Whatever is largest around you — the sky, the weather, the distance, a building older than you — look at it, and at how big it is. Not the pavement. Not your feet.
 
 You will be bored somewhere around minute eleven. That is the trial working, not a fault in
 it. Trial 11 asks for an hour of it.

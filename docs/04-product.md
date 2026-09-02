@@ -36,12 +36,19 @@ One markdown document, one page, one button. No tabs, no video, no timer.
 | Block | Fixed? | Notes |
 |---|---|---|
 | **Header strip** | App-rendered | Number · chapter · type · flag · PRIME stamp |
-| **THE LINE** | Always | 1–3 sentences. What this is and why. |
+| **THE LINE** | Always | 1–3 sentences. What this is **and why it exists**. See the rule below. |
 | **THE WORK** | Always | Numbered instructions. A stranger must need no clarification. |
 | **PRE-FLIGHT** | Trials 48+ | Conditions that must be true before starting. |
 | **THE RUBRIC** | Always, five fields | RISK / GROUND / STOP / SCALE / CLEARED WHEN |
 | **CHECK-IN** | Trials 48+ | Named person, agreed time, what happens if you don't report. |
 | **NOTE** | Optional | ≤40 words. Lore. Where 5757 leaks in. |
+
+> **THE LINE must give a reason, not just a description (D16).**
+> Self-determination theory's strongest and cheapest autonomy lever is a *meaningful
+> rationale* — and a briefing that only says what to do supplies none. "The first physical
+> trial, thirty minutes outdoors" is a description. "It is here because everything later
+> assumes you can be alone with yourself while your body works" is a reason. Every briefing
+> needs the second kind. One sentence is enough.
 
 **Length:** FOUNDATION 200–350 words · DISCIPLINE/ENDURANCE 300–450 · PRESSURE/MASTERY
 350–550 · ASCENSION 550–850.
