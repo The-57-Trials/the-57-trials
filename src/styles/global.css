@@ -157,6 +157,16 @@ a:hover { text-decoration: underline; }
 }
 .bib-hero { animation: bib-settle 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
 
+.cleared-card { animation: bib-settle 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.cleared-card .cleared-card-title {
+  font-family: var(--font-display);
+  font-size: clamp(15px, 2.6vw, 20px);
+  letter-spacing: 0.02em;
+  text-align: center;
+  margin-top: 2px;
+  max-width: 30ch;
+}
+
 /* ---------- route visualizer ---------- */
 
 .route-viz {

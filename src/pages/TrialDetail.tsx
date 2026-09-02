@@ -9,6 +9,7 @@ import AccountPanel from '../components/AccountPanel'
 import AccountRecord from '../components/AccountRecord'
 import MirrorRecord from '../components/MirrorRecord'
 import WitnessRecord from '../components/WitnessRecord'
+import ClearedCard from '../components/ClearedCard'
 import { useAuth } from '../lib/auth'
 import { fetchTrials, fetchMyCompletions, fetchTrialBody, type ClearResult } from '../lib/api'
 import {
@@ -30,6 +31,8 @@ export default function TrialDetail() {
   const [isCleared, setIsCleared] = useState(false)
   const [showMilestone, setShowMilestone] = useState(false)
   const [finisherNumber, setFinisherNumber] = useState<number | null>(null)
+  const [clearedAt, setClearedAt] = useState<string | null>(null)
+  const [showShareCard, setShowShareCard] = useState(false)
 
   const circuitLocked = num > FREE_WINDOW_END && profile != null && !profile.circuit_active
 
@@ -46,7 +49,9 @@ export default function TrialDetail() {
         // row count, so a gap in completions can't mislabel the whole grid.
         const highest = completions.reduce((m, c) => Math.max(m, c.trial_num), 0)
         setClearedCount(highest)
-        setIsCleared(completions.some((c) => c.trial_num === num))
+        const mine = completions.find((c) => c.trial_num === num)
+        setIsCleared(mine != null)
+        if (mine) setClearedAt(mine.cleared_at)
         if (!t || num > highest + 1) {
           setStatus('locked')
           return
@@ -105,6 +110,7 @@ export default function TrialDetail() {
   function applyClearResult(result: ClearResult) {
     setIsCleared(true)
     setClearedCount((c) => Math.max(c, num))
+    setClearedAt(new Date().toISOString())
     if (result.finisher_number != null) setFinisherNumber(result.finisher_number)
     if (result.milestone) setShowMilestone(true)
     refreshProfile()
@@ -168,6 +174,23 @@ export default function TrialDetail() {
                   <span className="stamp">CLEARED</span>
                 </div>
 
+                {clearedAt && profile && (
+                  showShareCard ? (
+                    <div className="stack" style={{ alignItems: 'flex-start' }}>
+                      <ClearedCard
+                        trialNum={num} title={trial.title}
+                        bibNumber={profile.bib_number} clearedAt={clearedAt}
+                      />
+                      <button type="button" className="btn-link" onClick={() => setShowShareCard(false)}>
+                        Hide
+                      </button>
+                    </div>
+                  ) : (
+                    <button type="button" className="btn-link" onClick={() => setShowShareCard(true)}>
+                      View your cleared card
+                    </button>
+                  )
+                )}
                 {trial.mirror_of != null && <MirrorRecord mirrorOf={trial.mirror_of} />}
                 {!isLetterTrial && !isReckoning && <AccountRecord trialNum={num} />}
                 {isWitnessed && <WitnessRecord trialNum={num} />}
