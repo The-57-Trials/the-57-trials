@@ -63,6 +63,19 @@ seeded with two unpriced items, but no Stripe checkout is wired and no member-fa
 page exists yet. Don't build either until real merch quotes land (doc 14 gate 1.4) — a shop
 with placeholder prices is worse than no shop.
 
+## The Trial Blazer series (2 Sep 2026, evening)
+
+Built end to end, live: clearing TB-01 (the hoodie bonus trial) issues a `blazer_cards` row —
+a card mailed with the hoodie carries a QR code (`/blazer/:token`, public route) and a 4-digit
+number genuinely withheld from the browser until Trial 57 clears (`get_blazer_reveal`, not a
+CSS trick). Typing the revealed number into the run-complete screen (`redeem_blazer_code`)
+unlocks 5 further bonus trials (TB-02..TB-06), cleared in sequence, alternating a Trial Shop
+purchase and a free reward. The whole series was already implicitly gated on an active
+Circuit Pass — `clear_bonus_trial`/`get_bonus_body` always required one — which is the
+post-finish subscription-retention lever from the "does Circuit Pass hold its value"
+conversation. **TB-02..TB-06 content is a first draft, explicitly marked as such in the DB —
+an epilogue arc where a finisher passes on what they built — pending Rob confirming the theme.**
+
 ## Current state
 
 Stripe is live and proven end-to-end in test mode. **All 57 trials written and loaded live**,
