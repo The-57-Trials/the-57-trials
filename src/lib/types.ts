@@ -19,6 +19,7 @@ export interface Trial {
   active: boolean
   min_gap_minutes: number
   trial_type: TrialType | null
+  mirror_of: number | null
   /** Null until Race Control publishes a grade from the cohort's results. */
   published_demand: number | null
   published_friction: number | null

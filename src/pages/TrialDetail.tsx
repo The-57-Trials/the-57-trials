@@ -7,6 +7,7 @@ import SealedLetter from '../components/SealedLetter'
 import Reckoning from '../components/Reckoning'
 import AccountPanel from '../components/AccountPanel'
 import AccountRecord from '../components/AccountRecord'
+import MirrorRecord from '../components/MirrorRecord'
 import WitnessRecord from '../components/WitnessRecord'
 import { useAuth } from '../lib/auth'
 import { fetchTrials, fetchMyCompletions, fetchTrialBody, type ClearResult } from '../lib/api'
@@ -164,6 +165,7 @@ export default function TrialDetail() {
                   <span className="stamp">CLEARED</span>
                 </div>
 
+                {trial.mirror_of != null && <MirrorRecord mirrorOf={trial.mirror_of} />}
                 {!isLetterTrial && !isReckoning && <AccountRecord trialNum={num} />}
                 {isWitnessed && <WitnessRecord trialNum={num} />}
                 <GradeTrial trialNum={num} />

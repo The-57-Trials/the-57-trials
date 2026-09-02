@@ -981,6 +981,7 @@ label { display: block; margin-bottom: 6px; }
 .account-count { font-size: 11px; text-align: right; margin-top: 4px; }
 .account-record p { font-size: 13px; line-height: 1.6; white-space: pre-wrap; }
 .account-record-label { margin-bottom: 4px; }
+.mirror-record { border-left: 3px solid var(--steel); }
 
 /* ---------- witness record ---------- */
 
