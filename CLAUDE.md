@@ -70,8 +70,20 @@ doc 21), `trial_witnesses` + `WitnessRecord` (doc 17's witnessed trials, 48–52
 `finishers` + finisher-number reveal (doc 16, built well ahead of its own "not urgent" note
 because Trial 57's copy now promises it), `MirrorRecord` (D16's competence payoff — four
 trials promised "you'll see what you wrote" with nothing behind it), the HOLD day-ticker
-(doc 22.5), THE REVEAL's locked-tile grade preview (doc 3.1), the PRIME stamp (doc 4.1), and
-the Library page (doc 18.2) at `/library`. Doc 22.5 tracks build status per screen.
+(doc 22.5), THE REVEAL's locked-tile grade preview (doc 3.1), the PRIME stamp (doc 4.1), the
+Library page (doc 18.2) at `/library`, and the `ClearedCard` share artifact (doc 3.4, "the
+highest-return development work remaining"). Doc 22.5 tracks build status per screen.
+
+**Most important find of the session: `/board` was a live, ranked, timestamped leaderboard —
+exactly what D8 killed on 23 Aug.** Sorted by clears (most first), a POS/rank column, a
+per-clear timestamp column. Doc 16 (THE REGISTER — bib-number order, no rank, no times,
+"no one has finished yet" empty state) was written specifically to replace it and nobody had
+ever wired it up. Same pass found the identical "rank"/"board" language on Landing, Terms and
+Privacy, and separately, **Terms and Refunds were quoting the pre-D1 prices** (£10/£4.99
+against the live £19.57/£9.57). All fixed; `/board` no longer exists, replaced by
+`Register.tsx` at `/register`. If a future session finds member-facing copy or a screen that
+implies ranking, sorting-by-progress, or a fastest-time claim anywhere, treat it the same way
+— D8 is absolute, not just a UI convention.
 
 **Trial 57 was redesigned, pending Rob's review** — no longer a longer walk, now a
 self-declared confrontation with the member's own most-avoided thing (public speaking, a
