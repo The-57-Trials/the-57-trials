@@ -1,4 +1,19 @@
-**THE LINE**
+-- 0020: redesign Trial 57. See docs/23-evidence-base.md #11-12 and the note
+-- against Trial 57 in docs/22-the-storyboard.md. PENDING ROB'S REVIEW -
+-- not a locked decision, flagged in CLAUDE.md's current state.
+--
+-- The peak-end rule (Kahneman) says the ending carries disproportionate
+-- weight in how the whole experience is remembered - the original content
+-- (a longer version of Trial 52's walk) was an average, not a peak.
+-- Rewritten so the member declares their own single most-avoided thing,
+-- physical or not, with examples (public speaking, a business first step,
+-- an overdue confession) given as illustrations, never a requirement - a
+-- fixed target would be the first trial in the product to exclude by
+-- circumstance and the first to be externally checkable, breaking D8 and
+-- D10 in one move.
+
+update public.trials set
+  body_md = $md$**THE LINE**
 
 Trial 01 asked what would make you quit. This is the thing you've built a whole life around
 avoiding. Not a longer walk — the one thing, whatever it actually is.
@@ -51,4 +66,5 @@ physical, a date and outcome if it isn't.
 **NOTE**
 
 Your finisher number is issued the moment this clears. The book unlocks the same day. There
-isn't a 58.
+isn't a 58.$md$
+where num = 57;

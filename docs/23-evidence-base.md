@@ -19,6 +19,8 @@
 | 8 | White et al. (2019), *Scientific Reports* 9:7730 — [120 minutes a week in nature](https://www.nature.com/articles/s41598-019-44097-3) | Outdoor dosing |
 | 9 | Breines & Chen (2012), *PSPB* — [Self-compassion increases self-improvement motivation](https://journals.sagepub.com/doi/abs/10.1177/0146167212445599) | "Stopping costs you nothing" |
 | 10 | Sturm et al. (2020), *Emotion* — [Big smile, small self: awe walks](https://memory.ucsf.edu/publications/big-smile-small-self-awe-walks-promote-prosocial-positive-emotions-older-adults) | The walking trials |
+| 11 | Kahneman & Fredrickson et al. (1993), cold-pressor studies — [The peak-end rule](https://www.nngroup.com/articles/peak-end-rule/) | Redesigning Trial 57 |
+| 12 | APA — [What is exposure therapy?](https://www.apa.org/ptsd-guideline/patients-and-families/exposure-therapy); public-speaking prevalence — [Fear of public speaking statistics](https://crowncounseling.com/statistics/fear-of-public-speaking-statistics/) | Redesigning Trial 57 |
 
 ---
 
@@ -109,3 +111,37 @@ RETURN and THE THIRD HOUR costs one sentence and is the only evidence-backed "sp
 mechanism found so far that requires no belief in anything.
 
 It also answers what a member does during THE HOUR with nothing in their ears.
+
+## 11. The ending carries the whole memory — Trial 57 was under-designed
+
+Kahneman and Fredrickson's cold-pressor studies found people judge a whole experience almost
+entirely by its **peak** and its **end**, not its average or its duration — subjects preferred
+a *longer, more painful* trial over a shorter one, purely because the longer one ended on a
+less painful note. **Consequence: Trial 57's design carries more weight than any other single
+trial in the product**, because it is the end, full stop — whatever it is becomes how the
+entire five-month experience is remembered.
+
+The version originally written for 57 — a longer version of Trial 52's walk — is not wrong,
+but it is not a peak. It's an average. **The finale needs to be qualitatively different from
+what came before it, not just longer.**
+
+## 12. A monumental finale should be a fear, and it should be the member's own
+
+Two facts point the same direction. First, **exposure therapy for phobias succeeds in over
+90% of people who complete it**, via self-efficacy ("I can do this"), emotional processing,
+and inhibitory learning — and it works best **graded**, mild exposures first, building to the
+strongest. The 57 already *is* a graded exposure programme by accident: 56 trials of steadily
+increasing demand. It was missing the thing every graded protocol ends on — the actual fear.
+
+Second, **77% of adults fear public speaking** — more than they fear death, spiders or
+heights — which makes it the single most relatable "monumental" example available, and the
+best illustration to give a member who can't yet picture their own.
+
+**Consequence for Trial 57.** Rewritten so the member declares their own single most-avoided
+thing — physical or not — rather than a distance. Public speaking, a business first step, an
+overdue confession, a fundraising act are given as *examples*, never a requirement, because a
+fixed target (a specific sum, a specific audience size) would be the first trial in the
+product to exclude by circumstance rather than scale to it, and the first to be externally
+checkable — breaking D8 and D10 in one move. Self-declared keeps every rule intact and makes
+the ending a genuine peak instead of a longer average. **Flagged for Rob's review, not yet a
+locked decision** — see the note against Trial 57 in `docs/22-the-storyboard.md`.

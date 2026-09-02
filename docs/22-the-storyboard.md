@@ -176,7 +176,7 @@ clear (D15: on a HOLD it is the trial's own duration).
 | 54 | THE RETURN, FAR | MOVE | 1wk | Trial 25 at distance. Witnessed |
 | 55 | THE SERVICE | SIGNAL | 1wk | A full day given away, before the end |
 | 56 | THE VIGIL | MOVE | 1wk | The longest single day. Witnessed |
-| 57 ★ | THE LAST GROUND | MOVE | — | Finisher number. The book unlocks |
+| 57 ★ | THE LAST GROUND | MOVE | — | Finisher number. The book unlocks. **Redesigned 2 Sep, pending Rob's review** — see 23.12: no longer necessarily a walk. The member declares their own single most-avoided thing, physical or not; examples given (public speaking, a business first step, an overdue confession) are illustrations, never a requirement, because a fixed target would be the first trial in the product to exclude by circumstance and the first to be externally checkable. |
 
 ---
 
