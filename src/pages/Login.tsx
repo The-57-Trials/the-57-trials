@@ -86,7 +86,7 @@ export default function Login() {
       <form onSubmit={submit} className="stack">
         {mode === 'signup' && (
           <div>
-            <label className="label" htmlFor="dn">Runner name (public on the board)</label>
+            <label className="label" htmlFor="dn">Runner name (public on the Register)</label>
             <input
               id="dn"
               value={displayName}

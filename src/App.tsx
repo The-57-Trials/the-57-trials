@@ -12,7 +12,7 @@ import Login from './pages/Login'
 // path for someone who is only looking at the pricing.
 const Run = lazy(() => import('./pages/Run'))
 const TrialDetail = lazy(() => import('./pages/TrialDetail'))
-const Board = lazy(() => import('./pages/Board'))
+const Register = lazy(() => import('./pages/Register'))
 const Account = lazy(() => import('./pages/Account'))
 const Library = lazy(() => import('./pages/Library'))
 // Race Control is a separate application with its own build and its own
@@ -57,7 +57,7 @@ export default function App() {
               <Route path="/run" element={<Run />} />
               <Route path="/run/trial/:num" element={<TrialDetail />} />
               <Route path="/library" element={<Library />} />
-              <Route path="/board" element={<Board />} />
+              <Route path="/register" element={<Register />} />
               <Route path="/account" element={<Account />} />
             </Route>
             <Route path="*" element={<NotFound />} />

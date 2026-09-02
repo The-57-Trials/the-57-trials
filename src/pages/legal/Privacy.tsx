@@ -31,9 +31,9 @@ export default function Privacy() {
           <tbody>
             <tr><td>Email address</td><td>Your account; service emails</td><td>Contract</td><td>Life of account + 30 days</td></tr>
             <tr><td>Password (hashed — we never see it)</td><td>Securing your account</td><td>Contract</td><td>Life of account + 30 days</td></tr>
-            <tr><td>Display name</td><td>Your identity on the board (public to members)</td><td>Contract</td><td>Life of account + 30 days</td></tr>
+            <tr><td>Display name</td><td>Your identity on the Register (public to members)</td><td>Contract</td><td>Life of account + 30 days</td></tr>
             <tr><td>Bib number</td><td>Your permanent identifier</td><td>Contract</td><td>Life of account + 30 days</td></tr>
-            <tr><td>Trial progress, clears, timestamps</td><td>Delivering the sequence; your rank</td><td>Contract</td><td>Life of account + 30 days</td></tr>
+            <tr><td>Trial progress, clears, timestamps</td><td>Delivering the sequence; your place on the Register</td><td>Contract</td><td>Life of account + 30 days</td></tr>
             <tr><td>Stripe customer and subscription IDs</td><td>Taking payment</td><td>Contract</td><td>6 years (tax)</td></tr>
             <tr><td>Transaction records</td><td>Accounting and tax</td><td>Legal obligation</td><td><strong>6 years</strong></td></tr>
             <tr><td>Postal address (milestone only)</td><td>Posting your milestone item</td><td>Contract</td><td>12 months after final dispatch</td></tr>
@@ -51,13 +51,15 @@ export default function Privacy() {
 
       <h2>4. What is public</h2>
       <p>
-        Your <strong>display name</strong>, your <strong>rank</strong> and your{' '}
-        <strong>clear count</strong> are visible to other members on the board. Nothing else is
-        — not your email, real name, address, or health confirmation.
+        Your <strong>display name</strong>, your <strong>bib number</strong> and your{' '}
+        <strong>clear count</strong> are visible to other members on the Register, in
+        bib-number order. We do not rank members against each other and we do not publish
+        times. Nothing else is public — not your email, real name, address, or health
+        confirmation.
       </p>
       <p>
-        You can change your display name at any time. You can ask to be removed from the board
-        entirely, without losing access to your trials, by emailing [CONTACT EMAIL].
+        You can change your display name at any time. You can ask to be removed from the
+        Register entirely, without losing access to your trials, by emailing [CONTACT EMAIL].
       </p>
 
       <h2>5. Emails we send you</h2>
@@ -136,7 +138,7 @@ export default function Privacy() {
       </p>
       <p>
         <strong>What deleting your account does.</strong> We cancel any active subscription,
-        remove you from the board, and delete your account and progress within 30 days. We{' '}
+        remove you from the Register, and delete your account and progress within 30 days. We{' '}
         <strong>must</strong> keep transaction records for 6 years (HMRC) and your health
         screening confirmation for 6 years (section 6).
       </p>

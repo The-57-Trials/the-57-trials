@@ -68,8 +68,9 @@ export default function Landing() {
             </div>
             <div className="step">
               <div className="step-num mono-num">03</div>
-              <h3>Climb the board.</h3>
-              <p>Every clear is timestamped. The board doesn't care how you feel about it.</p>
+              <h3>Take your place on the Register.</h3>
+              <p>Bib-number order, not progress. No ranking, no times, ever — parkrun publishes
+              everything and calls it not a race. So do we.</p>
             </div>
           </div>
         </section>
@@ -103,7 +104,7 @@ export default function Landing() {
               </div>
               <ul>
                 <li>Trials 06–57. The full route.</li>
-                <li>Ranked place on the board.</li>
+                <li>Your place on the Register.</li>
                 <li>New trial drops as they land.</li>
                 <li>Live events access.</li>
               </ul>

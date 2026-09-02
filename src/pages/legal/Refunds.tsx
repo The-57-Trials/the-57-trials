@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import LegalLayout from './LegalLayout'
+import { PRICE_CIRCUIT } from '../../lib/types'
 
 export default function Refunds() {
   return (
@@ -74,7 +75,7 @@ export default function Refunds() {
 
       <h2>5. Renewals</h2>
       <ul>
-        <li>Your Circuit Pass renews monthly at <strong>£4.99</strong>.</li>
+        <li>Your Circuit Pass renews monthly at <strong>{PRICE_CIRCUIT}</strong>.</li>
         <li>We email a reminder before each renewal.</li>
         <li>Every receipt and reminder tells you how to cancel.</li>
         <li>Price changes come with at least <strong>30 days’ notice</strong>.</li>

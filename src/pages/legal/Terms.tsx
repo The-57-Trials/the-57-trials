@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import LegalLayout from './LegalLayout'
+import { PRICE_ENTRY, PRICE_CIRCUIT } from '../../lib/types'
 
 export default function Terms() {
   return (
@@ -56,18 +57,17 @@ export default function Terms() {
       </p>
       <p><strong>One line at a time.</strong> Trials unlock in order. You cannot skip ahead.</p>
 
-      <h3>Entry Pass — £10, one-time</h3>
+      <h3>Entry Pass — {PRICE_ENTRY}, one-time</h3>
       <ul>
         <li>Your bib number. Assigned on signup. Permanent, and never reissued.</li>
         <li>Access to trials 01–05.</li>
-        <li>Access to the board as an unranked runner.</li>
+        <li>A place on the Register.</li>
         <li>Access unlocks immediately on payment (see section 8).</li>
       </ul>
 
-      <h3>Circuit Pass — £4.99 per month, recurring</h3>
+      <h3>Circuit Pass — {PRICE_CIRCUIT} per month, recurring</h3>
       <ul>
         <li>Trials 06–57.</li>
-        <li>A rank on the board.</li>
         <li>New briefings as they are released.</li>
         <li>Renews automatically each month until you cancel. Cancel any time.</li>
       </ul>
@@ -113,17 +113,20 @@ export default function Terms() {
         <li>Tell us immediately at [CONTACT EMAIL] if someone else has your account.</li>
       </ul>
 
-      <h2>7. The board and your display name</h2>
+      <h2>7. The Register and your display name</h2>
       <ul>
         <li>
           Your <strong>display name is public to other members</strong>. Choose accordingly. Do
           not use your full real name unless you want other members to see it.
         </li>
-        <li>Your rank, clear count and progress are visible to other members.</li>
-        <li>Only runners with an active Circuit Pass hold a rank.</li>
+        <li>
+          Your bib number, display name and clear count are visible to other members on the
+          Register, in bib-number order. We do not rank members against each other, and we do
+          not publish times.
+        </li>
         <li>You can change your display name in your account at any time.</li>
         <li>
-          You can ask us to remove you from the board entirely without losing access to your
+          You can ask us to remove you from the Register entirely without losing access to your
           trials. Email [CONTACT EMAIL].
         </li>
         <li>
@@ -162,7 +165,7 @@ export default function Terms() {
         </li>
         <li>
           The Circuit Pass renews automatically each month on the anniversary of your first
-          subscription payment, at £4.99, until cancelled.
+          subscription payment, at {PRICE_CIRCUIT}, until cancelled.
         </li>
         <li>We email you a receipt for every payment. Every receipt tells you how to cancel.</li>
         <li>
@@ -185,7 +188,7 @@ export default function Terms() {
         <li>copy, republish, screenshot, share, resell or redistribute any briefing;</li>
         <li>share your account or your access;</li>
         <li>attempt to reach trials you have not unlocked, or bypass any access control;</li>
-        <li>submit false clears, or manipulate the board;</li>
+        <li>submit false clears, or manipulate the Register;</li>
         <li>scrape, crawl or automate access to the service;</li>
         <li>use the service to harass, abuse or threaten anyone.</li>
       </ul>

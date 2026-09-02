@@ -47,22 +47,30 @@ export async function clearTrial(num: number): Promise<ClearResult> {
 // Metrics live in Race Control, the separate admin application. Nothing that
 // reads admin_pulse() belongs in a bundle a member downloads.
 
-export async function fetchLeaderboard(): Promise<LeaderboardRow[]> {
+/**
+ * THE FIELD (doc 16.3) — everyone, in bib-number order, never sorted by
+ * progress. D8 killed the ranked leaderboard on 23 Aug; this reads from the
+ * same underlying view (name kept for now — see the note on LeaderboardRow)
+ * but the sort is the whole point: bib order is the only correct one.
+ */
+export async function fetchRegister(): Promise<LeaderboardRow[]> {
   const { data, error } = await supabase.from('leaderboard').select('*')
   if (error) throw error
   const rows = data as LeaderboardRow[]
-  // Most cleared first; tiebreak: whoever reached that count first ranks higher.
-  // Bib number settles the rest, so the order is total and the board doesn't
-  // reshuffle between loads when several members have cleared nothing yet.
-  rows.sort((a, b) => {
-    if (b.cleared !== a.cleared) return b.cleared - a.cleared
-    if (!a.last_cleared && !b.last_cleared) return a.bib_number - b.bib_number
-    if (!a.last_cleared) return 1
-    if (!b.last_cleared) return -1
-    const diff = new Date(a.last_cleared).getTime() - new Date(b.last_cleared).getTime()
-    return diff !== 0 ? diff : a.bib_number - b.bib_number
-  })
+  rows.sort((a, b) => a.bib_number - b.bib_number)
   return rows
+}
+
+/** THE FINISHED (doc 16.3) — finisher-number order. Empty until someone finishes. */
+export async function fetchFinisherRegister(): Promise<
+  { finisher_number: number; bib_number: number; display_name: string; finished_at: string }[]
+> {
+  const { data, error } = await supabase
+    .from('finisher_register')
+    .select('finisher_number, bib_number, display_name, finished_at')
+    .order('finisher_number')
+  if (error) throw error
+  return data as { finisher_number: number; bib_number: number; display_name: string; finished_at: string }[]
 }
 
 /** product: 'entry' | 'circuit' — returns a Stripe Checkout URL to redirect to. */

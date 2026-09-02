@@ -16,7 +16,7 @@ export default function Header() {
             <>
               <NavLink to="/run">Your Run</NavLink>
               <NavLink to="/library">Library</NavLink>
-              <NavLink to="/board">Board</NavLink>
+              <NavLink to="/register">Register</NavLink>
               <NavLink to="/account">Account</NavLink>
               {profile && (
                 <span className="label mono-num bib-chip">No. {pad(profile.bib_number)}</span>
@@ -27,7 +27,6 @@ export default function Header() {
             </>
           ) : (
             <>
-              <NavLink to="/board">Board</NavLink>
               <NavLink to="/login">Sign in</NavLink>
             </>
           )}
