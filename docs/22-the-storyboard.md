@@ -173,7 +173,7 @@ clear (D15: on a HOLD it is the trial's own duration).
 | 51 | THE QUIET WEEK | HOLD | 7d | Your own programme. No app, no logging in |
 | 52 | THE LONG GROUND | MOVE | 1wk | The published ASCENSION briefing |
 | 53 P | **THE RECKONING** | MARK | 1wk | **Set in stone (D14).** Both seals break |
-| 54 | THE RETURN, FAR | MOVE | 1wk | Trial 22 at distance. Witnessed |
+| 54 | THE RETURN, FAR | MOVE | 1wk | Trial 25 at distance. Witnessed |
 | 55 | THE SERVICE | SIGNAL | 1wk | A full day given away, before the end |
 | 56 | THE VIGIL | MOVE | 1wk | The longest single day. Witnessed |
 | 57 ★ | THE LAST GROUND | MOVE | — | Finisher number. The book unlocks |

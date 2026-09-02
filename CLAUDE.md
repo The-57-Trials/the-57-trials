@@ -54,21 +54,25 @@ it**. `docs/README.md` indexes all 23 documents. Highlights:
 
 ## Current state
 
-Stripe is live and proven end-to-end in test mode. Trials **01, 02, 03, 05, 06, 07, 09, 10,
-53 written and loaded** — 9 of 57. 01, 09 and 53 are the flagship arc (doc 18): a sealed
-letter mechanic (`letters` table, `seal_letter`/`get_my_letter` RPCs, `SealedLetter.tsx`) at
-01 and 09, genuinely unreadable — including to its own author — until THE RECKONING at 53
-(`reckonings` table, `submit_reckoning`, `Reckoning.tsx`) breaks both seals. **48 of the
-remaining 57 unwritten**, which is the critical path. Outstanding on Rob's side: insurance,
-solicitor review of the draft legal pages, ICO registration, custom SMTP (a hard launch
-blocker — Supabase's built-in email only reaches pre-authorised addresses), Supabase Pro for
-backups, and deleting the decoy project.
+Stripe is live and proven end-to-end in test mode. **All 57 trials written and loaded live**,
+2 Sep 2026 — the critical path from doc 14 is done. 01, 09 and 53 are the flagship arc (doc
+18): a sealed letter mechanic (`letters` table, `seal_letter`/`get_my_letter` RPCs,
+`SealedLetter.tsx`) at 01 and 09, genuinely unreadable — including to its own author — until
+THE RECKONING at 53 (`reckonings` table, `submit_reckoning`, `Reckoning.tsx`) breaks both
+seals. **Nothing has been read by a real member yet** — the grading cohort (doc 14, 1.2) is
+now the actual gate, not more writing. Outstanding on Rob's side: insurance, solicitor review
+of the draft legal pages, ICO registration, custom SMTP (a hard launch blocker — Supabase's
+built-in email only reaches pre-authorised addresses), Supabase Pro for backups, and deleting
+the decoy project.
 
-Two known simplifications in the letter/Reckoning build, both flagged in code comments: (1)
-Trial 01 sits after the Entry Pass paywall rather than inside signup as doc 22.1 finding 5
-recommends — moving it earlier means touching `clear_trial`'s and `get_trial_body`'s
-entry_paid gate, deliberately left alone here; (2) the typewriter/handwriting choice uses
-system font fallback stacks, not real webfonts — nothing is self-hosted for it yet.
+Known simplifications, all flagged in code/migration comments: (1) Trial 01 sits after the
+Entry Pass paywall rather than inside signup as doc 22.1 finding 5 recommends — moving it
+earlier means touching `clear_trial`'s and `get_trial_body`'s entry_paid gate, deliberately
+left alone; (2) the sealed-letter typewriter/handwriting choice uses system font fallback
+stacks, not real webfonts; (3) Trial 41 (THE FORGIVENESS LETTER) is a standard MARK trial,
+not wired into the `letters` schema — its unlock rule differs in kind from 01/09; (4) RED-tier
+trials 48–52 and 54–57 describe the named check-in/witness narratively — `trial_witnesses`
+(doc 22.6) isn't built, so nothing persists who was told, unlike Trial 53's `reckonings` row.
 
 **Migration history has drifted from the live database twice** — two migrations (`trial_accounts`,
 `account_mirror`) were applied live via the Supabase MCP on 1–2 Sep without ever being

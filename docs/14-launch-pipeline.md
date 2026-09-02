@@ -11,8 +11,8 @@ Verified against the live database and the deployed sites today.
 
 | | Status |
 |---|---|
-| **Product engineering** | Substantially done. Sequence rule, cooldowns, payments code, consent, admin, grading — all built and hardened. |
-| **Trial content** | **0 of 57 written. All 57 still have placeholder titles.** |
+| **Product engineering** | Substantially done. Sequence rule, cooldowns, payments code, consent, admin, grading — all built and hardened. Sealed letter (01, 09) and THE RECKONING (53) also now built — see doc 18. |
+| **Trial content** | **All 57 written and loaded live**, 2 Sep 2026. Untested by real members — the grading cohort (1.2) is what actually validates this, not this line. |
 | **Payments** | Code correct and verified. No Stripe account, no products, no secrets. |
 | **Legal pages** | Written and live, all drafts, unreviewed, placeholders unfilled. |
 | **Members** | 1 (you). |
@@ -84,13 +84,13 @@ Required, ten minutes, and you need the number for the privacy policy.
 ## GATE 1 — The product
 *Nothing to sell without this.*
 
-### 1.1 Write the trials — **the largest single piece of work left**
-Minimum 20 before launch, 30 strongly preferred. The §4 spec gives you the full 57 mapped to
-chapters with two publication-ready examples to copy. Use the fixed template — without one,
-each briefing is a blank page and takes three hours instead of one.
+### 1.1 Write the trials — **done, 2 Sep 2026**
+All 57 written and loaded, per doc 22's storyboard order. This was the largest single piece
+of work in the whole pipeline and it's now the thing least likely to still be a launch
+blocker. What it hasn't had: a single member reading any of it. **1.2 is now the real gate** —
+nothing here is validated until the grading cohort has been through it.
 
-**Buffer rule:** never let written trials fall below the fastest live member's position plus
-ten. Put that single number on the Race Control dashboard.
+**Buffer rule retired** — there's nothing left to buffer against.
 
 ### 1.2 Run the grading cohort
 20–40 pilot members, free, with the job of grading. Two axes, plus completion rate and
@@ -234,18 +234,18 @@ with progress intact.
 
 ## 14.1 The critical path
 
-Everything else is parallel to these six.
+Everything else is parallel to these five. Writing the trials is done — see 1.1 — and drops
+off this list entirely.
 
 1. **Insurance quote** — because a decline invalidates the plan, and it has the longest lead time.
 2. **Stripe account and products** — unblocks all payment testing.
 3. **Transactional email** — without it nobody can complete a signup.
-4. **Write trials 01–20** — the largest single body of work.
-5. **Solicitor review** — external lead time; start it as soon as the placeholders are filled.
-6. **Grading cohort** — needs 1 and 4; produces the reorder everything else assumes.
+4. **Solicitor review** — external lead time; start it as soon as the placeholders are filled.
+5. **Grading cohort** — the content exists now; this is what actually tells you if it's any good, and produces the reorder everything else assumes.
 
-**Realistic shape:** the four external blockers run in parallel over two to four weeks while
-you write. Engineering and design fill the same window. The grading cohort follows the first
-twenty trials. Live-mode Stripe and the go-live checklist come last.
+**Realistic shape:** the four external blockers run in parallel over two to four weeks.
+Engineering and design fill the same window. The grading cohort can start as soon as there's
+someone to run it on. Live-mode Stripe and the go-live checklist come last.
 
 ## 14.2 Who does what
 
@@ -260,6 +260,6 @@ the runbook skeleton, and the Race Control additions.
 ## 14.3 The one thing to resist
 
 The engineering list is long and satisfying, and none of it sells anything. **Fifty-seven
-briefings do.** If a week passes where the pipeline moved and no trial got written, the
-pipeline is being used as an excuse — and the content buffer is the one thing that cannot be
-bought, borrowed or automated later.
+briefings do — and now they exist.** The new version of this risk: treating "written" as
+"finished." Nothing here has been read by a member yet. The grading cohort, not more
+engineering, is what turns this from a draft into a product.
