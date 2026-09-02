@@ -52,6 +52,17 @@ it**. `docs/README.md` indexes all 23 documents. Highlights:
 - Run `npm run build` before committing anything that touches `src/` or `admin/`.
 - Decisions get recorded in `docs/00-decisions.md` with a `D<n>` heading, dated.
 
+## D17 — the Trial Shop (2 Sep 2026, evening)
+
+Circuit Pass no longer entitles a member to free merch at 15/30/45 — it enables the **Trial
+Shop**: reaching a milestone unlocks the *right to buy* that item, gated on an active Circuit
+Pass at time of purchase. Only the finisher's plate (57) and the Trial Blazer hoodie (45, via
+its bonus trial) stay free. Full reasoning in `docs/00-decisions.md` D17; spec in `docs/04-
+product.md` 4.6. **Model only** — `shop_products`/`shop_orders` exist (migration 0023),
+seeded with two unpriced items, but no Stripe checkout is wired and no member-facing Shop
+page exists yet. Don't build either until real merch quotes land (doc 14 gate 1.4) — a shop
+with placeholder prices is worse than no shop.
+
 ## Current state
 
 Stripe is live and proven end-to-end in test mode. **All 57 trials written and loaded live**,
