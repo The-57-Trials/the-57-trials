@@ -196,15 +196,19 @@ claim is something the trials literally required:
 
 ## 22.5 UI work this creates
 
-| Screen | Why |
-|---|---|
-| **THE ACCOUNT panel** on every trial page | Three fields, CLEARED disabled until valid. The centrepiece of the product now. |
-| **THE INTERVAL** | Must read a HOLD differently from a cooldown (4.8.1). *"Trial 21 clears in 14 days. The waiting is the trial."* Show the pledge here — that is rehearsal, and rehearsal is what the evidence says makes it work. |
-| **HOLD day-ticker** | 3 / 7 mornings. The counter must move even when the trial number does not, or a 21-day hold reads as a dead app. |
-| **Letter + seal** | Trial 01, in signup. Also reused at 09, 41 and 53. |
-| **The Library** | Letters, accounts, bib, milestones, witnesses, grades, finisher number. |
-| **Chapter cards** | Six sub-goals, not one distant 57. Goal-gradient, honestly. |
-| **Signup writes Trial 01** | Register reads 1/57 at first sight (finding 5). |
+| Screen | Why | Status |
+|---|---|---|
+| **THE ACCOUNT panel** on every trial page | Three fields, CLEARED disabled until valid. The centrepiece of the product now. | **Done, 2 Sep.** `AccountPanel.tsx` — was schema-only since 0010 with zero UI; every non-1/9/53 trial was uncleareable in production until this shipped. |
+| **THE INTERVAL** | Must read a HOLD differently from a cooldown (4.8.1). *"Trial 21 clears in 14 days. The waiting is the trial."* | **Done, 2 Sep** — the day-ticker (below). The pledge-on-Interval enhancement is still open. |
+| **HOLD day-ticker** | 3 / 7 mornings. The counter must move even when the trial number does not, or a 21-day hold reads as a dead app. | **Done, 2 Sep.** `holdProgress()` + Run.tsx's current-line banner branches on `trial_type`. |
+| **Letter + seal** | Trial 01, in signup. Also reused at 09, 41 and 53. | **Partially done.** Built for 01, 09, 53 (`SealedLetter.tsx`, `Reckoning.tsx`) — after the Entry paywall, not inside signup (see the scoping note on migration 0013). Trial 41 stayed a standard MARK trial; its unlock rule differs in kind from 01/09 (reads back immediately) and needs its own schema decision. |
+| **The Library** | Letters, accounts, bib, milestones, witnesses, grades, finisher number. | **Done, 2 Sep.** `Library.tsx`, route `/library`. Grades are summarised per-trial via GradeTrial already; not yet aggregated on this page. |
+| **Chapter cards** | Six sub-goals, not one distant 57. Goal-gradient, honestly. | Not built. |
+| **Signup writes Trial 01** | Register reads 1/57 at first sight (finding 5). | Not built — see the scoping note on migration 0013 for why. |
+| **THE REVEAL grade preview** (doc 3.1) | Show a locked trial's published demand/friction, nothing else. | **Done, 2 Sep** — Run.tsx's locked tiles. Dormant until Race Control publishes cohort grades. |
+| **mirror_of payoff** (D16) | Trials 18, 26, 49, 54 promise "you'll see what you wrote" — nothing showed it. | **Done, 2 Sep.** `MirrorRecord.tsx`. |
+| **PRIME stamp** (4.1) | A mark the app never explains, on all sixteen prime trials. | **Done, 2 Sep.** |
+| **Finisher numbers** (doc 16) | Trial 57 promises one "issued the moment this clears." | **Done, 2 Sep**, ahead of doc 16.5's own "not urgent" — needed to make Trial 57's copy true. |
 
 ## 22.6 Database and code work
 

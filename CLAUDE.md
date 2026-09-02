@@ -55,28 +55,42 @@ it**. `docs/README.md` indexes all 23 documents. Highlights:
 ## Current state
 
 Stripe is live and proven end-to-end in test mode. **All 57 trials written and loaded live**,
-2 Sep 2026 — the critical path from doc 14 is done. 01, 09 and 53 are the flagship arc (doc
-18): a sealed letter mechanic (`letters` table, `seal_letter`/`get_my_letter` RPCs,
-`SealedLetter.tsx`) at 01 and 09, genuinely unreadable — including to its own author — until
-THE RECKONING at 53 (`reckonings` table, `submit_reckoning`, `Reckoning.tsx`) breaks both
-seals. **Nothing has been read by a real member yet** — the grading cohort (doc 14, 1.2) is
-now the actual gate, not more writing. Outstanding on Rob's side: insurance, solicitor review
-of the draft legal pages, ICO registration, custom SMTP (a hard launch blocker — Supabase's
-built-in email only reaches pre-authorised addresses), Supabase Pro for backups, and deleting
+2 Sep 2026 — the critical path from doc 14 is done, and doc 14 itself has been rewritten to
+say so. **Nothing has been read by a real member yet** — the grading cohort (doc 14, 1.2) is
+the actual remaining gate, not more writing.
+
+**The same session found and fixed a production-breaking gap**: `clear_trial` has required
+THE ACCOUNT (doc 21) for every trial except 1, 9, 53 since 1 Sep, but no frontend ever called
+`save_account` — meaning Trial 02 onward could never actually be cleared in production.
+`AccountPanel.tsx` fixed this. If a session ever finds `clear_trial` gained a precondition
+with no corresponding UI, treat it as urgent, not cosmetic.
+
+**Built this session, beyond the 57 themselves:** `AccountPanel`/`AccountRecord` (THE ACCOUNT,
+doc 21), `trial_witnesses` + `WitnessRecord` (doc 17's witnessed trials, 48–52/54–57),
+`finishers` + finisher-number reveal (doc 16, built well ahead of its own "not urgent" note
+because Trial 57's copy now promises it), `MirrorRecord` (D16's competence payoff — four
+trials promised "you'll see what you wrote" with nothing behind it), the HOLD day-ticker
+(doc 22.5), THE REVEAL's locked-tile grade preview (doc 3.1), the PRIME stamp (doc 4.1), and
+the Library page (doc 18.2) at `/library`. Doc 22.5 tracks build status per screen.
+
+**Trial 57 was redesigned, pending Rob's review** — no longer a longer walk, now a
+self-declared confrontation with the member's own most-avoided thing (public speaking, a
+business first step, an overdue confession — examples, never a requirement). Grounded in the
+peak-end rule and exposure-therapy research; see doc 23 findings 11–13 and the note against
+Trial 57 in doc 22. Not a locked decision.
+
+Known simplifications, flagged in code/migration comments: (1) Trial 01 sits after the Entry
+Pass paywall rather than inside signup as doc 22.1 finding 5 recommends — moving it means
+touching `clear_trial`'s and `get_trial_body`'s entry_paid gate, deliberately left alone; (2)
+the sealed-letter typewriter/handwriting choice uses system font fallback stacks, not real
+webfonts; (3) Trial 41 (THE FORGIVENESS LETTER) is a standard MARK trial, not wired into the
+`letters` schema — its unlock rule differs in kind from 01/09.
+
+Outstanding on Rob's side, unchanged: insurance, solicitor review of the draft legal pages,
+ICO registration, custom SMTP (a hard launch blocker), Supabase Pro for backups, and deleting
 the decoy project.
 
-Known simplifications, all flagged in code/migration comments: (1) Trial 01 sits after the
-Entry Pass paywall rather than inside signup as doc 22.1 finding 5 recommends — moving it
-earlier means touching `clear_trial`'s and `get_trial_body`'s entry_paid gate, deliberately
-left alone; (2) the sealed-letter typewriter/handwriting choice uses system font fallback
-stacks, not real webfonts; (3) Trial 41 (THE FORGIVENESS LETTER) is a standard MARK trial,
-not wired into the `letters` schema — its unlock rule differs in kind from 01/09; (4) RED-tier
-trials 48–52 and 54–57 describe the named check-in/witness narratively — `trial_witnesses`
-(doc 22.6) isn't built, so nothing persists who was told, unlike Trial 53's `reckonings` row.
-
-**Migration history has drifted from the live database twice** — two migrations (`trial_accounts`,
-`account_mirror`) were applied live via the Supabase MCP on 1–2 Sep without ever being
-committed as numbered files. They've been reconstructed as `0010`/`0011` for the record, but
-were **not re-applied live** (they're already there) — only genuinely new migrations should be
-pushed. Always add the numbered file in the same turn you call `apply_migration`, so this
-doesn't happen a third time.
+**Migration history drifted from the live database twice early on** (two migrations applied
+via the Supabase MCP on 1–2 Sep without ever being committed as numbered files, reconstructed
+as `0010`/`0011`). Every migration since has had its numbered file added in the same turn as
+`apply_migration` — keep doing that.
