@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 import RouteViz from '../components/RouteViz'
+import BlazerRedeem from '../components/BlazerRedeem'
 import { useAuth } from '../lib/auth'
 import { fetchTrials, fetchMyCompletions, createCheckout } from '../lib/api'
 import {
@@ -241,12 +242,15 @@ export default function Run() {
       {load === 'loading' ? (
         <div className="panel muted" role="status">READING YOUR RUN…</div>
       ) : cleared >= 57 ? (
-        <div className="panel" style={{ border: '2px solid var(--rust)' }}>
-          <div className="label" style={{ color: 'var(--paper)' }}>RUN COMPLETE</div>
-          <div className="display" style={{ fontSize: 34, marginTop: 6 }}>
-            ALL 57 LINES CLEARED.
+        <>
+          <div className="panel" style={{ border: '2px solid var(--rust)' }}>
+            <div className="label" style={{ color: 'var(--paper)' }}>RUN COMPLETE</div>
+            <div className="display" style={{ fontSize: 34, marginTop: 6 }}>
+              ALL 57 LINES CLEARED.
+            </div>
           </div>
-        </div>
+          <BlazerRedeem />
+        </>
       ) : needsCircuit ? (
         <div className="panel" style={{ border: '2px solid var(--rust)' }}>
           <div className="label" style={{ color: 'var(--paper)' }}>CIRCUIT PASS REQUIRED</div>

@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import { useAuth } from '../lib/auth'
 import {
   fetchMyCompletions, fetchMyReckoning, fetchAllMyWitnesses, fetchMyFinisher,
-  fetchBonusTrials, fetchMyBonusCompletions, fetchMyLetter,
-  type MyReckoning, type MyFinisher, type BonusTrial,
+  fetchBonusTrials, fetchMyBonusCompletions, fetchMyLetter, fetchMyBlazerStatus,
+  type MyReckoning, type MyFinisher, type BonusTrial, type BlazerStatus,
 } from '../lib/api'
 import { pad, MILESTONES, type Completion, type Letter, type TrialWitness } from '../lib/types'
 
@@ -78,6 +78,7 @@ export default function Library() {
   const [finisher, setFinisher] = useState<MyFinisher | null>(null)
   const [bonusTrials, setBonusTrials] = useState<BonusTrial[]>([])
   const [bonusDone, setBonusDone] = useState<Set<number>>(new Set())
+  const [blazer, setBlazer] = useState<BlazerStatus | null>(null)
 
   useEffect(() => {
     if (!profile) return
@@ -89,8 +90,9 @@ export default function Library() {
       fetchMyFinisher().catch(() => null),
       fetchBonusTrials().catch(() => []),
       fetchMyBonusCompletions().catch(() => []),
+      fetchMyBlazerStatus().catch(() => null),
     ])
-      .then(([c, r, w, f, bt, bc]) => {
+      .then(([c, r, w, f, bt, bc, bz]) => {
         if (cancelled) return
         setCompletions(c)
         setReckoning(r)
@@ -98,6 +100,7 @@ export default function Library() {
         setFinisher(f)
         setBonusTrials(bt)
         setBonusDone(new Set(bc.map((x) => x.bonus_id)))
+        setBlazer(bz)
         setLoad('ok')
       })
       .catch(() => !cancelled && setLoad('error'))
@@ -195,18 +198,42 @@ export default function Library() {
             <section>
               <h2 className="chapter-heading-sm">THE TRIAL BLAZER</h2>
               <div className="stack" style={{ gap: 10 }}>
-                {bonusTrials.map((b) => (
-                  <div key={b.id} className="panel spread">
-                    <div>
-                      <div className="label">{b.code}</div>
-                      <div style={{ fontSize: 14 }}>{b.title}</div>
-                    </div>
-                    <span className={`label ${bonusDone.has(b.id) ? '' : 'muted'}`} style={bonusDone.has(b.id) ? { color: 'var(--yellow)' } : undefined}>
-                      {bonusDone.has(b.id) ? `EARNED — ${b.reward}` : 'OPEN'}
-                    </span>
-                  </div>
-                ))}
+                {bonusTrials
+                  .filter((b) => b.sequence == null || blazer?.redeemed)
+                  .sort((a, b) => (a.sequence ?? -1) - (b.sequence ?? -1))
+                  .map((b) => {
+                    const done = bonusDone.has(b.id)
+                    const priorSeq = b.sequence != null ? b.sequence - 1 : null
+                    const priorDone = priorSeq == null || priorSeq === 0
+                      || bonusTrials.some((x) => x.sequence === priorSeq && bonusDone.has(x.id))
+                    const openable = !done && priorDone
+                    const row = (
+                      <div className="panel spread">
+                        <div>
+                          <div className="label">{b.code}</div>
+                          <div style={{ fontSize: 14 }}>{b.title}</div>
+                        </div>
+                        <span
+                          className={`label ${done ? '' : 'muted'}`}
+                          style={done ? { color: 'var(--yellow)' } : undefined}
+                        >
+                          {done ? `CLEARED — ${b.reward}` : openable ? 'OPEN' : 'LOCKED'}
+                        </span>
+                      </div>
+                    )
+                    return openable ? (
+                      <Link key={b.id} to={`/run/bonus/${b.id}`} style={{ color: 'inherit' }}>{row}</Link>
+                    ) : (
+                      <div key={b.id}>{row}</div>
+                    )
+                  })}
               </div>
+              {!blazer?.redeemed && bonusDone.has(1) && (
+                <p className="muted mt-2" style={{ fontSize: 12 }}>
+                  The rest of the series is on the card that shipped with your hoodie — scan it
+                  once you've finished all 57.
+                </p>
+              )}
             </section>
           )}
 

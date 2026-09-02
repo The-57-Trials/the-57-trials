@@ -245,12 +245,14 @@ export interface BonusTrial {
   title: string
   reward: string
   unlocked_at: number
+  sequence: number | null
+  price_pence: number | null
 }
 
 export async function fetchBonusTrials(): Promise<BonusTrial[]> {
   const { data, error } = await supabase
     .from('bonus_trials')
-    .select('id, code, title, reward, unlocked_at')
+    .select('id, code, title, reward, unlocked_at, sequence, price_pence')
     .eq('active', true)
     .order('unlocked_at')
   if (error) throw error
@@ -263,4 +265,55 @@ export async function fetchMyBonusCompletions(): Promise<{ bonus_id: number; cle
     .select('bonus_id, cleared_at')
   if (error) throw error
   return data as { bonus_id: number; cleared_at: string }[]
+}
+
+/** Content gated server-side: LOCKED / BLAZER_LOCKED / OUT_OF_ORDER / CIRCUIT_REQUIRED. */
+export async function fetchBonusBody(bonusId: number): Promise<string> {
+  const { data, error } = await supabase.rpc('get_bonus_body', { p_bonus_id: bonusId })
+  if (error) throw error
+  return (data as string) ?? ''
+}
+
+export interface BonusClearResult {
+  cleared: number
+  reward: string
+  priced: boolean
+}
+
+export async function clearBonusTrial(bonusId: number): Promise<BonusClearResult> {
+  const { data, error } = await supabase.rpc('clear_bonus_trial', { p_bonus_id: bonusId })
+  if (error) throw error
+  return data as BonusClearResult
+}
+
+// ---------- the Trial Blazer series (D3, extended for the post-57 arc) ----------
+
+export interface BlazerStatus {
+  has_card: boolean
+  redeemed: boolean
+}
+
+/** Never returns the code — only whether a card exists and has been redeemed. */
+export async function fetchMyBlazerStatus(): Promise<BlazerStatus> {
+  const { data, error } = await supabase.rpc('get_my_blazer_status')
+  if (error) throw error
+  return data as BlazerStatus
+}
+
+export interface BlazerReveal {
+  revealed: boolean
+  code?: string
+}
+
+/** Public: callable from a scanned QR code with no session on the device. */
+export async function fetchBlazerReveal(token: string): Promise<BlazerReveal> {
+  const { data, error } = await supabase.rpc('get_blazer_reveal', { p_token: token })
+  if (error) throw error
+  return data as BlazerReveal
+}
+
+export async function redeemBlazerCode(code: string): Promise<{ redeemed: boolean; already: boolean }> {
+  const { data, error } = await supabase.rpc('redeem_blazer_code', { p_code: code })
+  if (error) throw error
+  return data as { redeemed: boolean; already: boolean }
 }

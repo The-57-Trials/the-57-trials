@@ -15,6 +15,8 @@ const TrialDetail = lazy(() => import('./pages/TrialDetail'))
 const Register = lazy(() => import('./pages/Register'))
 const Account = lazy(() => import('./pages/Account'))
 const Library = lazy(() => import('./pages/Library'))
+const BonusTrialDetail = lazy(() => import('./pages/BonusTrialDetail'))
+const BlazerReveal = lazy(() => import('./pages/BlazerReveal'))
 // Race Control is a separate application with its own build and its own
 // deployment. Nothing about it ships to a member's browser.
 const ForgotPassword = lazy(() => import('./pages/ForgotPassword'))
@@ -53,9 +55,15 @@ export default function App() {
             <Route path="/refunds" element={<Refunds />} />
             <Route path="/disclaimer" element={<Disclaimer />} />
             <Route path="/contact" element={<Contact />} />
+
+            {/* Scanned from a physical card, almost never with a session on
+                that device — must stay outside RequireAuth. */}
+            <Route path="/blazer/:token" element={<BlazerReveal />} />
+
             <Route element={<RequireAuth />}>
               <Route path="/run" element={<Run />} />
               <Route path="/run/trial/:num" element={<TrialDetail />} />
+              <Route path="/run/bonus/:id" element={<BonusTrialDetail />} />
               <Route path="/library" element={<Library />} />
               <Route path="/register" element={<Register />} />
               <Route path="/account" element={<Account />} />
